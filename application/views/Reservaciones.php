@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,58 +9,59 @@
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/venta/style_reservas.css">
 </head>
+
 <body>
-<div :class="['sidebar', { open: isSidebarOpen }]">
-      <button class="toggle-btn" @click="toggleSidebar">☰</button>
-      <div class="logo">
-        <img src="img/logoo.png" alt="Logo" @click="closeSidebar">
-      </div>
-      <ul>
-        <li>
-          <a href="<?=site_url('reportes') ?>">
-            <img src="<?=base_url('img/reportes.png') ?>" alt="Reportes"><span>Reportes</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('mesas') ?>">
-            <img src="<?= base_url('img/mesas.png') ?>" alt="Mesas"><span>Mesas</span>
-          </a>  
-        </li>
-        <li>
-          <a href="<?=site_url('reservaciones') ?>">
-            <img src="<?=base_url('img/reservaciones.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?= site_url('menu') ?>">
-            <img src="<?= base_url('img/menu.png') ?>" alt="Menú"><span>Menú</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('pedidos') ?>">
-            <img src="<?= base_url('img/inventario.png') ?>" alt="Pedidos"><span>Pedidos</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('modal_producto') ?>">
-            <img src="<?=base_url('img/pedidos.png') ?>" alt="Inventario"><span>Inventario</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('personal') ?>">
-            <img src="<?=base_url('img/personal.png') ?>" alt="Personal"><span>Personal</span>
-          </a>
-        </li>
-      </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
-        <img src="img/person.png" alt="Usuario">
-        <img src="img/salida.png" alt="Salir">
-      </div>
-      <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-        <img src="<?= base_url('img/user.png') ?>" alt="Usuario">
-        <span>Angel Chi<br>Administrador</span>
-      </div>
+  <div :class="['sidebar', { open: isSidebarOpen }]">
+    <button class="toggle-btn" @click="toggleSidebar">☰</button>
+    <div class="logo">
+      <img src="img/logoo.png" alt="Logo" @click="closeSidebar">
     </div>
+    <ul>
+      <li>
+        <a href="<?= site_url('reportes') ?>">
+          <img src="<?= base_url('img/reportes.png') ?>" alt="Reportes"><span>Reportes</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?= site_url('mesas') ?>">
+          <img src="<?= base_url('img/mesas.png') ?>" alt="Mesas"><span>Mesas</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?= site_url('reservaciones') ?>">
+          <img src="<?= base_url('img/reservaciones.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?= site_url('menu') ?>">
+          <img src="<?= base_url('img/menu.png') ?>" alt="Menú"><span>Menú</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?= site_url('pedidos') ?>">
+          <img src="<?= base_url('img/inventario.png') ?>" alt="Pedidos"><span>Pedidos</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?= site_url('modal_producto') ?>">
+          <img src="<?= base_url('img/pedidos.png') ?>" alt="Inventario"><span>Inventario</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?= site_url('personal') ?>">
+          <img src="<?= base_url('img/personal.png') ?>" alt="Personal"><span>Personal</span>
+        </a>
+      </li>
+    </ul>
+    <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
+      <img src="img/person.png" alt="Usuario">
+      <img src="img/salida.png" alt="Salir">
+    </div>
+    <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
+      <img src="<?= base_url('img/user.png') ?>" alt="Usuario">
+      <span>Angel Chi<br>Administrador</span>
+    </div>
+  </div>
 
   <div id="container">
     <div id="calendar"></div>
@@ -181,7 +183,7 @@
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -191,10 +193,19 @@
           right: 'dayGridMonth,timeGridWeek'
         },
         locale: 'es',
-        events: [
-          { title: 'Evento 1', start: '2024-12-01' },
-          { title: 'Evento 2', start: '2024-12-07', end: '2024-12-10' },
-          { title: 'Evento 3', start: '2024-12-15' },
+        events: [{
+            title: 'Evento 1',
+            start: '2024-12-01'
+          },
+          {
+            title: 'Evento 2',
+            start: '2024-12-07',
+            end: '2024-12-10'
+          },
+          {
+            title: 'Evento 3',
+            start: '2024-12-15'
+          },
         ],
         dateClick: function(info) {
           var title = prompt("Ingrese el título del evento:");
@@ -223,17 +234,22 @@
         selectable: true,
         nowIndicator: true,
         eventTimeFormat: {
-            hour: '2-digit',
+          hour: '2-digit',
           minute: '2-digit',
           meridiem: 'short'
         },
         views: {
           dayGridMonth: {
-            titleFormat: { month: 'long', year: 'numeric' }
+            titleFormat: {
+              month: 'long',
+              year: 'numeric'
+            }
           },
           timeGridWeek: {
-            titleFormat: { week: 'long' },
-            slotDuration: '00:30:00'  // Intervalo de 30 minutos
+            titleFormat: {
+              week: 'long'
+            },
+            slotDuration: '00:30:00' // Intervalo de 30 minutos
           }
         },
         navLinks: true, // Permite hacer clic en una fecha para navegar
@@ -250,8 +266,8 @@
           day: 'Día',
           list: 'Lista'
         },
-        allDayText: 'Todo el día',  // Texto para eventos de todo el día
-        noEventsText: 'No hay eventos para mostrar'  // Texto cuando no hay eventos
+        allDayText: 'Todo el día', // Texto para eventos de todo el día
+        noEventsText: 'No hay eventos para mostrar' // Texto cuando no hay eventos
       });
       calendar.render();
     });
@@ -304,4 +320,5 @@
     }
   </script>
 </body>
+
 </html>

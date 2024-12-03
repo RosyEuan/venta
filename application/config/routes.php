@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -56,20 +56,10 @@ $route['barra_lateral']                 = 'Welcome/barra_lateral';
 $route['menu']                          = 'Welcome/menu';
 $route['reservaciones']                 = 'Welcome/reservaciones';
 $route['login']                         = 'Welcome/login';
-$route['modal_producto']       = 'Welcome/modal_producto';
-$route['modal_proveedores']       = 'Welcome/modal_proveedores';
-$route['modal_utilidad']       = 'Welcome/modal_utilidad';
+$route['modal_producto']                = 'Welcome/modal_producto';
+$route['modal_proveedores']             = 'Welcome/modal_proveedores';
+$route['modal_utilidad']                = 'Welcome/modal_utilidad';
 $route['graficas']                      = 'Welcome/graficas';
 
-$route['404_override']          = '';
-$route['translate_uri_dashes']  = FALSE;
-
-
-
-
-
-
-
-
-
-
+$route['404_override']                  = '';
+$route['translate_uri_dashes']          = FALSE;
