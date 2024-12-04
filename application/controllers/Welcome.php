@@ -27,10 +27,10 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 	    /*sirve para cargar una vista*/
-		$this->load->view('graficas');
+		$this->load->view('graficas2');
 	}
-	public function graficas(){
-		$this->load->view('graficas');
+	public function graficas2(){
+		$this->load->view('graficas2');
 	}
 	public function mesas(){
 		$this->load->view('mesas');
@@ -59,7 +59,10 @@ class Welcome extends CI_Controller {
 	public function reservaciones(){
 		$this->load->view('Reservaciones');
 	}
-	public function login(){
-		$this->load->view('login');
+	public function modal_login(){
+		$this->load->view('modal_login');
+	}
+	public function barra(){
+		$this->load->view('barra');
 	}
 }

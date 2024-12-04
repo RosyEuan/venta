@@ -20,7 +20,7 @@
       </div>
       <ul>
         <li>
-          <a href="<?=site_url('graficas') ?>">
+          <a href="<?=site_url('graficas2') ?>">
             <img src="<?=base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
