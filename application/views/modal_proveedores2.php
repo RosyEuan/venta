@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventario de Proveedores</title>
+  <title>Sección con Vue.js</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Konkhmer+Sleokchher&family=Suez+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
@@ -17,158 +17,6 @@
       margin: 0;
       padding: 100px;
     }
-
-    /* Barra lateral */
-    .sidebar {
-      width: 60px;
-      height: 100vh;
-      background-color: #f8f8f8;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      transition: width 0.3s;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
-
-    .sidebar.open {
-      width: 250px;
-    }
-
-    .toggle-btn {
-      margin: 10px;
-      font-size: 24px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      outline: none;
-    }
-
-    .logo {
-      display: none;
-      margin: 10px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .sidebar.open .toggle-btn {
-      display: none;
-    }
-
-    .sidebar.open .logo {
-      display: block;
-    }
-
-    .logo img {
-      max-width: 170px;
-      cursor: pointer;
-      padding-top: 50px;
-    }
-
-    /* Estilos de la lista de navegación */
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-    }
-
-    .sidebar ul li {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      padding: 15px 10px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-
-    .sidebar ul li:hover {
-      background-color: rgba(81, 92, 100, 0.4);
-    }
-
-    .sidebar ul li img {
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-    }
-
-    .sidebar ul li span {
-      font-size: 14px;
-      color: black;
-      display: none;
-    }
-
-    .sidebar.open ul li span {
-      display: inline-block;
-    }
-
-    .admin-info {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 20px;
-      width: 100%;
-      border-top: 1px solid #ddd;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .sidebar.open .admin-info {
-      opacity: 1;
-    }
-
-    .admin-info img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .admin-info span {
-      font-size: 14px;
-      color: black;
-      display: none;
-    }
-
-    .sidebar.open .admin-info span {
-      display: block;
-    }
-
-    .bottom-icons {
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-
-    .bottom-icons img {
-      width: 30px;
-      height: 30px;
-      margin: 10px 0;
-    }
-
-    .bottom-icons.hidden {
-      display: none;
-    }
-
-    /* Contenido principal */
-    .content {
-      margin-left: 60px;
-      padding: 20px;
-      flex: 1;
-      transition: margin-left 0.3s;
-    }
-
-    .sidebar.open ~ .content {
-      margin-left: 250px;
-    }
-
 
     .header {
       display: flex;
@@ -482,73 +330,13 @@ line-height: normal;}
   </style>
 </head>
 <body>
-  <div id="app">
-    <div :class="['sidebar', { open: isSidebarOpen }]">
-      <button class="toggle-btn" @click="toggleSidebar">☰</button>
-      <div class="logo">
-        <img src="img/logoo.png" alt="Logo" @click="closeSidebar">
-      </div>
-      <ul>
-        <li>
-          <a href="<?=site_url('reportes') ?>">
-            <img src="<?=base_url('img/reportes.png') ?>" alt="Reportes"><span>Reportes</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('mesas') ?>">
-            <img src="<?= base_url('img/mesas.png') ?>" alt="Mesas"><span>Mesas</span>
-          </a>  
-        </li>
-        <li>
-          <a href="<?=site_url('reservaciones') ?>">
-            <img src="<?=base_url('img/reservaciones.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?= site_url('menu') ?>">
-            <img src="<?= base_url('img/menu.png') ?>" alt="Menú"><span>Menú</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('pedidos') ?>">
-            <img src="<?= base_url('img/inventario.png') ?>" alt="Pedidos"><span>Pedidos</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('modal_producto') ?>">
-            <img src="<?=base_url('img/pedidos.png') ?>" alt="Inventario"><span>Inventario</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('personal') ?>">
-            <img src="<?=base_url('img/personal.png') ?>" alt="Personal"><span>Personal</span>
-          </a>
-        </li>
-      </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
-        <img src="img/person.png" alt="Usuario">
-        <img src="img/salida.png" alt="Salir">
-      </div>
-      <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-        <img src="<?= base_url('img/user.png') ?>" alt="Usuario">
-        <span>Angel Chi<br>Administrador</span>
-      </div>
-    </div>
-  </div>
-
   <div id="inventario_proveedores">
   <h2 class="titu">Inventario proveedores</h2> 
     <div class="header">
       <div class="header-buttons">
-        <a href="<?=site_url('modal_producto') ?>">
-          <button>Ingredientes</button>
-        </a>
-        <a href="<?=site_url('modal_utilidad') ?>">
-          <button >Utilidades</button>
-        </a>
-        <a href="<?=site_url('modal_proveedores') ?>">        
-          <button>Proveedores</button>
-        </a>
+        <button>Ingredientes</button>
+        <button>Utilidades</button>
+        <button>Proveedores</button>
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Buscar" v-model="searchQuery">

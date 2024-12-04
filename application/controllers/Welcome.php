@@ -28,15 +28,23 @@ class Welcome extends CI_Controller
 	public function index()
 	{
 		/*sirve para cargar una vista*/
-		$this->load->view('login');
+		$this->load->view('graficas2');
 	}
-	public function graficas()
+	public function graficas2()
 	{
-		$this->load->view('graficas');
+		$this->load->view('graficas2');
+	}
+	public function mesas()
+	{
+		$this->load->view('mesas');
 	}
 	public function menu()
 	{
 		$this->load->view('menu');
+	}
+	public function personal()
+	{
+		$this->load->view('personal');
 	}
 	public function barra_lateral()
 	{
@@ -63,8 +71,12 @@ class Welcome extends CI_Controller
 	{
 		$this->load->view('Reservaciones');
 	}
-	public function login()
+	public function modal_login()
 	{
-		$this->load->view('login');
+		$this->load->view('modal_login');
+	}
+	public function barra()
+	{
+		$this->load->view('barra');
 	}
 }

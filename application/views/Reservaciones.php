@@ -4,72 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reservaciones</title>
-  <!-- FullCalendar CSS -->
+  <title>Calendario con Lista de Usuarios</title>
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Konkhmer+Sleokchher&family=Suez+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/venta/style_reservas.css">
+
 </head>
 
 <body>
-  <div :class="['sidebar', { open: isSidebarOpen }]">
-    <button class="toggle-btn" @click="toggleSidebar">☰</button>
-    <div class="logo">
-      <img src="img/logoo.png" alt="Logo" @click="closeSidebar">
-    </div>
-    <ul>
-      <li>
-        <a href="<?= site_url('reportes') ?>">
-          <img src="<?= base_url('img/reportes.png') ?>" alt="Reportes"><span>Reportes</span>
-        </a>
-      </li>
-      <li>
-        <a href="<?= site_url('mesas') ?>">
-          <img src="<?= base_url('img/mesas.png') ?>" alt="Mesas"><span>Mesas</span>
-        </a>
-      </li>
-      <li>
-        <a href="<?= site_url('reservaciones') ?>">
-          <img src="<?= base_url('img/reservaciones.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
-        </a>
-      </li>
-      <li>
-        <a href="<?= site_url('menu') ?>">
-          <img src="<?= base_url('img/menu.png') ?>" alt="Menú"><span>Menú</span>
-        </a>
-      </li>
-      <li>
-        <a href="<?= site_url('pedidos') ?>">
-          <img src="<?= base_url('img/inventario.png') ?>" alt="Pedidos"><span>Pedidos</span>
-        </a>
-      </li>
-      <li>
-        <a href="<?= site_url('modal_producto') ?>">
-          <img src="<?= base_url('img/pedidos.png') ?>" alt="Inventario"><span>Inventario</span>
-        </a>
-      </li>
-      <li>
-        <a href="<?= site_url('personal') ?>">
-          <img src="<?= base_url('img/personal.png') ?>" alt="Personal"><span>Personal</span>
-        </a>
-      </li>
-    </ul>
-    <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
-      <img src="img/person.png" alt="Usuario">
-      <img src="img/salida.png" alt="Salir">
-    </div>
-    <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-      <img src="<?= base_url('img/user.png') ?>" alt="Usuario">
-      <span>Angel Chi<br>Administrador</span>
-    </div>
-  </div>
-
   <div id="container">
     <div id="calendar"></div>
+
     <div id="user-list">
       <div id="search-bar">
-        <input type="text" placeholder="Buscar cliente">
+        <input type="text" placeholder="Buscar cliente" class="search-bar">
         <button>
-          🔍
+          <i class="fas fa-search"></i>
         </button>
       </div>
       <!-- Lista de usuarios -->
@@ -81,7 +34,7 @@
         </div>
         <div class="action-buttons">
           <button class="edit-button" onclick="openModal('Rosy Euan', 'B3', '6:15 PM', '19/Dic/2024')">Modificar</button>
-          <button class="delete-button">Eliminar</button>
+          <button class="delete-button" onclick="eliminarUsuario(1)">Eliminar</button>
         </div>
       </div>
       <div class="user-card">
@@ -92,7 +45,7 @@
         </div>
         <div class="action-buttons">
           <button class="edit-button" onclick="openModal('Salem Ojeda', 'D4', '6:30 PM', '2/Dic/2024')">Modificar</button>
-          <button class="delete-button">Eliminar</button>
+          <button class="delete-button" onclick="eliminarUsuario(2)">Eliminar</button>
         </div>
       </div>
       <div class="user-card">
@@ -103,7 +56,7 @@
         </div>
         <div class="action-buttons">
           <button class="edit-button" onclick="openModal('Shaiel Saucedo', 'E1', '6:35 PM', '1/Ene/2025')">Modificar</button>
-          <button class="delete-button">Eliminar</button>
+          <button class="delete-button" onclick="eliminarUsuario(3)">Eliminar</button>
         </div>
       </div>
       <div class="user-card">
@@ -114,7 +67,7 @@
         </div>
         <div class="action-buttons">
           <button class="edit-button" onclick="openModal('Dania Botello', 'B2', '7:00 PM', '6/Ene/2025')">Modificar</button>
-          <button class="delete-button">Eliminar</button>
+          <button class="delete-button" onclick="eliminarUsuario(4)">Eliminar</button>
         </div>
       </div>
       <div class="user-card">
@@ -125,7 +78,7 @@
         </div>
         <div class="action-buttons">
           <button class="edit-button" onclick="openModal('Angel Chi', 'Pendiente', '7:30 PM', '30/Ene/2025')">Modificar</button>
-          <button class="delete-button">Eliminar</button>
+          <button class="delete-button" onclick="eliminarUsuario(5)">Eliminar</button>
         </div>
       </div>
     </div>
@@ -135,7 +88,7 @@
   <div id="modal" class="modal">
     <div class="modal-content">
       <div id="reservacion" class="form-container">
-        <h1>Agregar Reservación</h1>
+        <h2 class="til">Agregar Reservación</h2>
         <div class="form-row">
           <div class="form-column">
             <div class="form-group">
@@ -166,10 +119,12 @@
             </div>
           </div>
         </div>
+
         <div class="form-group">
           <label for="comentarios">Comentarios:</label>
           <textarea id="comentarios" v-model="form.comentarios"></textarea>
         </div>
+
         <div class="buttons">
           <button class="btn-reservar" @click="reservar">Reservar</button>
           <button class="btn-cancelar" @click="cancelar">Cancelar</button>
@@ -182,9 +137,12 @@
   <!-- FullCalendar JS -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
+      var searchBar = document.getElementById('search-bar');
+
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         headerToolbar: {
@@ -266,11 +224,117 @@
           day: 'Día',
           list: 'Lista'
         },
-        allDayText: 'Todo el día', // Texto para eventos de todo el día
-        noEventsText: 'No hay eventos para mostrar' // Texto cuando no hay eventos
+        allDayText: 'Todo el día',
+        noEventsText: 'No hay eventos para mostrar',
+
+        // Evento que se ejecuta después de cargar el calendario
+        datesSet: function(info) {
+          var titleElement = document.querySelector('.fc-toolbar-title');
+          titleElement.style.cursor = 'pointer';
+          titleElement.onclick = function() {
+            showMonthPicker(info.start);
+          };
+        }
       });
+
       calendar.render();
+
+      function showMonthPicker(currentDate) {
+        var monthPicker = document.createElement('div');
+        monthPicker.id = 'month-picker';
+        monthPicker.style.position = 'absolute';
+        monthPicker.style.background = 'white';
+        monthPicker.style.border = '1px solid #ccc';
+        monthPicker.style.padding = '10px';
+        monthPicker.style.zIndex = '1000';
+        monthPicker.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+        monthPicker.style.borderRadius = '8px';
+
+        // Crear el selector de años
+        var yearSelector = document.createElement('select');
+        yearSelector.style.width = '100%';
+        yearSelector.style.padding = '5px';
+        yearSelector.style.marginBottom = '10px';
+        var currentYear = currentDate.getFullYear();
+
+        // Rango de años para seleccionar
+        for (let i = currentYear - 5; i <= currentYear + 5; i++) {
+          var option = document.createElement('option');
+          option.value = i;
+          option.textContent = i;
+          if (i === currentYear) option.selected = true;
+          yearSelector.appendChild(option);
+        }
+
+        // Crear selector de meses
+        var monthSelector = document.createElement('select');
+        monthSelector.style.width = '100%';
+        monthSelector.style.padding = '5px';
+        monthSelector.style.marginBottom = '10px';
+
+        for (let i = 0; i < 12; i++) {
+          var option = document.createElement('option');
+          option.value = i;
+          option.textContent = new Date(0, i).toLocaleString('es', {
+            month: 'long'
+          });
+          if (i === currentDate.getMonth()) option.selected = true;
+          monthSelector.appendChild(option);
+        }
+
+        monthSelector.onchange = function() {
+          updateMonthGrid(parseInt(yearSelector.value), parseInt(monthSelector.value));
+        };
+
+        monthPicker.appendChild(yearSelector);
+        monthPicker.appendChild(monthSelector);
+
+        document.body.appendChild(monthPicker);
+
+        // Posicionar el selector cerca del título
+        var titleElement = document.querySelector('.fc-toolbar-title');
+        var rect = titleElement.getBoundingClientRect();
+        monthPicker.style.top = `${rect.bottom + window.scrollY + 5}px`;
+        monthPicker.style.left = `${rect.left + window.scrollX}px`;
+      }
+
+      function updateMonthGrid(year, month) {
+        // Cambia la fecha del calendario para el mes seleccionado
+        calendar.gotoDate(new Date(year, month)); // El mes se ajusta porque es base 0
+      }
+
     });
+
+    var searchBar = document.querySelector('.search-bar');
+
+    searchBar.addEventListener('input', function() {
+      var query = searchBar.value.toLowerCase();
+      var userCards = document.querySelectorAll('.user-card');
+
+      userCards.forEach(card => {
+        var userName = card.querySelector('h4')?.textContent.toLowerCase() || '';
+        var userDetails = card.querySelectorAll('p');
+        var userText = Array.from(userDetails).map(p => p.textContent.toLowerCase()).join(' ');
+
+        if (userName.includes(query) || userText.includes(query)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Eliminar usuario cuando se hace clic en el botón "Eliminar"
+    document.querySelectorAll('.delete-button').forEach(button => {
+      button.addEventListener('click', function() {
+        // Eliminar el "user-card" que contiene este botón
+        var userCard = button.closest('.user-card');
+        if (userCard) {
+          userCard.remove();
+        }
+      });
+    });
+
     new Vue({
       el: "#reservacion",
       data: {
@@ -319,6 +383,8 @@
       document.getElementById('fecha').value = fecha;
     }
   </script>
+
+
 </body>
 
 </html>

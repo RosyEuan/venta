@@ -16,51 +16,51 @@
     <div :class="['sidebar', { open: isSidebarOpen }]">
       <button class="toggle-btn" @click="toggleSidebar">☰</button>
       <div class="logo">
-        <img src="img/logoo.png" alt="Logo" @click="closeSidebar">
+        <img src="img/LogoCytisum.png" alt="Logo" @click="closeSidebar">
       </div>
       <ul>
         <li>
-          <a href="<?=site_url('graficas') ?>">
-            <img src="<?=base_url('img/reportes.png') ?>" alt="Reportes"><span>Reportes</span>
+          <a href="<?=site_url('graficas2') ?>">
+            <img src="<?=base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
         <li>
           <a href="<?=site_url('mesas') ?>">
-            <img src="<?= base_url('img/mesas.png') ?>" alt="Mesas"><span>Mesas</span>
+            <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
           </a>  
         </li>
         <li>
           <a href="<?=site_url('reservaciones') ?>">
-            <img src="<?=base_url('img/reservaciones.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
+            <img src="<?=base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
         <li>
           <a href="<?= site_url('menu') ?>">
-            <img src="<?= base_url('img/menu.png') ?>" alt="Menú"><span>Menú</span>
+            <img src="<?= base_url('img/Menus.png') ?>" alt="Menú"><span>Menú</span>
           </a>
         </li>
         <li>
           <a href="<?=site_url('pedidos') ?>">
-            <img src="<?= base_url('img/inventario.png') ?>" alt="Pedidos"><span>Pedidos</span>
+            <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
         <li>
           <a href="<?=site_url('modal_producto') ?>">
-            <img src="<?=base_url('img/pedidos.png') ?>" alt="Inventario"><span>Inventario</span>
+            <img src="<?=base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
         <li>
           <a href="<?=site_url('personal') ?>">
-            <img src="<?=base_url('img/personal.png') ?>" alt="Personal"><span>Personal</span>
+            <img src="<?=base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
       <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
-        <img src="img/person.png" alt="Usuario">
-        <img src="img/salida.png" alt="Salir">
+        <img src="img/Admin.png" alt="Usuario">
+        <img src="img/Logout.png" alt="Salir">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-        <img src="img/user.png" alt="Usuario">
+        <img src="img/Admin.png" alt="Usuario">
         <span>Angel Chi<br>Administrador</span>
       </div>
     </div>
@@ -79,22 +79,25 @@
           </div>
           <button class="add-btn">Agregar</button>
         </div>
-        <div class="menu-container">
-          <div class="menu-item" v-for="item in filteredMenu" :key="item.id">
-            <img :src="item.image" alt="Imagen del platillo" class="menu-img" />
-            <div class="menu-info">
-              <div class="menu-header">
-                <h3 class="menu-title">{{ item.name }}</h3>
-                <span class="menu-price">${{ item.price }}</span>
+        <div id="user-list">
+          <div class="menu-container">
+            <div class="menu-item" v-for="item in filteredMenu" :key="item.id">
+              <img :src="item.image" alt="Imagen del platillo" class="menu-img" />
+              <div class="menu-info">
+                <div class="menu-header">
+                  <h3 class="menu-title">{{ item.name }}</h3>
+                  <span class="menu-price">${{ item.price }}</span>
+                </div>
+                <p class="menu-description">{{ item.description }}</p>
               </div>
-              <p class="menu-description">{{ item.description }}</p>
+              <div class="menu-actions">
+                <button class="edit-btn" @click="editItem(item.id)">Editar</button>
+                <button class="delete-btn" @click="deleteItem(item.id)">Eliminar</button>
+              </div>
             </div>
-            <div class="menu-actions">
-              <button class="edit-btn" @click="editItem(item.id)">Editar</button>
-              <button class="delete-btn" @click="deleteItem(item.id)">Eliminar</button>
-            </div>
-          </div>
+          </div>  
         </div>
+        
       </div>
     </div>
   </div>

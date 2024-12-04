@@ -333,15 +333,9 @@ input, textarea {
 
     <div class="header">
       <div class="header-buttons">
-        <a href="<?=site_url('modal_producto') ?>">
-          <button>Ingredientes</button>
-        </a>
-        <a href="<?=site_url('modal_utilidad') ?>">
-          <button >Utilidades</button>
-        </a>
-        <a href="<?=site_url('modal_proveedores') ?>">        
-          <button>Proveedores</button>
-        </a>
+        <button>Ingredientes</button>
+        <button>Utilidades</button>
+        <button>Proveedores</button>
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Buscar"  v-model="busqueda">
