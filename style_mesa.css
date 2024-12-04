@@ -1,0 +1,301 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Merriweather';
+    background: #090526;
+    overflow-x: hidden;
+}
+/* Barra lateral */
+.sidebar {
+    width: 60px;
+    height: 100vh;
+    background-color: #2A236A;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    transition: width 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.sidebar.open {
+    width: 250px;
+}
+.toggle-btn {
+    margin: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+}
+.logo {
+    display: none;
+    margin: 10px;
+    width: 100%;
+    text-align: center;
+}
+.sidebar.open .toggle-btn {
+    display: none;
+}
+.sidebar.open .logo {
+    display: block;
+}
+.logo img {
+    max-width: 170px;
+    cursor: pointer;
+    padding-top: 50px;
+}
+/* Estilos de la lista de navegación */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+.sidebar ul li {
+    width: 92%;
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.sidebar ul li:hover {
+    background-color: rgba(81, 92, 100, 0.4);
+}
+.sidebar ul li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.sidebar ul li span {
+    font-size: 14px;
+    color: white;
+    display: none;
+}
+.sidebar.open ul li span {
+    display: inline-block;
+}
+.admin-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    width: 100%;
+    border-top: 0 solid #ddd;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.sidebar.open .admin-info {
+    opacity: 1;
+}
+.admin-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.admin-info span {
+    font-size: 14px;
+    color: white;
+    display: none;
+}
+.sidebar.open .admin-info span {
+    display: block;
+}
+.bottom-icons {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.bottom-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 10px 0;
+}
+.bottom-icons.hidden {
+    display: none;
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 60px;
+    padding: 20px;
+    flex: 1;
+    transition: margin-left 0.3s;
+}
+.sidebar.open~.content {
+    margin-left: 250px;
+}
+
+/* Mesas */
+.mesa-container {
+    background: #12141B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mesa-bar {
+    width: 98.5%;
+    background: #0B0B13;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+.mesa-bar div {
+    display: flex;
+    align-items: center;
+}
+.mesa-bar .status {
+    font-size: 14px;
+    margin-left: 10px;
+}
+.mesa-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 1%;
+    margin-bottom: 0.5%;
+    width: 100%;
+    justify-items: center;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+.form-column {
+    width: 48%;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+.form-group input,
+.form-group textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: rgba(81, 92, 100, 0.3);
+}
+.form-group textarea {
+    resize: none;
+    height: 100px;
+}
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 79%;
+    justify-content: center;
+    align-items: center;
+}
+.titulo_modal {
+    font-family: "Merriweather";
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 24px;
+}
+.close-btn {
+    color: #515C64;
+    font-size: 16px;
+    width: 25px;
+    height: 25px;
+    margin-left: 95%;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+}
+.mesa {
+    width: 207px;
+    height: 148px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    align-items: flex-end;
+}
+.btn_reservar,
+.btn_guardar {
+    width: 26%;
+    padding: 10px;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: yellow;
+    color: black;
+    height: 48px;
+    margin-bottom: 40px;
+}
+.btn_cerrar {
+    width: 22%;
+    padding: 10px;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: orange;
+    color: black;
+    margin-top: 15px;
+}
+.mesa .estado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.mesa.reservada img {
+    filter: brightness(0) saturate(100%) invert(30%) sepia(50%) saturate(400%) hue-rotate(200deg);
+}
+.mesa.en-uso img {
+    filter: brightness(0) saturate(100%) invert(40%) sepia(80%) saturate(400%) hue-rotate(50deg);
+}
+.mesa.seleccionada {
+    filter: brightness(0) saturate(100%) invert(30%) sepia(50%) saturate(400%) hue-rotate(200deg);
+}

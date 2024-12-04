@@ -1,16 +1,17 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgba(179, 179, 179, 1);
+    background-color: #090526;
     display: flex;
     font-family: Arial, sans-serif;
+    overflow: hidden;
 }
 
 /* Barra lateral */
 .sidebar {
     width: 60px;
     height: 100vh;
-    background-color: #f8f8f8;
+    background-color: #2A236A;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -32,6 +33,7 @@ body {
     background: none;
     border: none;
     outline: none;
+    color: white;
 }
 .logo {
     display: none;
@@ -79,7 +81,7 @@ body {
 }
 .sidebar ul li span {
     font-size: 14px;
-    color: black;
+    color: white;
     display: none;
 }
 .sidebar.open ul li span {
@@ -92,7 +94,7 @@ body {
     justify-content: flex-start;
     padding: 20px;
     width: 100%;
-    border-top: 1px solid #ddd;
+    border-top: 0 solid #ddd;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -107,7 +109,7 @@ body {
 }
 .admin-info span {
     font-size: 14px;
-    color: black;
+    color: white;
     display: none;
 }
 .sidebar.open .admin-info span {
@@ -135,9 +137,9 @@ body {
 .content {
     margin-left: 60px;
     padding: 20px;
-    background-color: rgba(179, 179, 179, 1);
     flex: 1;
     transition: margin-left 0.3s;
+    overflow-y: hidden;
 }
 .sidebar.open ~ .content {
     margin-left: 250px;
@@ -145,12 +147,11 @@ body {
 h1 {
     font-family: "Lucida Bright", serif;
     font-size: 40px;
-    color: #333;
+    color: white;
     text-align: center;
     margin-top: 0;
 }
 .menus-container{
-    background-color: rgba(179, 179, 179, 1);
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -158,7 +159,6 @@ h1 {
     max-width: 100%;
 }
 .menu-container{
-    background-color: rgba(179, 179, 179, 1);
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -292,4 +292,15 @@ h1 {
 }
 .delete-btn:hover {
     background-color: #C0392B;
+}
+#user-list {
+    width: 100%; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0%; 
+    height: 688px; 
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+#user-list::-webkit-scrollbar{
+  display: none;
 }

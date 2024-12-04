@@ -50,16 +50,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller']                    = 'Welcome';
+$route['default_controller']            = 'Welcome';
 /* Rutas para acceder a las pantallas */
 $route['barra_lateral']                 = 'Welcome/barra_lateral';
 $route['menu']                          = 'Welcome/menu';
+$route['mesas']                          = 'Welcome/mesas';
 $route['reservaciones']                 = 'Welcome/reservaciones';
 $route['login']                         = 'Welcome/login';
-$route['modal_producto']       = 'Welcome/modal_producto';
-$route['modal_proveedores']       = 'Welcome/modal_proveedores';
-$route['modal_utilidad']       = 'Welcome/modal_utilidad';
+$route['modal_producto']                = 'Welcome/modal_producto';
+$route['modal_proveedores']             = 'Welcome/modal_proveedores';
+$route['modal_utilidad']                = 'Welcome/modal_utilidad';
 $route['graficas']                      = 'Welcome/graficas';
+$route['personal']                      = 'Welcome/personal';
 
 $route['404_override']          = '';
 $route['translate_uri_dashes']  = FALSE;

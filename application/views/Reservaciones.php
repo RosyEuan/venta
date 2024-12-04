@@ -9,58 +9,7 @@
   <link rel="stylesheet" href="/venta/style_reservas.css">
 </head>
 <body>
-<div :class="['sidebar', { open: isSidebarOpen }]">
-      <button class="toggle-btn" @click="toggleSidebar">☰</button>
-      <div class="logo">
-        <img src="img/logoo.png" alt="Logo" @click="closeSidebar">
-      </div>
-      <ul>
-        <li>
-          <a href="<?=site_url('reportes') ?>">
-            <img src="<?=base_url('img/reportes.png') ?>" alt="Reportes"><span>Reportes</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('mesas') ?>">
-            <img src="<?= base_url('img/mesas.png') ?>" alt="Mesas"><span>Mesas</span>
-          </a>  
-        </li>
-        <li>
-          <a href="<?=site_url('reservaciones') ?>">
-            <img src="<?=base_url('img/reservaciones.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?= site_url('menu') ?>">
-            <img src="<?= base_url('img/menu.png') ?>" alt="Menú"><span>Menú</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('pedidos') ?>">
-            <img src="<?= base_url('img/inventario.png') ?>" alt="Pedidos"><span>Pedidos</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('modal_producto') ?>">
-            <img src="<?=base_url('img/pedidos.png') ?>" alt="Inventario"><span>Inventario</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?=site_url('personal') ?>">
-            <img src="<?=base_url('img/personal.png') ?>" alt="Personal"><span>Personal</span>
-          </a>
-        </li>
-      </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
-        <img src="img/person.png" alt="Usuario">
-        <img src="img/salida.png" alt="Salir">
-      </div>
-      <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-        <img src="<?= base_url('img/user.png') ?>" alt="Usuario">
-        <span>Angel Chi<br>Administrador</span>
-      </div>
-    </div>
-
+  
   <div id="container">
     <div id="calendar"></div>
     <div id="user-list">

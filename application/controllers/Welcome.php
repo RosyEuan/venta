@@ -32,8 +32,14 @@ class Welcome extends CI_Controller {
 	public function graficas(){
 		$this->load->view('graficas');
 	}
+	public function mesas(){
+		$this->load->view('mesas');
+	}
 	public function menu(){
 		$this->load->view('menu');
+	}
+	public function personal(){
+		$this->load->view('personal');
 	}
 	public function barra_lateral(){
 		$this->load->view('barra_lateral');
