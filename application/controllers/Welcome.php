@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -19,41 +20,51 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
 	public function __construct()
-{
-    parent::__construct();
-    $this->load->helper('url');
-}
+	{
+		parent::__construct();
+		$this->load->helper('url');
+	}
 
 	public function index()
 	{
-	    /*sirve para cargar una vista*/
+		/*sirve para cargar una vista*/
+		$this->load->view('login');
+	}
+	public function graficas()
+	{
 		$this->load->view('graficas');
 	}
-	public function graficas(){
-		$this->load->view('graficas');
-	}
-	public function menu(){
+	public function menu()
+	{
 		$this->load->view('menu');
 	}
-	public function barra_lateral(){
+	public function barra_lateral()
+	{
 		$this->load->view('barra_lateral');
 	}
-	public function modal_producto(){
+	public function modal_producto()
+	{
 		$this->load->view('modal_producto');
 	}
-	public function modal_proveedores(){
+	public function modal_proveedores()
+	{
 		$this->load->view('modal_proveedores');
-	}public function modal_utilidad(){
+	}
+	public function modal_utilidad()
+	{
 		$this->load->view('modal_utilidad');
 	}
-	public function formulario_reservaciones(){
+	public function formulario_reservaciones()
+	{
 
 		$this->load->view('formularioreservaciones');
 	}
-	public function reservaciones(){
+	public function reservaciones()
+	{
 		$this->load->view('Reservaciones');
 	}
-	public function login(){
+	public function login()
+	{
 		$this->load->view('login');
 	}
 }
