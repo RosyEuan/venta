@@ -22,14 +22,14 @@
       </div>
       <ul>
         <li>
-          <a href="<?=site_url('graficas') ?>">
+          <a href="<?=site_url('graficas2') ?>">
             <img src="<?=base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
         <li>
           <a href="<?=site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
-          </a>
+          </a>  
         </li>
         <li>
           <a href="<?=site_url('reservaciones') ?>">
@@ -58,11 +58,15 @@
         </li>
       </ul>
       <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
-        <img src="img/Admin.png" alt="Usuario">
+        <a href="<?= site_url('perfil') ?>">
+          <img src="img/Admin.png" alt="Usuario">
+        </a>
         <img src="img/Logout.png" alt="Salir">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-        <img src="img/Admin.png" alt="Usuario">
+      <a href="<?= site_url('perfil') ?>">
+          <img src="<?= base_url('img/Admin.png')?>" alt="Usuario">
+        </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
     </div>

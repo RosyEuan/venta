@@ -63,6 +63,8 @@ $route['modal_utilidad']                = 'Welcome/modal_utilidad';
 $route['graficas2']                     = 'Welcome/graficas2';
 $route['personal']                      = 'Welcome/personal';
 $route['barra']                         = 'Welcome/barra';
+$route['perfil']                        = 'Welcome/perfil';
+$route['user']                          = 'Welcome/user';
 $route['404_override']          = '';
 $route['translate_uri_dashes']  = FALSE;
 

@@ -56,11 +56,15 @@
         </li>
       </ul>
       <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
-        <img src="img/Admin.png" alt="Usuario">
+        <a href="<?= site_url('perfil') ?>">
+          <img src="img/Admin.png" alt="Usuario">
+        </a>
         <img src="img/Logout.png" alt="Salir">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-        <img src="img/Admin.png" alt="Usuario">
+      <a href="<?= site_url('perfil') ?>">
+          <img src="<?= base_url('img/Admin.png')?>" alt="Usuario">
+        </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
     </div>
