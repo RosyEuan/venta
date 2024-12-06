@@ -139,15 +139,15 @@
         </div>
         <div class="right-section">
           <div class="profile-image">
-            <img src="img/usuario.png" alt="Foto de perfil">
+            <img src="img/Empleado.png" alt="Foto de perfil">
           </div>
           <div class="stats">
             <div>Vacaciones: 12</div>
             <div>Descansos: 2</div>
           </div>
-          <button class="guardar-button">
-            <a href="<?= site_url('user') ?>" style="color: inherit; text-decoration: none;">Editar</a>
-          </button>
+          <a href="<?= site_url('user') ?>" style="color: inherit; text-decoration: none;">
+            <button class="guardar-button">Editar</button>
+          </a>
         </div>
       </div>
     </div>

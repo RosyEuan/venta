@@ -1,306 +1,532 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #090526;
-    display: flex;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #090526;
+  display: flex;
+  font-family: 'Merriweather';
+  overflow: hidden;
 }
 
 /* Barra lateral */
 .sidebar {
-    width: 60px;
-    height: 100vh;
-    background-color: #2A236A;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    transition: width 0.3s;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
- }
+  width: 60px;
+  height: 100vh;
+  background-color: #2A236A;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  transition: width 0.3s;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
 .sidebar.open {
-    width: 250px;
+  width: 250px;
 }
 
 /* Botón de toggle */
 .toggle-btn {
-    margin: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    outline: none;
-    color: white;
+  margin: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
 }
+
 .logo {
-    display: none;
-    margin: 10px;
-    width: 100%;
-    text-align: center;
+  display: none;
+  margin: 10px;
+  width: 100%;
+  text-align: center;
 }
+
 .sidebar.open .toggle-btn {
-    display: none;
+  display: none;
 }
+
 .sidebar.open .logo {
-    display: block;
+  display: block;
 }
+
 .logo img {
-    max-width: 170px;
-    cursor: pointer;
-    padding-top:50px;
+  max-width: 170px;
+  cursor: pointer;
+  padding-top: 50px;
 }
 
 /* Estilos de la lista de navegación */
 .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
+
 .sidebar ul li {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 15px 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
+
 .sidebar ul li:hover {
-    background-color: rgba(81, 92, 100, 0.4);
+  background-color: rgba(81, 92, 100, 0.4);
 }
+
 .sidebar ul li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
+
 .sidebar ul li span {
-    font-size: 14px;
-    color: white;
-    display: none;
+  font-size: 14px;
+  color: white;
+  display: none;
 }
+
 .sidebar.open ul li span {
-    display: inline-block;
+  display: inline-block;
 }
+
 /* Información del administrador */
 .admin-info {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    width: 100%;
-    border-top: 0 solid #ddd;
-    opacity: 0;
-    transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  width: 100%;
+  border-top: 0 solid #ddd;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
+
 .sidebar.open .admin-info {
-    opacity: 1;
+  opacity: 1;
 }
+
 .admin-info img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
+
 .admin-info span {
-    font-size: 14px;
-    color: white;
-    display: none;
+  font-size: 14px;
+  color: white;
+  display: none;
 }
+
 .sidebar.open .admin-info span {
-    display: block;
+  display: block;
 }
 
 /* Íconos de usuario y salir */
 .bottom-icons {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
+
 .bottom-icons img {
-    width: 30px;
-    height: 30px;
-    margin: 10px 0;
+  width: 30px;
+  height: 30px;
+  margin: 10px 0;
 }
+
 .bottom-icons.hidden {
-    display: none;
+  display: none;
 }
 
 /* Contenido principal */
 .content {
-    margin-left: 60px;
-    padding: 20px;
-    flex: 1;
-    transition: margin-left 0.3s;
-    overflow-y: hidden;
+  margin-left: 60px;
+  padding: 20px;
+  flex: 1;
+  transition: margin-left 0.3s;
+  overflow-y: hidden;
 }
-.sidebar.open ~ .content {
-    margin-left: 250px;
+
+.sidebar.open~.content {
+  margin-left: 250px;
 }
+
 h1 {
-    font-family: "Lucida Bright", serif;
-    font-size: 40px;
-    color: white;
-    text-align: center;
-    margin-top: 0;
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  margin-top: 0;
 }
-.menus-container{
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 8px;
-    max-width: 100%;
+
+.menus-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 8px;
+  max-width: 100%;
 }
-.menu-container{
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 8px;
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 8px;
 }
 
 /* Buscador y filtros */
 .search-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    margin-left: 2%;
-    width: 96%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  margin-left: 2%;
+  width: 96%;
 }
+
 .search-bar input {
-    font-family: "Lucida Bright", serif;
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
+  flex: 1;
+  padding: 10px;
+  font-family: 'Merriweather';
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
 }
+
 .filters {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
+  font-family: 'Merriweather';
 }
+
 .filters button {
-    font-family: "Lucida Bright", serif;
-    padding: 8px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #f7f7f7;
-    transition: 0.3s;
-    color: black;
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f7f7f7;
+  font-family: 'Merriweather';
+  transition: 0.3s;
+  color: black;
 }
+
 .filters button.active {
-    background-color: #27AE60;
-    color: white;
-    border-color: #27AE60;
+  background-color: #27AE60;
+  color: white;
+  border-color: #27AE60;
 }
+
 .filters button:hover {
-    background-color: #ecf0f1;
-    color: black;
+  background-color: #ecf0f1;
+  color: black;
 }
+
 .add-btn {
-    font-family: "Lucida Bright", serif;
-    background-color: rgba(220, 115, 10, 0.80);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
+  background-color: #DD8C3A;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Merriweather';
+  cursor: pointer;
 }
+
 .add-btn:hover {
-    background-color: #BB6106;
+  background-color: rgba(220, 115, 10, 0.80);
+
 }
 
 /* Menú */
 .menu-item {
-    display: flex;
-    align-items: flex-start;
-    padding: 15px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    gap: 32px;
-    width: calc(100% - 30px); /* Añadimos márgenes si es necesario */
-    margin: 0 auto; /* Centra los elementos si hay espacio extra */
+  display: flex;
+  align-items: flex-start;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  gap: 32px;
+  width: calc(100% - 30px);
+  margin: 0 auto;
 }
+
 .menu-img {
-    width: 102px;
-    height: 102px;
-    object-fit: cover;
-    border-radius: 8px;
+  width: 102px;
+  height: 102px;
+  object-fit: cover;
+  border-radius: 8px;
 }
+
 .menu-info {
-    flex: 1;
+  flex: 1;
 }
+
 .menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
 }
+
 .menu-title {
-    font-family: "Lucida Bright", serif;
-    font-size: 26px;
-    font-weight: bold;
-    color: #333;
-    margin: 0;
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
 }
+
 .menu-price {
-    font-family: "Lucida Bright", serif;
-    font-size: 20px;
-    font-weight: bold;
-    color: black;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
 }
+
 .menu-description {
-    font-family: "Maname";
-    font-size: 18px;
-    color: #666;
+  font-family: "Maname";
+  font-size: 18px;
+  color: #666;
 }
+
 .menu-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
+
 .menu-actions button {
-    font-family: "Lucida Bright", serif;
-    margin: 4px;
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
+  margin: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
 }
+
 .edit-btn {
-    background-color: #27AE60;
-    color: white;
+  background-color: #27AE60;
+  font-family: 'Merriweather';
+  color: white;
 }
+
 .edit-btn:hover {
-    background-color: #1E8449;
+  background-color: #1E8449;
 }
+
 .delete-btn {
-    background-color: #DC730A;
-    color: white;
+  font-family: 'Merriweather';
+  background-color: #D64040;
+  color: white;
 }
+
 .delete-btn:hover {
-    background-color: #C0392B;
+  background-color: #b83b2d;
 }
+
 #user-list {
-    width: 100%; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 0%; 
-    height: 688px; 
-    overflow-y: auto;
-    scrollbar-width: none;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 0%;
+  height: 528px;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
-#user-list::-webkit-scrollbar{
+
+#user-list::-webkit-scrollbar {
   display: none;
+}
+
+/* Estilos del contenedor del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Fondo oscuro para el modal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos del contenedor del contenido del modal */
+.modal-container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 80%;
+  /* Ajuste para que el modal sea más pequeño */
+  max-width: 1000px;
+  /* Máxima anchura para no exceder el límite */
+  min-height: 600px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(7, auto);
+  gap: 20px;
+}
+
+/* Título dentro del modal */
+.modal-container .title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  margin-bottom: 20px;
+  grid-column: span 3;
+  text-align: center;
+  font-family: "Merriweather";
+}
+
+/* Estilos de los grupos de formulario */
+.modal-container .form-group {
+  display: flex;
+  flex-direction: column;
+  font-family: "Merriweather";
+  font-size: 20px;
+  width: 91%;
+}
+
+/* Ajustes de los campos de descuento, precio y otros */
+#descuento,
+#precio-descuento,
+#precio {
+  width: 80%;
+}
+
+#descuento {
+  width: 60%;
+  /* Ajusta el ancho como desees */
+}
+
+#precio-descuento {
+  width: 80%;
+  /* Ajusta el ancho como desees */
+}
+
+#precio {
+  width: 80%;
+  /* Ajusta el ancho como desees */
+}
+
+
+.descue {
+  margin-top: -100px;
+
+}
+
+/* Botón del modal */
+.btn-cambios {
+  background: #E8EC07;
+  border: none;
+  padding: 15px 15px;
+  font-size: 20px;
+  color: #333;
+  font-family: "Merriweather";
+  border-radius: 16px;
+  cursor: pointer;
+  margin-left: 72%;
+}
+
+
+/* Estilos para la caja de imagen */
+.image-upload {
+  border-radius: 8px;
+  border: 1px dashed #ccc;
+  height: 350px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: rgba(81, 92, 100, 0.30);
+}
+
+.image-label {
+  margin-top: -210px;
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-family: "Merriweather";
+}
+
+.image-box {
+  display: none;
+  width: 90%;
+  height: 90%;
+  background-color: #f5f5f5;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Estilos para los campos de formulario */
+.modal-container input,
+.modal-container textarea,
+.modal-container select {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: rgba(81, 92, 100, 0.30);
+  font-family: "Merriweather";
+}
+
+.modal-container textarea {
+  resize: none;
+}
+
+/* Estilo para las filas del formulario */
+.modal-container .form-group-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-container .form-group-row div {
+  width: 48%;
+}
+
+body.modal-open {
+  overflow: hidden;
+  /* Evita que la página se desplace */
+}
+
+.btn_cerrar {
+  background-color: #515C64;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  font-family: 'Merriweather';
+  width: 80px;
+  height: 35px;
+  margin-left: 227%;
+  cursor: pointer;
+}
+
+.close-btn {
+  color: #515C64;
+  font-size: 16px;
+  width: 25px;
+  height: 25px;
+  margin-left: 240%;
+  cursor: pointer;
+  border: none;
+  background-color: white;
 }

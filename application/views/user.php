@@ -142,7 +142,7 @@
         </div>
         <div class="right-section">
           <div class="profile-image">
-            <img src="img/usuario.png" alt="Foto de perfil">
+            <img src="img/Empleado.png" alt="Foto de perfil">
             <button class="cambiar-button">Cambiar foto de perfil</button>
           </div>
           <div class="stats">

@@ -146,7 +146,6 @@ body {
     margin-left: 250px;
 }
 h1 {
-    font-family: "Lucida Bright", serif;
     font-size: 40px;
     color: white;
     text-align: center;
@@ -177,10 +176,10 @@ h1 {
     width: 96%;
 }
 .search-bar input {
-    font-family: "Lucida Bright", serif;
     flex: 1;
     padding: 10px;
     border: 1px solid #ddd;
+    font-family: 'Merriweather';
     border-radius: 5px;
     font-size: 14px;
 }
@@ -189,18 +188,19 @@ h1 {
     gap: 10px;
 }
 .filters button {
-    font-family: "Lucida Bright", serif;
     padding: 8px 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     cursor: pointer;
     background-color: #f7f7f7;
+    font-family: 'Merriweather';
     transition: 0.3s;
     color: black;
 }
 .filters button.active {
     background-color: #27AE60;
     color: white;
+    font-family: 'Merriweather';
     border-color: #27AE60;
 }
 .filters button:hover {
@@ -208,17 +208,17 @@ h1 {
     color: black;
 }
 .add-btn {
-    font-family: "Lucida Bright", serif;
-    background-color: rgba(220, 115, 10, 0.80);
+    background-color: #DD8C3A;
     color: white;
     border: none;
     padding: 10px 20px;
+    font-family: 'Merriweather';
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
 }
 .add-btn:hover {
-    background-color: #BB6106;
+    background-color: rgba(220, 115, 10, 0.80);
 }
 
 /* Personal */
@@ -250,14 +250,12 @@ h1 {
     margin-bottom: 5px;
 }
 .employee-title {
-    font-family: "Lucida Bright", serif;
     font-size: 26px;
     font-weight: bold;
     color: #333;
     margin: 0;
 }
 .employee-price {
-    font-family: "Lucida Bright", serif;
     font-size: 20px;
     font-weight: bold;
     color: black;
@@ -273,7 +271,6 @@ h1 {
     gap: 10px;
 }
 .employee-actions button {
-    font-family: "Lucida Bright", serif;
     margin: 4px;
     padding: 8px 16px;
     font-size: 14px;
@@ -283,17 +280,27 @@ h1 {
 }
 .edit-btn {
     background-color: #27AE60;
+    font-family: 'Merriweather';
     color: white;
 }
 .edit-btn:hover {
     background-color: #1E8449;
 }
 .delete-btn {
-    background-color: #DC730A;
+    background-color: #D64040;
+    font-family: 'Merriweather';
     color: white;
 }
+.historial-btn {
+    font-family: 'Merriweather';
+    background-color: #146AB5;
+    color: white;
+}
+.historial-btn:hover {
+    background-color: #0C5594;
+}
 .delete-btn:hover {
-    background-color: #C0392B;
+    background-color: #972020; 
 }
 #user-list {
     width: 100%;
@@ -378,6 +385,7 @@ h1 {
 }
 .modal-content input {
     width: 184px;
+    font-family: 'Merriweather';
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -395,6 +403,7 @@ h1 {
     border-radius: 16px;
     font-size: 16px;
     cursor: pointer;
+    font-family: 'Merriweather';
     background-color: yellow;
     color: black;
     height: 48px;
@@ -404,11 +413,11 @@ h1 {
 .btn_cerrar {
     background-color: #515C64;
     color: white;
-    font-family: "EB Garamond";
     font-size: 16px;
     border-radius: 8px;
     border: none;
-    width: 70px;
+    font-family: 'Merriweather';
+    width: 80px;
     height: 35px;
     cursor: pointer;
 }
@@ -517,11 +526,11 @@ h1 {
 .btn-cerrar {
     background-color: #515C64;
     color: white;
-    font-family: "EB Garamond";
     font-size: 16px;
+    font-family: 'Merriweather';
     border-radius: 8px;
     border: none;
-    width: 70px;
+    width: 80px;
     height: 35px;
     cursor: pointer;
 }
@@ -534,6 +543,19 @@ h1 {
     cursor: pointer;
     border: none;
     background-color: white;
+}
+.btn-confirm{
+    width: 32%;
+    padding: 12px 16px;
+    border: none;
+    font-family: 'Merriweather';
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #E8EC07;
+    color: black;
+    height: 61px;
+    margin: 16px 72px 16px;
 }
 .employee-name,
 .employee-position,

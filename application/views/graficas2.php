@@ -85,7 +85,8 @@
             <option>Ventas Generales</option>
           </select>
         </div>
-        <div class="charts">
+        <div id="user-list">
+          <div class="charts">
           <div class="chart ventas-dia">
             <canvas id="ventasDiarias"></canvas>
             <div class="legend">
@@ -130,6 +131,8 @@
             </div>
           </div>
         </div>
+        </div>
+        
       </div>
     </div>
   </div>

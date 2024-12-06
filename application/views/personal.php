@@ -94,6 +94,7 @@
                 }}</span>
               <span class="employee-salary">${{ employee.salary }}</span>
               <div class="employee-actions">
+                <button class="historial-btn" @click="deleteItem(employee.id)">Historial</button>
                 <button class="edit-btn" @click="openEditModal(employee.id)">Editar</button>
                 <button class="delete-btn" @click="deleteItem(employee.id)">Eliminar</button>
               </div>
@@ -186,7 +187,7 @@
         <h2>¿Estás seguro de que deseas eliminar este empleado?</h2>
         <div class="buttons">
           <button class="btn-confirm" @click="deleteEmployee">Confirmar</button>
-          <button class="btn-cancel" @click="closeDeleteConfirmModal">Cancelar</button>
+          <button class="btn-cerrar" @click="closeDeleteConfirmModal">Cancelar</button>
         </div>
       </div>
     </div>
