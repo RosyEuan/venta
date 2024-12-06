@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barra lateral dinámica</title>
+  <title>Menu</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/venta/style_menu.css">
-
-
 </head>
+
 <body>
   <div id="app">
     <!-- Barra lateral -->
@@ -20,18 +19,18 @@
       </div>
       <ul>
         <li>
-          <a href="<?=site_url('graficas2') ?>">
-            <img src="<?=base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
+          <a href="<?= site_url('graficas2') ?>">
+            <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('mesas') ?>">
+          <a href="<?= site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
-          </a>  
+          </a>
         </li>
         <li>
-          <a href="<?=site_url('reservaciones') ?>">
-            <img src="<?=base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
+          <a href="<?= site_url('reservaciones') ?>">
+            <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
         <li>
@@ -40,18 +39,18 @@
           </a>
         </li>
         <li>
-          <a href="<?=site_url('pedidos') ?>">
+          <a href="<?= site_url('modal_pedidos') ?>">
             <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('modal_producto') ?>">
-            <img src="<?=base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
+          <a href="<?= site_url('modal_producto') ?>">
+            <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('personal') ?>">
-            <img src="<?=base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
+          <a href="<?= site_url('personal') ?>">
+            <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
@@ -62,13 +61,13 @@
         <img src="img/Logout.png" alt="Salir">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-      <a href="<?= site_url('perfil') ?>">
-          <img src="<?= base_url('img/Admin.png')?>" alt="Usuario">
+        <a href="<?= site_url('perfil') ?>">
+          <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
         </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
     </div>
-    
+
     <!-- Contenido principal -->
     <div class="content">
       <div class="menus-container">
@@ -99,9 +98,8 @@
                 <button class="delete-btn" @click="deleteItem(item.id)">Eliminar</button>
               </div>
             </div>
-          </div>  
+          </div>
         </div>
-        
       </div>
     </div>
   </div>
@@ -112,7 +110,6 @@
       data() {
         return {
           isSidebarOpen: false,
-          
           search: '',
           filter: 'all',
           menuItems: [
@@ -152,6 +149,5 @@
       }
     }).mount('#app');
   </script>
-  
 </body>
 </html>

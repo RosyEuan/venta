@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calendario con Lista de Usuarios</title>
+  <title>CReservaciones</title>
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Konkhmer+Sleokchher&family=Suez+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/venta/style_reservas.css">
-  
 </head>
 <body>
   <div id="container">
     <div id="calendar"></div>
-
     <div id="user-list">
       <div id="search-bar">
         <input type="text" placeholder="Buscar cliente" class="search-bar">

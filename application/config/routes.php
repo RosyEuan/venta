@@ -63,6 +63,7 @@ $route['modal_utilidad']                = 'Welcome/modal_utilidad';
 $route['graficas2']                     = 'Welcome/graficas2';
 $route['personal']                      = 'Welcome/personal';
 $route['barra']                         = 'Welcome/barra';
+$route['modal_pedidos']                 = 'Welcome/modal_pedidos';
 $route['perfil']                        = 'Welcome/perfil';
 $route['user']                          = 'Welcome/user';
 $route['404_override']          = '';

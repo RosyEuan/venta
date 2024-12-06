@@ -143,8 +143,9 @@ body {
     overflow-y: hidden;
     width: 100%;
 }
-.sidebar.open~.content {
+.sidebar.open~ .content {
     margin-left: 250px;
+
 }
 .profile-container {
     border-radius: 16px;

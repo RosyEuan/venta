@@ -142,7 +142,7 @@ body {
     transition: margin-left 0.3s;
     overflow-y: hidden;
 }
-.sidebar.open~.content {
+.sidebar.open~ .content {
     margin-left: 250px;
 }
 h1 {
@@ -310,13 +310,36 @@ h1 {
     display: inline-flex;
     align-items: center;
     gap: 40px;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
     margin-bottom: 6%;
 }
-
-/* Modal */
+.forms-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 2%;
+}
+.form-rows {
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 3%;
+}
+.forms-rows {
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 3%;
+    padding: 0 8px;
+}
+/* Modal para agregar personal */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -405,4 +428,192 @@ h1 {
 .employee-salary {
     width: 167px;
     text-align: center;
+}
+
+
+/* Modal para editar personal */
+.modaledit-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modaledit-content {
+    background-color: white;
+    padding: 20px 20px 0 20px;
+
+    border-radius: 8px;
+    width: 60%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.modaledit-content h2 {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 8px;
+}
+.txt-info {
+    display: block;
+    font-weight: bold;
+    width: 88px;
+    margin-left: 8%;
+}
+.selectedit-tx {
+    width: 202px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.info {
+    width: 184px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.buttons-edit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.buttons-cerrar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 4px 0 8px 92%;
+}
+.btn-reporte, .btn-observacion {
+    width: 24%;
+    padding: 12px 32px;
+    border: none;
+    font-family: 'Merriweather';
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background: rgba(50, 42, 127, 0.95);
+    color: white;
+    height: 61px;
+    margin: 0 24px;
+}
+.btn-update {
+    width: 24%;
+    padding: 12px 32px;
+    border: none;
+    font-family: 'Merriweather';
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #E8EC07;
+    color: black;
+    height: 61px;
+    margin: 60px 24px 16px;
+}
+.btn-cerrar {
+    background-color: #515C64;
+    color: white;
+    font-family: "EB Garamond";
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    width: 70px;
+    height: 35px;
+    cursor: pointer;
+}
+.close-btn {
+    color: #515C64;
+    font-size: 16px;
+    width: 25px;
+    height: 16px;
+    margin-left: 95%;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+}
+.employee-name,
+.employee-position,
+.employee-status,
+.employee-salary {
+    width: 167px;
+    text-align: center;
+}
+.principal{
+    width: 280px;
+    margin-left: 8px;
+}
+.info-principal{
+    width: 280px;
+    height: 32px;
+    font-family: 'Merriweather';
+    padding: 8px;
+    text-align: center;
+    font-size: 24px;
+    border: 1px solid black;
+    border-radius: 4px;
+
+}
+.secundaria{
+    width: 280px;
+    margin-left: 8px;
+    border: 1px solid;
+    border-radius: 8px;
+}
+.info-secundaria{
+    width: 264px;
+    font-family: 'Maname';
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 8px;
+    height: 80px;
+}
+.txt-infoSec {
+    display: block;
+    font-weight: bold;
+    width: 136px;
+    padding: 8px 72px;
+    text-align: center;
+}
+.txt-num {
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 4%;
+    padding: 0 132px;
+}
+textarea {
+    border: none;
+    outline: none;
+    resize: none;
+}
+.modale {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.informacion {
+    width: 644px;
+    border: 3px solid;
+    border-radius: 8px;
+    padding-top: 2%;
+}
+.datos {
+    display: flex;
+}
+.linea {
+    width: 95%;
+    color: black;
+    margin-bottom: 24px;
+}
+.empleado{
+    width: 250px;
+    margin-top: 50%;
+    margin-right: 8px;
 }

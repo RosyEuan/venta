@@ -65,6 +65,9 @@ class Welcome extends CI_Controller {
 	public function barra(){
 		$this->load->view('barra');
 	}
+	public function modal_pedidos(){
+		$this->load->view('modal_pedidos');
+	}
 	public function perfil(){
 		$this->load->view('perfil');
 	}

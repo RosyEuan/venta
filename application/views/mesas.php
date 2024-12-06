@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Punto de Venta - Mesas</title>
+  <title>Mesas</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="/venta/style_mesa.css">
 </head>
 
@@ -22,18 +23,18 @@
       </div>
       <ul>
         <li>
-          <a href="<?=site_url('graficas2') ?>">
-            <img src="<?=base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
+          <a href="<?= site_url('graficas2') ?>">
+            <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('mesas') ?>">
+          <a href="<?= site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
-          </a>  
+          </a>
         </li>
         <li>
-          <a href="<?=site_url('reservaciones') ?>">
-            <img src="<?=base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
+          <a href="<?= site_url('reservaciones') ?>">
+            <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
         <li>
@@ -42,18 +43,18 @@
           </a>
         </li>
         <li>
-          <a href="<?=site_url('pedidos') ?>">
+          <a href="<?= site_url('modal_pedidos') ?>">
             <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('modal_producto') ?>">
-            <img src="<?=base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
+          <a href="<?= site_url('modal_producto') ?>">
+            <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('personal') ?>">
-            <img src="<?=base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
+          <a href="<?= site_url('personal') ?>">
+            <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
@@ -64,8 +65,8 @@
         <img src="img/Logout.png" alt="Salir">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-      <a href="<?= site_url('perfil') ?>">
-          <img src="<?= base_url('img/Admin.png')?>" alt="Usuario">
+        <a href="<?= site_url('perfil') ?>">
+          <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
         </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
@@ -97,7 +98,7 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal de Formulario de Reservacion -->
     <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
       <div class="modal">
         <button type="submit" class="close-btn" @click="closeModal">X</button>

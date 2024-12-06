@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barra Lateral y Gráficas</title>
+  <title>Reportes</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Konkhmer+Sleokchher&family=Suez+One&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Konkhmer+Sleokchher&family=Suez+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="/venta/style_graficas.css">
 </head>
 
 <body>
   <div id="app">
-  <div :class="['sidebar', { open: isSidebarOpen }]">
+    <!-- Barra Lateral -->
+    <div :class="['sidebar', { open: isSidebarOpen }]">
       <button class="toggle-btn" @click="toggleSidebar">☰</button>
       <div class="logo">
         <img src="img/LogoCytisum.png" alt="Logo" @click="closeSidebar">
       </div>
       <ul>
         <li>
-          <a href="<?=site_url('graficas2') ?>">
-            <img src="<?=base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
+          <a href="<?= site_url('graficas2') ?>">
+            <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('mesas') ?>">
+          <a href="<?= site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
-          </a>  
+          </a>
         </li>
         <li>
-          <a href="<?=site_url('reservaciones') ?>">
-            <img src="<?=base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
+          <a href="<?= site_url('reservaciones') ?>">
+            <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
         <li>
@@ -47,18 +45,18 @@
           </a>
         </li>
         <li>
-          <a href="<?=site_url('pedidos') ?>">
+          <a href="<?= site_url('modal_pedidos') ?>">
             <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('modal_producto') ?>">
-            <img src="<?=base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
+          <a href="<?= site_url('modal_producto') ?>">
+            <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('personal') ?>">
-            <img src="<?=base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
+          <a href="<?= site_url('personal') ?>">
+            <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
@@ -69,12 +67,14 @@
         <img src="img/Logout.png" alt="Salir">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-      <a href="<?= site_url('perfil') ?>">
-          <img src="<?= base_url('img/Admin.png')?>" alt="Usuario">
+        <a href="<?= site_url('perfil') ?>">
+          <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
         </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
     </div>
+
+    <!-- Contenido de los Reportes -->
     <div class="content">
       <div class="reportes-container">
         <div class="header">
@@ -84,7 +84,6 @@
             <option>Venta semanal</option>
             <option>Ventas Generales</option>
           </select>
-
         </div>
         <div class="charts">
           <div class="chart ventas-dia">
@@ -110,7 +109,6 @@
           <div class="chart ventas-anuales">
             <canvas id="ventasAnuales"></canvas>
           </div>
-
           <div class="chart estadisticas">
             <div class="stat-item nivel-1">
               <span class="box"></span>
@@ -131,16 +129,13 @@
               <span class="growth">↑ 10%</span>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 
-
   <script>
     const { createApp } = Vue;
-
     createApp({
       data() {
         return {
@@ -192,7 +187,6 @@
     gradient.addColorStop(0.7, "rgba(119, 126, 232, 0.40)");  // Color intermedio
     gradient.addColorStop(0.91, "rgba(128, 136, 251, 0.40)"); // Otro color intermedio
     gradient.addColorStop(1, "rgba(129, 138, 255, 0.40)");  // Color final
-
     new Chart(ventasAnualesCtx, {
       type: "line",
       data: {

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barra lateral dinámica</title>
+  <title>Personal</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +13,6 @@
   <link rel="stylesheet" href="/venta/style_personal.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
   <div id="app">
     <!-- Barra lateral -->
@@ -25,18 +23,18 @@
       </div>
       <ul>
         <li>
-          <a href="<?=site_url('graficas2') ?>">
-            <img src="<?=base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
+          <a href="<?= site_url('graficas2') ?>">
+            <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('mesas') ?>">
+          <a href="<?= site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
-          </a>  
+          </a>
         </li>
         <li>
-          <a href="<?=site_url('reservaciones') ?>">
-            <img src="<?=base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
+          <a href="<?= site_url('reservaciones') ?>">
+            <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
         <li>
@@ -45,18 +43,18 @@
           </a>
         </li>
         <li>
-          <a href="<?=site_url('pedidos') ?>">
+          <a href="<?= site_url('modal_pedidos') ?>">
             <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('modal_producto') ?>">
-            <img src="<?=base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
+          <a href="<?= site_url('modal_producto') ?>">
+            <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('personal') ?>">
-            <img src="<?=base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
+          <a href="<?= site_url('personal') ?>">
+            <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
@@ -67,8 +65,8 @@
         <img src="img/Logout.png" alt="Salir">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-      <a href="<?= site_url('perfil') ?>">
-          <img src="<?= base_url('img/Admin.png')?>" alt="Usuario">
+        <a href="<?= site_url('perfil') ?>">
+          <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
         </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
@@ -96,7 +94,7 @@
                 }}</span>
               <span class="employee-salary">${{ employee.salary }}</span>
               <div class="employee-actions">
-                <button class="edit-btn" @click="editItem(employee.id)">Editar</button>
+                <button class="edit-btn" @click="openEditModal(employee.id)">Editar</button>
                 <button class="delete-btn" @click="deleteItem(employee.id)">Eliminar</button>
               </div>
             </div>
@@ -105,7 +103,7 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal  para agregar Personal -->
     <div v-if="isModalOpen" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <button type="submit" class="close-btn" @click="closeModal">X</button>
@@ -122,7 +120,7 @@
           <div class="form-row align-items-center mb-3">
             <div class="col-4">
               <label for="dob">Fecha de Nacimiento</label>
-            </div class=col-8>
+            </div class="col-8">
             <div>
               <input type="date" id="dob" v-model="newEmployee.dob" required />
             </div>
@@ -130,7 +128,7 @@
           <div class="form-row align-items-center mb-3">
             <div class="col-4">
               <label for="curp">CURP</label>
-            </div class=col-8>
+            </div class="col-8">
             <div>
               <input type="text" id="curp" v-model="newEmployee.curp" required />
             </div>
@@ -138,7 +136,7 @@
           <div class="form-row align-items-center mb-3">
             <div class="col-4">
               <label for="position">Puesto</label>
-            </div class=col-8>
+            </div class="col-8">
             <div>
               <select class="select-tx" id="position" v-model="newEmployee.position" required>
                 <option value="Mesero">Mesero</option>
@@ -174,10 +172,105 @@
             </div>
           </div>
           <div class="buttons">
-            <button class="btn_agregar" type="submit">Agregar</button>
+            <button class="btn_agregar" type="button" @click="addEmployee">Agregar</button>
             <button class="btn_cerrar" type="button" @click="closeModal">Cancelar</button>
           </div>
         </form>
+      </div>
+    </div>
+
+    <!-- Modal de confirmación de eliminación -->
+    <div v-if="isDeleteConfirmOpen" class="modal-overlay" @click="closeDeleteConfirmModal">
+      <div class="modal-content" @click.stop>
+        <button type="button" class="close-btn" @click="closeDeleteConfirmModal">X</button>
+        <h2>¿Estás seguro de que deseas eliminar este empleado?</h2>
+        <div class="buttons">
+          <button class="btn-confirm" @click="deleteEmployee">Confirmar</button>
+          <button class="btn-cancel" @click="closeDeleteConfirmModal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para editar Personal -->
+    <div v-if="isEditModalOpen" class="modaledit-overlay" @click="closeEditModal">
+      <div class="modaledit-content" @click.stop>
+        <button type="submit" class="close-btn" @click="closeEditModal">X</button>
+        <h2>Editar Personal</h2>
+        <div class="modale row">
+          <div class="col-md-4 offset-md-1">
+            <img src="img/editPerfil.png" alt="Imagen del empleado" class="empleado">
+          </div>
+          <form @submit.prevent="updateEmployee" class="informacion">
+            <div class="forms-row align-items-center mb-3">
+              <div class="principal col-6">
+                <input class="info-principal" type="text" id="name" v-model="currentEmployee.name" disabled />
+              </div>
+              <div class="principal col-6">
+                <input class="info-principal" type="text" id="dob" v-model="currentEmployee.dob" disabled />
+              </div>
+            </div>
+            <hr class="linea" />
+            <!-- Campos de usuario, email, curp, rfc, puesto, salario -->
+            <div class="form-rows align-items-center mb-3">
+              <div class="datos col-4">
+                <label class="txt-info" for="usuario">Usuario</label>
+                <input class="info" type="text" id="usuario" v-model="currentEmployee.usuario" disabled />
+              </div>
+              <div class="datos col-4">
+                <label class="txt-info" for="email">Email</label>
+                <input class="info" type="email" id="email" v-model="currentEmployee.email" disabled />
+              </div>
+            </div>
+            <div class="form-rows align-items-center mb-3">
+              <div class="datos col-4">
+                <label class="txt-info" for="curp">CURP</label>
+                <input class="info" type="text" id="curp" v-model="currentEmployee.curp" disabled />
+              </div>
+              <div class="datos col-4">
+                <label class="txt-info" for="rfc">RFC</label>
+                <input class="info" type="text" id="rfc" v-model="currentEmployee.rfc" disabled />
+              </div>
+            </div>
+            <div class="form-rows align-items-center mb-3">
+              <div class="datos col-4">
+                <label class="txt-info" for="position">Puesto</label>
+                <select class="selectedit-tx" id="position" v-model="currentEmployee.position" required>
+                  <option value="Mesero">Mesero</option>
+                  <option value="Cajero">Cajero</option>
+                  <option value="Supervisor">Supervisor</option>
+                  <option value="Recepcionista">Recepcionista</option>
+                  <option value="Almacenista">Almacenista</option>
+                </select>
+              </div>
+              <div class="datos col-4">
+                <label class="txt-info" for="salary">Salario</label>
+                <input class="info" type="number" id="salary" v-model="currentEmployee.salary" required />
+              </div>
+            </div>
+            <div class="forms-rows align-items-center mb-3">
+              <div class="secundaria col-6">
+                <label class="txt-infoSec" for="vacaciones">Vacaciones</label>
+                <label class="txt-num">12</label>
+                <label class="txt-infoSec" for="vacaciones">Dias de descanso</label>
+                <label class="txt-num">2</label>
+              </div>
+              <div class="secundaria col-6">
+                <label class="txt-infoSec" for="observaciones">Observaciones</label>
+                <textarea class="info-secundaria" id="observaciones" v-model="currentEmployee.observaciones"
+                  rows="3"></textarea>
+              </div>
+            </div>
+            <!-- Botones: generar reporte, actualizar, y agregar observaciones -->
+            <div class="buttons-edit">
+              <button class="btn-reporte" type="button">Generar Reporte</button>
+              <button class="btn-update" type="submit">Actualizar Información</button>
+              <button class="btn-observacion" type="button">Agregar observación</button>
+            </div>
+          </form>
+          <div class="buttons-cerrar">
+            <button class="btn-cerrar" type="button" @click="closeEditModal">Cancelar</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -198,6 +291,9 @@
             { id: 5, name: 'Raul Solis', position: 'Mesero', status: 'Activo', salary: 10000, image: 'img/Empleado.png' },
           ],
           isModalOpen: false,
+          isEditModalOpen: false,
+          isDeleteConfirmOpen: false,
+          employeeToDelete: false,
           newEmployee: {
             name: '',
             dob: '',
@@ -206,15 +302,27 @@
             email: '',
             rfc: '',
             salary: ''
-          }
+          },
+          currentEmployee: {
+            id: '',
+            name: '',
+            dob: '',
+            curp: '',
+            position: '',
+            email: '',
+            rfc: '',
+            salary: '',
+          },
         };
       },
       computed: {
         filteredEmployees() {
-          return this.Employees.filter(employee =>
-            employee.name.toLowerCase().includes(this.search.toLowerCase())
-          );
-        },
+          return this.Employees.filter(employee => {
+            if (this.filter === 'all') return true;
+            if (this.filter === 'puesto') return employee.position === this.search;
+            return true;
+          });
+        }
       },
       methods: {
         toggleSidebar() {
@@ -226,28 +334,54 @@
         setFilter(filter) {
           this.filter = filter;
         },
-        editItem(id) {
-          alert(`Editar empleado con ID: ${id}`);
-        },
         deleteItem(id) {
-          this.Employees = this.Employees.filter(employee => employee.id !== id);
+          this.employeeToDelete = id;
+          this.isDeleteConfirmOpen = true;
+        },
+        deleteEmployee() {
+          this.Employees = this.Employees.filter(employee => employee.id !== this.employeeToDelete);
+          this.isDeleteConfirmOpen = false;
+          this.employeeToDelete = null;
+        },
+        closeDeleteConfirmModal() {
+          this.isDeleteConfirmOpen = false;
+          this.employeeToDelete = null;
         },
         openModal() {
           this.isModalOpen = true;
         },
         closeModal() {
           this.isModalOpen = false;
-          this.resetNewEmployee;
+          this.resetNewEmployee();
+        },
+        openEditModal(employeeId) {
+          const employee = this.Employees.find(emp => emp.id === employeeId);
+          if (employee) {
+            this.currentEmployee = { ...employee };
+          }
+          this.isEditModalOpen = true;
+        },
+        closeEditModal() {
+          this.isEditModalOpen = false;
         },
         addEmployee() {
-          if (this.isValidEmployeeData()) {
+          if (this.idValidEmployeeData()) {
             const newId = this.Employees.length + 1;
             this.Employees.push({ id: newId, ...this.newEmployee });
             this.closeModal();
+          } else {
+            alert("Por favor, complete todos los campos del empleado.");
+          }
+        },
+        updateEmployee() {
+          const index = this.Employees.findIndex(emp => emp.id === this.currentEmployee.id);
+          if (index !== -1) {
+            this.Employees[index] = { ...this.currentEmployee };
+            this.closeEditModal();
           }
         },
         idValidEmployeeData() {
-          return Object.values(this.newEmployee).every(value => value.trim() !== '');
+          return Object.values(this.newEmployee).every(value => value.trim() !== '' && value !== null);
         },
         resetNewEmployee() {
           this.newEmployee = { name: '', dob: '', curp: '', position: '', email: '', rfc: '', salary: '' };
