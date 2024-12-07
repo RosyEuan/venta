@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventario Proveedores</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Konkhmer+Sleokchher&family=Suez+One&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/venta/style_proveedores.css">
+  <link rel="stylesheet" href="/venta/assets/css/style_proveedores.css">
 </head>
 <body>
   <div id="inventario_proveedores">
@@ -74,7 +72,7 @@
     <!-- Contenido del Inventario de Proveedores -->
     <div class="content">
       <div id="inventario_proveedores" class="Product">
-        <h2 class="titu">Inventario proveedores</h2>
+        <h2 class="titu">Inventario de Proveedores</h2>
         <div class="header">
           <div class="header-buttons">
             <a href="<?= site_url('modal_producto') ?>">
@@ -117,8 +115,6 @@
           </tbody>
         </table>
         <div class="bottom-buttons">
-          <button type="submit" class="btn-submit">Agregar producto</button>
-          <button type="submit" class="btn-submit">Agregar utilidad</button>
           <button type="submit" class="btn-submit" @click="openModal()">Agregar proveedor</button>
         </div>
 

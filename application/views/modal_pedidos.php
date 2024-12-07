@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Punto de Venta</title>
+  <title>Pedidos</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
@@ -12,55 +12,63 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/venta/style_pedidos.css">
+  <link rel="stylesheet" href="/venta/assets/css/style_pedidos.css">
 </head>
 
 <body>
   <div id="app">
-    <div :class="['sidebar', { open: isSidebarOpen }]">
+  <div :class="['sidebar', { open: isSidebarOpen }]">
       <button class="toggle-btn" @click="toggleSidebar">☰</button>
       <div class="logo">
-        <img src="img/logoo.png" alt="Logo" @click="closeSidebar">
+        <img src="img/LogoCytisum.png" alt="Logo" @click="closeSidebar">
       </div>
       <ul>
         <li>
-          <a href="<?= site_url('reportes') ?>"><img src="<?= base_url('img/Barras.png') ?>"
-              alt="Reportes"><span>Reportes</span>
+          <a href="<?= site_url('graficas2') ?>">
+            <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
         <li>
-          <a href="<?= site_url('mesas') ?>"><img src="<?= base_url('img/mesa.png') ?>" alt="Mesas"><span>Mesas</span>
+          <a href="<?= site_url('mesas') ?>">
+            <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
           </a>
         </li>
         <li>
-          <a href="<?= site_url('reservaciones') ?>"><img src="<?= base_url('img/Reservas.png') ?>"
-              alt="Reservaciones"><span>Reservaciones</span>
+          <a href="<?= site_url('reservaciones') ?>">
+            <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
-        <li><a href="<?= site_url('menu') ?>"><img src="<?= base_url('img/menus.png') ?>" alt="Menú"><span>Menú</span>
+        <li>
+          <a href="<?= site_url('menu') ?>">
+            <img src="<?= base_url('img/Menus.png') ?>" alt="Menú"><span>Menú</span>
           </a>
         </li>
-        <li><a href="<?= site_url('pedidos') ?>"><img src="<?= base_url('img/Inventarios.png') ?>"
-              alt="Pedidos"><span>Pedidos</span>
+        <li>
+          <a href="<?= site_url('modal_pedidos') ?>">
+            <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
-        <li><a href="<?= site_url('modal_producto') ?>"><img src="<?= base_url('img/pedido.png') ?>"
-              alt="Inventario"><span>Inventario</span>
+        <li>
+          <a href="<?= site_url('modal_producto') ?>">
+            <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
-        <li><a href="<?= site_url('personal') ?>"><img src="<?= base_url('img/personales.png') ?>"
-              alt="Personal"><span>Personal</span>
+        <li>
+          <a href="<?= site_url('personal') ?>">
+            <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
-
-
       </ul>
       <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
-        <img src="img/Admin.png" alt="Usuario">
+        <a href="<?= site_url('perfil') ?>">
+          <img src="img/Admin.png" alt="Usuario">
+        </a>
         <img src="img/Logout.png" alt="Salir">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-        <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
+        <a href="<?= site_url('perfil') ?>">
+          <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
+        </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
     </div>

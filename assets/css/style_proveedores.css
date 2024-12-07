@@ -1,6 +1,7 @@
 /* Estilos generales */
 body {
     background-color: #0F0D26;
+    font-family: 'Merriweather';
     margin: 0;
     overflow: hidden;
 }
@@ -21,6 +22,7 @@ body {
     color: white;
     border: none;
     border-radius: 5px;
+    font-family: 'Merriweather';
     cursor: pointer;
     font-size: 16px;
     height: 56px;
@@ -29,6 +31,7 @@ body {
 .activo {
     padding: 10px 20px;
     background-color: rgba(50, 42, 127, 0.6);
+    font-family: 'Merriweather';
     color: white;
     border: none;
     border-radius: 5px;
@@ -47,6 +50,7 @@ body {
     padding: 10px 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
+    font-family: 'Merriweather';
     text-align: left;
     background-color: rgba(247, 247, 247, 1);
     width: 250px;
@@ -111,7 +115,7 @@ tr:nth-child(even) {
     display: flex;
     justify-content: center;
     padding: 8px 15px;
-    font-family: Maname;
+    font-family: 'Maname';
     font-size: 16px;
     gap: 6px;
 }
@@ -135,7 +139,7 @@ tr:nth-child(even) {
     color: white;
     height: 35px;
     width: 100px;
-    font-family: Maname;
+    font-family: 'Maname';
     font-size: 16px;
     text-align: center;
     gap: 8px;
@@ -145,7 +149,7 @@ tr:nth-child(even) {
     color: white;
     height: 35px;
     width: 100px;
-    font-family: Maname;
+    font-family: 'Maname';
     font-size: 16px;
     text-align: center;
 }
@@ -162,7 +166,8 @@ tr:nth-child(even) {
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    width: 16%;
+    width: 22%;
+    font-family: 'Merriweather';
     height: 60px;
     font-size: 16px;
 }
@@ -202,7 +207,7 @@ tr:nth-child(even) {
     cursor: pointer;
 }
 .modal-content form {
-    font-family: 'Maname', sans-serif;
+    font-family: 'Maname';
     display: flex;
     flex-direction: column;
 }
@@ -227,18 +232,16 @@ tr:nth-child(even) {
     background: #E8EC07;
     font-size: 16px;
     text-align: center;
-    font-family: "EB Garamond";
     width: 20%;
 }
 .pon {
     text-align: center;
     margin-bottom: 30px;
-    font-family: "EB Garamond";
     font-size: 28px;
 }
 .itemss {
     background-color: white;
-    font-family: Maname;
+    font-family: 'Maname';
     font-size: 20px;
 }
 th:first-child,
@@ -262,7 +265,6 @@ td:nth-child(4) {
 }
 .form-group {
     margin-bottom: 20px;
-    font-family: "EB Garamond";
     font-size: 24px;
     align-items: flex-start;
     position: relative;
@@ -273,7 +275,6 @@ label {
     margin-bottom: 5px;
 }
 .medi {
-    font-family: "EB Garamond";
     font-size: 16px;
 }
 input {
@@ -289,14 +290,13 @@ input {
 .columna {
     color: #FFF;
     text-align: center;
-    font-family: Maname;
+    font-family: 'Merriweather';
     font-size: 28px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 .titu {
-    font-family: 'EB Garamond';
     font-size: 28px;
     text-align: left;
     color: white;

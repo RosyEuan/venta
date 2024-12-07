@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/venta/style_personal.css">
+  <link rel="stylesheet" href="/venta/assets/css/style_personal.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -79,7 +79,6 @@
         <div class="search-bar">
           <div class="filters">
             <button :class="{ active: filter === 'all' }" @click="setFilter('all')">Todo</button>
-            <button :class="{ active: filter === 'puesto' }" @click="setFilter('puesto')">Puesto</button>
           </div>
           <input type="text" placeholder="Buscar empleado" v-model="search" />
           <button class="add-btn" @click="openModal">Agregar</button>
@@ -94,13 +93,29 @@
                 }}</span>
               <span class="employee-salary">${{ employee.salary }}</span>
               <div class="employee-actions">
-                <button class="historial-btn" @click="deleteItem(employee.id)">Historial</button>
+                <button class="historial-btn" @click="openHistoryModal(employee.id)">Historial</button>
                 <button class="edit-btn" @click="openEditModal(employee.id)">Editar</button>
                 <button class="delete-btn" @click="deleteItem(employee.id)">Eliminar</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Modal para Historial -->
+    <div v-if="isHistoryModalOpen" class="modal-overlay" @click="closeHistoryModal">
+      <div class="modal-content" @click.stop>
+        <button type="button" class="close-btn" @click="closeHistoryModal">X</button>
+        <h2>Historial de {{ currentEmployee.name }}</h2>
+        <div v-for="(history, index) in currentEmployee.history" :key="index" class="history-item">
+          <button class="history-button" @click="toggleCard(index)">{{ history.date }}</button>
+          <div class="detail-card" v-show="history.isOpen">
+            <strong>Detalles:</strong>
+            <p>{{ history.details }}</p>
+          </div>
+        </div>
+        <button class="return-button" @click="closeHistoryModal">Regresar</button>
       </div>
     </div>
 
@@ -151,7 +166,7 @@
           <div class="form-row align-items-center mb-3">
             <div class="col-4">
               <label for="email">Email</label>
-            </div class=col-8>
+            </div class="col-8">
             <div>
               <input type="email" id="email" v-model="newEmployee.email" required />
             </div>
@@ -159,7 +174,7 @@
           <div class="form-row align-items-center mb-3">
             <div class="col-4">
               <label for="rfc">RFC</label>
-            </div class=col-8>
+            </div class="col-8">
             <div>
               <input type="text" id="rfc" v-model="newEmployee.rfc" required />
             </div>
@@ -167,7 +182,7 @@
           <div class="form-row align-items-center mb-3">
             <div class="col-4">
               <label for="salary">Salario</label>
-            </div class=col-8>
+            </div class="col-8">
             <div>
               <input type="number" id="salary" v-model="newEmployee.salary" required />
             </div>
@@ -276,6 +291,8 @@
     </div>
   </div>
 
+  
+
   <script>
     const { createApp } = Vue;
     createApp({
@@ -285,13 +302,57 @@
           search: '',
           filter: 'all',
           Employees: [
-            { id: 1, name: 'Sofía Ramírez', position: 'Supervisor', status: 'Activo', salary: 18000, image: 'img/Empleado.png' },
-            { id: 2, name: 'Lucas Fernández', position: 'Almacenista', status: 'Inactivo', salary: 15000, image: 'img/Empleado.png' },
-            { id: 3, name: 'Camila Torres', position: 'Mesero', status: 'Inactivo', salary: 10000, image: 'img/Empleado.png' },
-            { id: 4, name: 'Juan Pérez', position: 'Cajero', status: 'Activo', salary: 8000, image: 'img/Empleado.png' },
-            { id: 5, name: 'Raul Solis', position: 'Mesero', status: 'Activo', salary: 10000, image: 'img/Empleado.png' },
+            { id: 1, name: 'Sofía Ramírez', position: 'Supervisor', status: 'Activo', salary: 18000, image: 'img/Empleado.png', history:
+               [
+                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
+                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
+                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
+                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
+                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+          
+              ]
+            },
+            
+            { id: 2, name: 'Lucas Fernández', position: 'Almacenista', status: 'Inactivo', salary: 15000, image: 'img/Empleado.png', history: 
+              [
+                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
+                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
+                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
+                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
+                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+              ]
+            },
+            
+            { id: 3, name: 'Camila Torres', position: 'Mesera', status: 'Inactivo', salary: 10000, image: 'img/Empleado.png', history:
+               [
+                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
+                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
+                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
+                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
+                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+              ]
+            },
+            { id: 4, name: 'Juan Peréz', position: 'Cajero', status: 'Activo', salary: 8000, image: 'img/Empleado.png', history:
+               [
+                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
+                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
+                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
+                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
+                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+              ]
+            },
+            { id: 5, name: 'Shaiel Euan', position: 'Gerente', status: 'Activo', salary: 10000, image: 'img/Empleado.png', history:
+               [
+                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
+                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
+                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
+                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
+                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+              ]
+            },
           ],
           isModalOpen: false,
+          isHistoryModalOpen: false,
           isEditModalOpen: false,
           isDeleteConfirmOpen: false,
           employeeToDelete: false,
@@ -365,6 +426,22 @@
         closeEditModal() {
           this.isEditModalOpen = false;
         },
+        openHistoryModal(employeeId) {
+          const employee = this.Employees.find(emp => emp.id === employeeId);
+          if (employee) {
+            this.currentEmployee = { ...employee };
+          }
+          this.isHistoryModalOpen = true;
+        },
+        closeHistoryModal() {
+          this.isHistoryModalOpen = false;
+          this.currentEmployee = null;
+        },
+        toggleCard(index) {
+          this.currentEmployee.history[index].isOpen = !this.currentEmployee.history[index].isOpen;
+        },
+        
+        
         addEmployee() {
           if (this.idValidEmployeeData()) {
             const newId = this.Employees.length + 1;

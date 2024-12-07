@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
-  <link rel="stylesheet" href="/venta/style_reservas.css">
+  <link rel="stylesheet" href="/venta/assets/css/style_reservas.css">
 </head>
 
 <body>
@@ -173,7 +173,7 @@
   <div id="modal" class="modal">
     <div class="modal-content">
       <div id="reservacion" class="form-container">
-        <button type="submit" class="close-btn" @click="closeModal">X</button>
+        <button type="submit" class="close-btn" @click="cancelar">X</button>
         <h2 class="til">Agregar Reservación</h2>
         <div class="form-row">
           <div class="form-column">

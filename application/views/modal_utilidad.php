@@ -6,12 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventario Utilidades</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Konkhmer+Sleokchher&family=Suez+One&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/venta/style_utilidades.css">
+  <link rel="stylesheet" href="/venta/assets/css/style_utilidades.css">
 </head>
 
 <body>
@@ -124,9 +122,7 @@
           </tbody>
         </table>
         <div class="bottom-buttons">
-          <button type="submit" class="btn-submit">Agregar producto</button>
           <button @click="abrirModal" class="btn-submit">Agregar utilidad</button>
-          <button type="submit" class="btn-submit">Agregar proveedor</button>
         </div>
 
         <!-- Modal -->

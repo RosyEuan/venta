@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventario Ingredientes</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Konkhmer+Sleokchher&family=Suez+One&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+  rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/venta/style_producto.css">
+  <link rel="stylesheet" href="/venta/assets/css/style_producto.css">
 </head>
 <body>
   <div id="inventario_productos">
@@ -74,7 +72,7 @@
     <!-- Contenido del Inventario de Productos -->
     <div class="content">
       <div id="inventario_productos" class="Product">
-        <h2 class="titul">Inventario de ingredientes</h2>
+        <h2 class="titul">Inventario de Ingredientes</h2>
         <div class="header">
           <div class="header-buttons">
             <a href="<?= site_url('modal_producto') ?>">
@@ -119,8 +117,6 @@
         </table>
         <div class="bottom-buttons">
           <button @click="abrirModal" class="btn-colore">Agregar producto</button>
-          <button class="btn-colore">Agregar utilidad</button>
-          <button class="btn-colore">Agregar proveedor</button>
         </div>
         <!-- Modal -->
         <div class="modal" :class="{ active: modalActivo }" @click.self="cerrarModal">

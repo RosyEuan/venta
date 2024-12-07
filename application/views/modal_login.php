@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/venta/style_login.css">
+  <link rel="stylesheet" href="/venta/assets/css/style_login.css">
 </head>
 <body>
   <main class="todo">
@@ -51,7 +51,6 @@
         <!-- Crear Cuenta -->
         <form action="" class="formulario__register" style="display: none;">
           <h2 class="cuenta">Crear Cuenta</h2>
-          <input type="text" placeholder="Nombre" class="estemm">
           <input type="text" placeholder="Usuario" class="estedee">
           <div class="password-container" style="position: relative;">
             <input id="register-password" type="password" placeholder="Contraseña" class="estedee">
@@ -61,6 +60,8 @@
             <input id="register-confirm-password" type="password" placeholder="Asegurar contraseña" class="estedee">
             <i id="toggleRegisterConfirmPassword" class="fas fa-eye confirm-password-icon"></i>
           </div>
+          <input type="text" placeholder="Código" class="estemm">
+
           <button type="button" class="porq">Crear</button>
           <p class="colpe">¿Ya tienes una cuenta? <a href="#" onclick="iniciarSesion()" class="mercure">Iniciar
               Sesión</a></p>

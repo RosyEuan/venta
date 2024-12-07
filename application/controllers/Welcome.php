@@ -74,4 +74,7 @@ class Welcome extends CI_Controller {
 	public function user(){
 		$this->load->view('user');
 	}
+	public function actualizarPassword(){
+		$this->load->view('actualizarPassword');
+	}
 }
