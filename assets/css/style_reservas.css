@@ -1,0 +1,485 @@
+body {
+  margin: 0;
+    font-family: "Merriweather";
+  padding: 0;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  background-color: #090A18;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1450px;
+  transition: margin-left 0.3s ease-in-out; /* Desplaza el contenido cuando se abre la barra lateral */
+  margin-top: 0%;
+  /* Ajuste del margen superior */
+}
+.sep{
+  width: 80px;
+}
+#calendar {
+  width: 60%;
+  background-color: #222;
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-right: 20px;
+  margin-top: 3%;
+  height: 50%;
+}
+
+.contenido {
+  margin-left: 40px;
+  display: flex;
+  width: 100%;
+}
+
+#user-list {
+  width: 50%;
+  /* Aumentamos el ancho de la lista de usuarios */
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 0%;
+  height: 688px;
+  overflow-y: hidden;
+  padding-left: 50x;
+}
+#lista-usuarios {
+  width: 93%;
+  /* Aumentamos el ancho de la lista de usuarios */
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 0%;
+  height: 576px;
+  overflow-y: auto;
+  padding-left: 50x;
+}
+
+#search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 30px;
+
+}
+
+#search-bar input {
+  flex: 1;
+  padding: 12px 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.2em;
+  background-color: rgba(247, 247, 247, 1);
+  font-family: "Merriweather";
+
+  font-size: 24px;
+}
+
+#search-bar button {
+  position: relative;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: 1.3em;
+  cursor: pointer;
+  right: 50px;
+}
+
+#search-bar input:focus {
+  background-color: #e0e0e0;
+}
+
+#search-bar i {
+  position: relative;
+  left: 0px;
+  font-size: 18px;
+  color: #aaa;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 0px;
+  /* Ajuste en el margen entre tarjetas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  transition: box-shadow 0.3s;
+}
+
+.user-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.user-card h4 {
+  margin: 0;
+  font-size: 24px;
+  /* Ajusté el tamaño del texto */
+  font-weight: bold;
+  color: #333;
+}
+
+.user-card p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+
+
+}
+
+.action-buttons button {
+  padding: 12px 25px;
+  font-size: 0.8em;
+  /* Ajusté el tamaño de los botones */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 120px;
+  /* Ajusté el ancho de los botones */
+  font-size: 16px;
+}
+
+.edit-button {
+  background-color: #322A7FF2;
+  color: #F7F7F7;
+  font-family: "Merriweather";
+
+  font-size: 20px;
+
+}
+
+.delete-button {
+  background-color: #DC730A;
+  color: white;
+  font-family: "Merriweather";
+
+  font-size: 20px;
+
+}
+
+/* Estilos del modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  /* Aumenta el padding para dar espacio */
+  border-radius: 8px;
+  width: 70%;
+  /* Ocupará el 80% del ancho de la pantalla */
+  max-width: 1000px;
+  /* Limita el ancho máximo */
+  height: auto;
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  /* Asegura que el padding no afecte el ancho total */
+  overflow: hidden;
+}
+
+.form-container {
+  width: 100%;
+  padding: 20px;
+  color: #000;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.form-container h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-column {
+  width: 48%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  font-family: "Merriweather";
+
+  font-size: 24px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(81, 92, 100, 0.3);
+  font-family: "Merriweather";
+
+  font-size: 16px;
+}
+
+.form-group textarea {
+  resize: none;
+  height: 100px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  align-items: flex-end;
+}
+.btn_reservar,
+.btn_guardar {
+  width: 26%;
+  padding: 10px;
+  border: none;
+  border-radius: 16px;
+  font-size: 24px;
+  font-family: 'merriweather';
+  cursor: pointer;
+  background-color: yellow;
+  color: black;
+  height: 48px;
+  margin-bottom: 40px;
+}
+.btn_cancelar {
+  width: 22%;
+  padding: 10px;
+  border: none;
+  font-family: 'Merriweather';
+  border-radius: 16px;
+  font-size: 24px;
+  cursor: pointer;
+  background-color: orange;
+  color: black;
+  margin-top: 15px;
+}
+.btn_cancelar:hover {
+  background-color: rgba(220, 115, 10, 0.80);
+} 
+
+.nombre {
+  font-family: "Merriweather";
+
+}
+
+.nomm {
+  font-family: "Maname";
+}
+
+.til {
+  font-family: "Merriweather";
+    text-align: center;
+    font-size: 28px;
+    margin: 0;
+    margin-bottom: 24px;
+}
+
+/* Barra lateral */
+.sidebar {
+  z-index: 1000;
+  width: 60px;
+  height: 100vh;
+  background-color: #2A236A;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  transition: width 0.3s;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+
+.sidebar.open {
+  width: 250px;
+}
+
+.toggle-btn {
+  margin: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.logo {
+  display: none;
+  margin: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.sidebar.open .toggle-btn {
+  display: none;
+}
+
+.sidebar.open .logo {
+  display: block;
+}
+
+.logo img {
+  max-width: 170px;
+  cursor: pointer;
+  padding-top: 50px;
+}
+
+/* Estilos de la lista de navegación */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.sidebar ul li {
+  width: 92%;
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar ul li:hover {
+  background-color: rgba(81, 92, 100, 0.4);
+}
+
+.sidebar ul li img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.sidebar ul li span {
+  font-size: 14px;
+  color: white;
+  display: none;
+}
+
+.sidebar.open ul li span {
+  display: inline-block;
+}
+
+.admin-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  width: 100%;
+  border-top: 0 solid #ddd;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sidebar.open .admin-info {
+  opacity: 1;
+}
+
+.admin-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.admin-info span {
+  font-size: 14px;
+  color: white;
+  display: none;
+}
+
+.sidebar.open .admin-info span {
+  display: block;
+}
+
+.bottom-icons {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.bottom-icons img {
+  width: 30px;
+  height: 30px;
+  margin: 10px 0;
+}
+
+.bottom-icons.hidden {
+  display: none;
+}
+
+/* Contenido principal */
+.content {
+  margin-left: 60px;
+  padding: 20px;
+  flex: 1;
+  transition: margin-left 0.3s;
+}
+
+.sidebar.open~.contenido {
+  margin-left: 200px;
+}
+
+.close-btn {
+  color: #515C64;
+  font-size: 16px;
+  width: 25px;
+  height: 25px;
+  margin-left: 95%;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+}

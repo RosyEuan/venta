@@ -3,323 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barra lateral dinámica</title>
+  <title>Personal</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/venta/assets/css/style_personal.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-    margin: 0;
-    padding: 0;
-    background-color: #090526;
-    display: flex;
-    font-family: 'Merriweather';
-    overflow: hidden;
-}
-
-/* Barra lateral */
-.sidebar {
-    width: 60px;
-    height: 100vh;
-    background-color: #2A236A;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    transition: width 0.3s;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
- }
-.sidebar.open {
-    width: 250px;
-}
-
-/* Botón de toggle */
-.toggle-btn {
-    margin: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    outline: none;
-    color: white;
-}
-.logo {
-    display: none;
-    margin: 10px;
-    width: 100%;
-    text-align: center;
-}
-.sidebar.open .toggle-btn {
-    display: none;
-}
-.sidebar.open .logo {
-    display: block;
-}
-.logo img {
-    max-width: 170px;
-    cursor: pointer;
-    padding-top:50px;
-}
-
-/* Estilos de la lista de navegación */
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-}
-.sidebar ul li {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 15px 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-.sidebar ul li:hover {
-    background-color: rgba(81, 92, 100, 0.4);
-}
-.sidebar ul li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-.sidebar ul li span {
-    font-size: 14px;
-    color: white;
-    display: none;
-}
-.sidebar.open ul li span {
-    display: inline-block;
-}
-/* Información del administrador */
-.admin-info {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    width: 100%;
-    border-top: 0 solid #ddd;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-.sidebar.open .admin-info {
-    opacity: 1;
-}
-.admin-info img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-.admin-info span {
-    font-size: 14px;
-    color: white;
-    display: none;
-}
-.sidebar.open .admin-info span {
-    display: block;
-}
-
-/* Íconos de usuario y salir */
-.bottom-icons {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-.bottom-icons img {
-    width: 30px;
-    height: 30px;
-    margin: 10px 0;
-}
-.bottom-icons.hidden {
-    display: none;
-}
-
-/* Contenido principal */
-.content {
-    margin-left: 60px;
-    padding: 20px;
-    flex: 1;
-    transition: margin-left 0.3s;
-    overflow-y: hidden;
-}
-.sidebar.open ~ .content {
-    margin-left: 250px;
-}
-h1 {
-    font-family: "Lucida Bright", serif;
-    font-size: 40px;
-    color: white;
-    text-align: center;
-    margin-top: 0;
-}
-.employees-container{
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 8px;
-    max-width: 100%;
-}
-.employee-container{
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 8px;
-}
-
-/* Buscador y filtros */
-.search-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    margin-left: 2%;
-    width: 96%;
-}
-.search-bar input {
-    font-family: "Lucida Bright", serif;
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-}
-.filters {
-    display: flex;
-    gap: 10px;
-}
-.filters button {
-    font-family: "Lucida Bright", serif;
-    padding: 8px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #f7f7f7;
-    transition: 0.3s;
-    color: black;
-}
-.filters button.active {
-    background-color: #27AE60;
-    color: white;
-    border-color: #27AE60;
-}
-.filters button:hover {
-    background-color: #ecf0f1;
-    color: black;
-}
-.add-btn {
-    font-family: "Lucida Bright", serif;
-    background-color: rgba(220, 115, 10, 0.80);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-}
-.add-btn:hover {
-    background-color: #BB6106;
-}
-
-/* Menú */
-.employee-item {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    font-size: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    gap: 100px;
-    width: calc(100% - 30px); /* Añadimos márgenes si es necesario */
-    margin: 0 auto; /* Centra los elementos si hay espacio extra */
-}
-.employee-img {
-    width: 102px;
-    height: 102px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-.employee-info {
-    flex: 1;
-}
-.employee-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-}
-.employee-title {
-    font-family: "Lucida Bright", serif;
-    font-size: 26px;
-    font-weight: bold;
-    color: #333;
-    margin: 0;
-}
-.employee-price {
-    font-family: "Lucida Bright", serif;
-    font-size: 20px;
-    font-weight: bold;
-    color: black;
-}
-.employee-description {
-    font-family: "Maname";
-    font-size: 18px;
-    color: #666;
-}
-.employee-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.employee-actions button {
-    font-family: "Lucida Bright", serif;
-    margin: 4px;
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-}
-.edit-btn {
-    background-color: #27AE60;
-    color: white;
-}
-.edit-btn:hover {
-    background-color: #1E8449;
-}
-.delete-btn {
-    background-color: #DC730A;
-    color: white;
-}
-.delete-btn:hover {
-    background-color: #C0392B;
-}
-#user-list {
-    width: 100%; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 0%; 
-    height: 688px; 
-    overflow-y: auto;
-    scrollbar-width: none;
-}
-#user-list::-webkit-scrollbar{
-  display: none;
-}
-  </style>
-
 </head>
 <body>
   <div id="app">
@@ -331,18 +23,18 @@ h1 {
       </div>
       <ul>
         <li>
-          <a href="<?=site_url('graficas2') ?>">
-            <img src="<?=base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
+          <a href="<?= site_url('graficas2') ?>">
+            <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('mesas') ?>">
+          <a href="<?= site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
-          </a>  
+          </a>
         </li>
         <li>
-          <a href="<?=site_url('reservaciones') ?>">
-            <img src="<?=base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
+          <a href="<?= site_url('reservaciones') ?>">
+            <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
         <li>
@@ -351,63 +43,255 @@ h1 {
           </a>
         </li>
         <li>
-          <a href="<?=site_url('pedidos') ?>">
+          <a href="<?= site_url('modal_pedidos') ?>">
             <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('modal_producto') ?>">
-            <img src="<?=base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
+          <a href="<?= site_url('modal_producto') ?>">
+            <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
         <li>
-          <a href="<?=site_url('personal') ?>">
-            <img src="<?=base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
+          <a href="<?= site_url('personal') ?>">
+            <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
       <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
-        <img src="img/Admin.png" alt="Usuario">
+        <a href="<?= site_url('perfil') ?>">
+          <img src="img/Admin.png" alt="Usuario">
+        </a>
         <img src="img/Logout.png" alt="Salir">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
-        <img src="img/Admin.png" alt="Usuario">
+        <a href="<?= site_url('perfil') ?>">
+          <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
+        </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
     </div>
-    
+
     <!-- Contenido principal -->
     <div class="content">
       <div class="employees-container">
         <h1>Personal</h1>
         <div class="search-bar">
-          <input type="text" placeholder="Buscar empleado" v-model="search" />
           <div class="filters">
             <button :class="{ active: filter === 'all' }" @click="setFilter('all')">Todo</button>
-            <button :class="{ active: filter === 'platillos' }" @click="setFilter('platillos')">Platillos</button>
           </div>
-          <button class="add-btn">Agregar</button>
+          <input type="text" placeholder="Buscar empleado" v-model="search" />
+          <button class="add-btn" @click="openModal">Agregar</button>
         </div>
         <div id="user-list">
           <div class="employee-container">
             <div class="employee-item" v-for="employee in filteredEmployees" :key="employee.id">
-              <img :src="employee.image" alt="Imagen del platillo" class="menu-img" />
-                <span class="employee-name">{{ employee.name }}</span>
-                <span class="employee-position">{{ employee.position }}</span>
-                <span class="employee-status" :class="{ active: employee.status == 'Activo' }">{{ employee.status }}</span>
-                <span class="employee-salary">${{ employee.salary }}</span>
-
+              <img :src="employee.image" alt="Imagen del empleado" class="menu-img" />
+              <span class="employee-name">{{ employee.name }}</span>
+              <span class="employee-position">{{ employee.position }}</span>
+              <span class="employee-status" :class="{ active: employee.status == 'Activo' }">{{ employee.status
+                }}</span>
+              <span class="employee-salary">${{ employee.salary }}</span>
               <div class="employee-actions">
-                <button class="edit-btn" @click="editItem(employee.id)">Editar</button>
+                <button class="historial-btn" @click="openHistoryModal(employee.id)">Historial</button>
+                <button class="edit-btn" @click="openEditModal(employee.id)">Editar</button>
                 <button class="delete-btn" @click="deleteItem(employee.id)">Eliminar</button>
               </div>
             </div>
           </div>
         </div>
-        
+      </div>
+    </div>
+
+    <!-- Modal para Historial -->
+    <div v-if="isHistoryModalOpen" class="modal-overlay" @click="closeHistoryModal">
+      <div class="modal-content" @click.stop>
+        <button type="button" class="close-btn" @click="closeHistoryModal">X</button>
+        <h2>Historial de {{ currentEmployee.name }}</h2>
+        <div v-for="(history, index) in currentEmployee.history" :key="index" class="history-item">
+          <button class="history-button" @click="toggleCard(index)">{{ history.date }}</button>
+          <div class="detail-card" v-show="history.isOpen">
+            <strong>Detalles:</strong>
+            <p>{{ history.details }}</p>
+          </div>
+        </div>
+        <button class="return-button" @click="closeHistoryModal">Regresar</button>
+      </div>
+    </div>
+
+    <!-- Modal  para agregar Personal -->
+    <div v-if="isModalOpen" class="modal-overlay" @click="closeModal">
+      <div class="modal-content" @click.stop>
+        <button type="submit" class="close-btn" @click="closeModal">X</button>
+        <h2>Agregar Personal</h2>
+        <form @submit.prevent="addEmployee">
+          <div class="form-row align-items-center mb-3">
+            <div class="col-4">
+              <label for="name">Nombre</label>
+            </div>
+            <div class="col-8">
+              <input type="text" id="name" v-model="newEmployee.name" required />
+            </div>
+          </div>
+          <div class="form-row align-items-center mb-3">
+            <div class="col-4">
+              <label for="dob">Fecha de Nacimiento</label>
+            </div class="col-8">
+            <div>
+              <input type="date" id="dob" v-model="newEmployee.dob" required />
+            </div>
+          </div>
+          <div class="form-row align-items-center mb-3">
+            <div class="col-4">
+              <label for="curp">CURP</label>
+            </div class="col-8">
+            <div>
+              <input type="text" id="curp" v-model="newEmployee.curp" required />
+            </div>
+          </div>
+          <div class="form-row align-items-center mb-3">
+            <div class="col-4">
+              <label for="position">Puesto</label>
+            </div class="col-8">
+            <div>
+              <select class="select-tx" id="position" v-model="newEmployee.position" required>
+                <option value="Mesero">Mesero</option>
+                <option value="Cajero">Cajero</option>
+                <option value="Supervisor">Supervisor</option>
+                <option value="Recepcionista">Recepcionista</option>
+                <option value="Almacenista">Almacenista</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row align-items-center mb-3">
+            <div class="col-4">
+              <label for="email">Email</label>
+            </div class="col-8">
+            <div>
+              <input type="email" id="email" v-model="newEmployee.email" required />
+            </div>
+          </div>
+          <div class="form-row align-items-center mb-3">
+            <div class="col-4">
+              <label for="rfc">RFC</label>
+            </div class="col-8">
+            <div>
+              <input type="text" id="rfc" v-model="newEmployee.rfc" required />
+            </div>
+          </div>
+          <div class="form-row align-items-center mb-3">
+            <div class="col-4">
+              <label for="salary">Salario</label>
+            </div class="col-8">
+            <div>
+              <input type="number" id="salary" v-model="newEmployee.salary" required />
+            </div>
+          </div>
+          <div class="buttons">
+            <button class="btn_agregar" type="button" @click="addEmployee">Agregar</button>
+            <button class="btn_cerrar" type="button" @click="closeModal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de confirmación de eliminación -->
+    <div v-if="isDeleteConfirmOpen" class="modal-overlay" @click="closeDeleteConfirmModal">
+      <div class="modal-content" @click.stop>
+        <button type="button" class="close-btn" @click="closeDeleteConfirmModal">X</button>
+        <h2>¿Estás seguro de que deseas eliminar este empleado?</h2>
+        <div class="buttons">
+          <button class="btn-confirm" @click="deleteEmployee">Confirmar</button>
+          <button class="btn-cerrar" @click="closeDeleteConfirmModal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para editar Personal -->
+    <div v-if="isEditModalOpen" class="modaledit-overlay" @click="closeEditModal">
+      <div class="modaledit-content" @click.stop>
+        <button type="submit" class="close-btn" @click="closeEditModal">X</button>
+        <h2>Editar Personal</h2>
+        <div class="modale row">
+          <div class="col-md-4 offset-md-1">
+            <img src="img/editPerfil.png" alt="Imagen del empleado" class="empleado">
+          </div>
+          <form @submit.prevent="updateEmployee" class="informacion">
+            <div class="forms-row align-items-center mb-3">
+              <div class="principal col-6">
+                <input class="info-principal" type="text" id="name" v-model="currentEmployee.name" disabled />
+              </div>
+              <div class="principal col-6">
+                <input class="info-principal" type="text" id="dob" v-model="currentEmployee.dob" disabled />
+              </div>
+            </div>
+            <hr class="linea" />
+            <!-- Campos de usuario, email, curp, rfc, puesto, salario -->
+            <div class="form-rows align-items-center mb-3">
+              <div class="datos col-4">
+                <label class="txt-info" for="usuario">Usuario</label>
+                <input class="info" type="text" id="usuario" v-model="currentEmployee.usuario" disabled />
+              </div>
+              <div class="datos col-4">
+                <label class="txt-info" for="email">Email</label>
+                <input class="info" type="email" id="email" v-model="currentEmployee.email" disabled />
+              </div>
+            </div>
+            <div class="form-rows align-items-center mb-3">
+              <div class="datos col-4">
+                <label class="txt-info" for="curp">CURP</label>
+                <input class="info" type="text" id="curp" v-model="currentEmployee.curp" disabled />
+              </div>
+              <div class="datos col-4">
+                <label class="txt-info" for="rfc">RFC</label>
+                <input class="info" type="text" id="rfc" v-model="currentEmployee.rfc" disabled />
+              </div>
+            </div>
+            <div class="form-rows align-items-center mb-3">
+              <div class="datos col-4">
+                <label class="txt-info" for="position">Puesto</label>
+                <select class="selectedit-tx" id="position" v-model="currentEmployee.position" required>
+                  <option value="Mesero">Mesero</option>
+                  <option value="Cajero">Cajero</option>
+                  <option value="Supervisor">Supervisor</option>
+                  <option value="Recepcionista">Recepcionista</option>
+                  <option value="Almacenista">Almacenista</option>
+                </select>
+              </div>
+              <div class="datos col-4">
+                <label class="txt-info" for="salary">Salario</label>
+                <input class="info" type="number" id="salary" v-model="currentEmployee.salary" required />
+              </div>
+            </div>
+            <div class="forms-rows align-items-center mb-3">
+              <div class="secundaria col-6">
+                <label class="txt-infoSec" for="vacaciones">Vacaciones</label>
+                <label class="txt-num">12</label>
+                <label class="txt-infoSec" for="vacaciones">Dias de descanso</label>
+                <label class="txt-num">2</label>
+              </div>
+              <div class="secundaria col-6">
+                <label class="txt-infoSec" for="observaciones">Observaciones</label>
+                <textarea class="info-secundaria" id="observaciones" v-model="currentEmployee.observaciones"
+                  rows="3"></textarea>
+              </div>
+            </div>
+            <!-- Botones: generar reporte, actualizar, y agregar observaciones -->
+            <div class="buttons-edit">
+              <button class="btn-reporte" type="button">Generar Reporte</button>
+              <button class="btn-update" type="submit">Actualizar Información</button>
+              <button class="btn-observacion" type="button">Agregar observación</button>
+            </div>
+          </form>
+          <div class="buttons-cerrar">
+            <button class="btn-cerrar" type="button" @click="closeEditModal">Cancelar</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  
 
   <script>
     const { createApp } = Vue;
@@ -415,24 +299,92 @@ h1 {
       data() {
         return {
           isSidebarOpen: false,
-          
           search: '',
           filter: 'all',
           Employees: [
-            { id: 1, name: 'Sofía Ramírez', position: 'Supervisor', status: 'Activo', salary: 1800, image: 'img/Empleado.png'},
-            { id: 2, name: 'Sofía Ramírez', position: 'Supervisor', status: 'Activo', salary: 1800, image: 'img/Empleado.png'},
-            { id: 3, name: 'Sofía Ramírez', position: 'Supervisor', status: 'Activo', salary: 1800, image: 'img/Empleado.png'},
-            { id: 4, name: 'Sofía Ramírez', position: 'Supervisor', status: 'Activo', salary: 1800, image: 'img/Empleado.png'},
-            { id: 5, name: 'Sofía Ramírez', position: 'Supervisor', status: 'Activo', salary: 1800, image: 'img/Empleado.png'},
-          ]
+            { id: 1, name: 'Sofía Ramírez', position: 'Supervisor', status: 'Activo', salary: 18000, image: 'img/Empleado.png', history:
+               [
+                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
+                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
+                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
+                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
+                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+          
+              ]
+            },
+            
+            { id: 2, name: 'Lucas Fernández', position: 'Almacenista', status: 'Inactivo', salary: 15000, image: 'img/Empleado.png', history: 
+              [
+                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
+                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
+                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
+                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
+                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+              ]
+            },
+            
+            { id: 3, name: 'Camila Torres', position: 'Mesera', status: 'Inactivo', salary: 10000, image: 'img/Empleado.png', history:
+               [
+                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
+                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
+                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
+                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
+                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+              ]
+            },
+            { id: 4, name: 'Juan Peréz', position: 'Cajero', status: 'Activo', salary: 8000, image: 'img/Empleado.png', history:
+               [
+                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
+                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
+                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
+                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
+                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+              ]
+            },
+            { id: 5, name: 'Shaiel Euan', position: 'Gerente', status: 'Activo', salary: 10000, image: 'img/Empleado.png', history:
+               [
+                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
+                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
+                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
+                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
+                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+              ]
+            },
+          ],
+          isModalOpen: false,
+          isHistoryModalOpen: false,
+          isEditModalOpen: false,
+          isDeleteConfirmOpen: false,
+          employeeToDelete: false,
+          newEmployee: {
+            name: '',
+            dob: '',
+            curp: '',
+            position: '',
+            email: '',
+            rfc: '',
+            salary: ''
+          },
+          currentEmployee: {
+            id: '',
+            name: '',
+            dob: '',
+            curp: '',
+            position: '',
+            email: '',
+            rfc: '',
+            salary: '',
+          },
         };
       },
       computed: {
         filteredEmployees() {
-          return this.Employees.filter(employee =>
-            employee.name.toLowerCase().includes(this.search.toLowerCase())
-          );
-        },
+          return this.Employees.filter(employee => {
+            if (this.filter === 'all') return true;
+            if (this.filter === 'puesto') return employee.position === this.search;
+            return true;
+          });
+        }
       },
       methods: {
         toggleSidebar() {
@@ -444,15 +396,76 @@ h1 {
         setFilter(filter) {
           this.filter = filter;
         },
-        editItem(id) {
-          alert(`Editar platillo con ID: ${id}`);
-        },
         deleteItem(id) {
-          this.Employees = this.Employees.filter(employee => employee.id !== id);
+          this.employeeToDelete = id;
+          this.isDeleteConfirmOpen = true;
+        },
+        deleteEmployee() {
+          this.Employees = this.Employees.filter(employee => employee.id !== this.employeeToDelete);
+          this.isDeleteConfirmOpen = false;
+          this.employeeToDelete = null;
+        },
+        closeDeleteConfirmModal() {
+          this.isDeleteConfirmOpen = false;
+          this.employeeToDelete = null;
+        },
+        openModal() {
+          this.isModalOpen = true;
+        },
+        closeModal() {
+          this.isModalOpen = false;
+          this.resetNewEmployee();
+        },
+        openEditModal(employeeId) {
+          const employee = this.Employees.find(emp => emp.id === employeeId);
+          if (employee) {
+            this.currentEmployee = { ...employee };
+          }
+          this.isEditModalOpen = true;
+        },
+        closeEditModal() {
+          this.isEditModalOpen = false;
+        },
+        openHistoryModal(employeeId) {
+          const employee = this.Employees.find(emp => emp.id === employeeId);
+          if (employee) {
+            this.currentEmployee = { ...employee };
+          }
+          this.isHistoryModalOpen = true;
+        },
+        closeHistoryModal() {
+          this.isHistoryModalOpen = false;
+          this.currentEmployee = null;
+        },
+        toggleCard(index) {
+          this.currentEmployee.history[index].isOpen = !this.currentEmployee.history[index].isOpen;
+        },
+        
+        
+        addEmployee() {
+          if (this.idValidEmployeeData()) {
+            const newId = this.Employees.length + 1;
+            this.Employees.push({ id: newId, ...this.newEmployee });
+            this.closeModal();
+          } else {
+            alert("Por favor, complete todos los campos del empleado.");
+          }
+        },
+        updateEmployee() {
+          const index = this.Employees.findIndex(emp => emp.id === this.currentEmployee.id);
+          if (index !== -1) {
+            this.Employees[index] = { ...this.currentEmployee };
+            this.closeEditModal();
+          }
+        },
+        idValidEmployeeData() {
+          return Object.values(this.newEmployee).every(value => value.trim() !== '' && value !== null);
+        },
+        resetNewEmployee() {
+          this.newEmployee = { name: '', dob: '', curp: '', position: '', email: '', rfc: '', salary: '' };
         }
       }
     }).mount('#app');
   </script>
-  
 </body>
 </html>

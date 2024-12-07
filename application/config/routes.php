@@ -70,3 +70,10 @@ $route['iniciar_sesion']                = 'InicioSesion/VerificaSesion';
 $route['cerrar_sesion']                 = 'InicioSesion/CerrarSesion';
 $route['prueba']                        = 'Welcome/pruebita';
 $route['dashboard']                     = 'dashboard/dashboard';
+$route['modal_pedidos']                 = 'Welcome/modal_pedidos';
+$route['perfil']                        = 'Welcome/perfil';
+$route['user']                          = 'Welcome/user';
+$route['actualizarPassword']            = 'Welcome/actualizarPassword';
+
+$route['404_override']          = '';
+$route['translate_uri_dashes']  = FALSE;

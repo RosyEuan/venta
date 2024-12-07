@@ -92,4 +92,20 @@ class Welcome extends CI_Controller
 	{
 		$this->load->view('pruebita');
 	}
+	public function modal_pedidos()
+	{
+		$this->load->view('modal_pedidos');
+	}
+	public function perfil()
+	{
+		$this->load->view('perfil');
+	}
+	public function user()
+	{
+		$this->load->view('user');
+	}
+	public function actualizarPassword()
+	{
+		$this->load->view('actualizarPassword');
+	}
 }

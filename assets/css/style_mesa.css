@@ -200,6 +200,7 @@ body {
 .form-group textarea {
     padding: 8px;
     border: 1px solid #ccc;
+    font-family: 'Merriweather';
     border-radius: 4px;
     background-color: rgba(81, 92, 100, 0.3);
 }
@@ -263,6 +264,7 @@ body {
     border: none;
     border-radius: 16px;
     font-size: 16px;
+    font-family: 'merriweather';
     cursor: pointer;
     background-color: yellow;
     color: black;
@@ -273,6 +275,7 @@ body {
     width: 22%;
     padding: 10px;
     border: none;
+    font-family: 'Merriweather';
     border-radius: 16px;
     font-size: 16px;
     cursor: pointer;
@@ -280,6 +283,9 @@ body {
     color: black;
     margin-top: 15px;
 }
+.btn_cerrar:hover {
+    background-color: rgba(220, 115, 10, 0.80);
+}  
 .mesa .estado {
     position: absolute;
     top: 50%;

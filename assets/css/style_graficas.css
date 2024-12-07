@@ -4,6 +4,7 @@ body {
     display: flex;
     font-family: Arial, sans-serif;
     background-color: #0F0D26;
+    overflow: hidden;
     overflow-x: hidden;
 }
 
@@ -138,6 +139,17 @@ body {
 }
 
 /* Gráficas */
+#user-list {
+    width: 100%; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0%; 
+    height: 688px; 
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+#user-list::-webkit-scrollbar{
+  display: none;
+}
 .reportes-container {
     display: flex;
     flex-direction: column;
@@ -235,6 +247,7 @@ body {
 .chart.venta-semanal,
 .chart.ventas-anuales {
     background-color: white;
+    font-family: 'Merriweather';
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
