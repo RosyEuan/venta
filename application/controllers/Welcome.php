@@ -25,87 +25,230 @@ class Welcome extends CI_Controller
 		$this->load->helper('url');
 		$this->load->library('session');
 	}
+	private function ValidacionAcceso($puestosPermitidos)
+	{
+		$logged_in = $this->session->userdata('logged_in');
 
+		$puesto = $this->session->userdata('puesto');
+
+		if ($logged_in == false) {
+			echo json_encode(['status' => 'error', 'message' => 'No has iniciado sesión']);
+			return false;
+		}
+
+		if (!in_array($puesto, $puestosPermitidos)) {
+			echo json_encode(['status' => 'error', 'message' => 'No tienes acceso debido a tu puesto']);
+			return false;
+		}
+
+		return true;
+	}
+	/*private function QuitarCache()
+	{
+
+		$this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
+		$this->output->set_header('Pragma: no-cache');
+		$this->output->set_header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
+	}
+*/
 	public function index()
 	{
 
+		$logged_in = $this->session->userdata('logged_in');
+		if (isset($logged_in) && $logged_in) {
+			$logged_in = false;
+		}
 		$this->load->view('modal_login');
 	}
+
 	public function graficas2()
 	{
+		//$this->QuitarCache();
 
-		$this->load->view('graficas2');
-	}
-	public function mesas()
-	{
-		$this->load->view('mesas');
-	}
-	public function menu()
-	{
-		$this->load->view('menu');
-	}
-	public function personal()
-	{
-		$this->load->view('personal');
-	}
-	public function barra_lateral()
-	{
-		$this->load->view('barra_lateral');
-	}
-	public function modal_producto()
-	{
-		$this->load->view('modal_producto');
-	}
-	public function modal_proveedores()
-	{
-		$logged_in = $this->session->userdata('logged_in');
-		$puesto = $this->session->userdata('puesto');
-		if (($puesto != 'Proveedor' || $puesto != 'Administrador' || $puesto != 'Supervisor') && $logged_in == false) {
-			echo json_encode(['status' => 'error', 'message' => 'No tienes acceso a esta vista']);
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor'])) {
 			return;
 		}
-		$this->load->view('modal_proveedores2', ['logged_in' => $logged_in, 'puesto_sesion' => $puesto]);
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('graficas2', $data);
+	}
+
+	public function mesas()
+	{
+		//$this->QuitarCache();
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor', 'Mesero', 'Recepcionista'])) {
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('mesas', $data);
+	}
+
+	public function menu()
+	{
+		//$this->QuitarCache();
+
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor', 'Mesero', 'Recepcionista'])) {
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('menu', $data);
+	}
+
+	public function personal()
+	{
+		//$this->QuitarCache();
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor'])) {
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('personal', $data);
+	}
+
+	public function modal_producto()
+	{
+		//$this->QuitarCache();
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor', 'Almacenista'])) {
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('modal_producto', $data);
+	}
+
+	public function modal_proveedores()
+	{
+		//$this->QuitarCache();
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor', 'Almacenista'])) {
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('modal_proveedores', $data);
 	}
 
 	public function modal_utilidad()
 	{
-		$this->load->view('modal_utilidad');
+		//$this->QuitarCache();
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor', 'Almacenista'])) {
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('modal_utilidad', $data);
 	}
-	public function formulario_reservaciones()
-	{
 
-		$this->load->view('formularioreservaciones');
-	}
 	public function reservaciones()
 	{
-		$this->load->view('Reservaciones');
+		//$this->QuitarCache();
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor', 'Mesero', 'Recepcionista'])) {
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('Reservaciones', $data);
 	}
-	public function modal_login()
+
+	/*public function modal_login()
 	{
-		$this->load->view('modal_login');
+		$data = ['logged_in' => $logged_in, 'puesto_sesion' => $puesto, 'usuario_login' => $usuario];
+		$this->load->view('modal_login', $data);
 	}
-	public function barra()
-	{
-		$this->load->view('barra');
-	}
+*/
 	public function pruebita()
 	{
+		//$data = ['logged_in' => $logged_in, 'puesto_sesion' => $puesto, 'usuario_login' => $usuario];
 		$this->load->view('pruebita');
 	}
+
 	public function modal_pedidos()
 	{
-		$this->load->view('modal_pedidos');
+		//$this->QuitarCache();
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor', 'Cajero'])) {
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('modal_pedidos', $data);
 	}
+
 	public function perfil()
 	{
-		$this->load->view('perfil');
+		//$this->QuitarCache();
+		$logged_in = $this->session->userdata('logged_in');
+
+		if (!isset($logged_in) && $logged_in == false) {
+			echo json_encode(['status' => 'error', 'message' => 'No has iniciado sesión']);
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('perfil', $data);
 	}
+
 	public function user()
 	{
-		$this->load->view('user');
+		//$this->QuitarCache();
+		$logged_in = $this->session->userdata('logged_in');
+
+		if (!isset($logged_in) && $logged_in == false) {
+			echo json_encode(['status' => 'error', 'message' => 'No has iniciado sesión']);
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('user', $data);
 	}
+
 	public function actualizarPassword()
 	{
-		$this->load->view('actualizarPassword');
+		//$this->QuitarCache();
+		$logged_in = $this->session->userdata('logged_in');
+
+		if (!isset($logged_in) && $logged_in == false) {
+			echo json_encode(['status' => 'error', 'message' => 'No has iniciado sesión']);
+			return;
+		}
+		$data = [
+			'logged_in' => $this->session->userdata('logged_in'),
+			'puesto_sesion' => $this->session->userdata('puesto'),
+			'usuario_login' => $this->session->userdata('usuario')
+		];
+		$this->load->view('actualizarPassword', $data);
 	}
 }

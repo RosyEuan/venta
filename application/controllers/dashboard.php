@@ -21,15 +21,15 @@ class dashboard extends CI_Controller
         break;
       case $rolBase[2]['id_puesto']:
 
-        $this->load->view('');
+        $this->load->view('modal_producto');
         break;
       case $rolBase[3]['id_puesto']:
 
-        $this->load->view('menu');
+        $this->load->view('modal_pedidos');
         break;
       case $rolBase[4]['id_puesto']:
 
-        $this->load->view('');
+        $this->load->view('Reservacioes');
         break;
       case $rolBase[5]['id_puesto']:
 

@@ -5,58 +5,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reservaciones</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
   <!-- FullCalendar CSS -->
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
   <link rel="stylesheet" href="/venta/assets/css/style_reservas.css">
 </head>
 
 <body>
   <div id="container">
-    <div :class="['sidebar', { open: isSidebarOpen }]">
+    <nav :class="['sidebar', { open: isSidebarOpen }]" id="barra_navegacion" data-url-nav="<?= site_url('iniciar_sesion') ?>">
       <button class="toggle-btn" @click="toggleSidebar">☰</button>
       <div class="logo">
         <img src="img/LogoCytisum.png" alt="Logo" @click="closeSidebar">
       </div>
       <ul>
-        <li>
+        <li id="reportes_filtro" data-puesto="1 2">
           <a href="<?= site_url('graficas2') ?>">
             <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
-        <li>
+        <li id="mesas_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
           </a>
         </li>
-        <li>
+        <li id="reservaciones_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('reservaciones') ?>">
             <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
-        <li>
+        <li id="menu_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('menu') ?>">
             <img src="<?= base_url('img/Menus.png') ?>" alt="Menú"><span>Menú</span>
           </a>
         </li>
-        <li>
+        <li id="pedidos_filtro" data-puesto="1 2 4">
           <a href="<?= site_url('modal_pedidos') ?>">
             <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
-        <li>
+        <li id="inventario_filtro" data-puesto="1 2 3">
           <a href="<?= site_url('modal_producto') ?>">
             <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
-        <li>
+        <li id="personal_filtro" data-puesto="1 2">
           <a href="<?= site_url('personal') ?>">
             <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
+      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }" id="button_logout"
+        data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
+
         <a href="<?= site_url('perfil') ?>">
           <img src="img/Admin.png" alt="Usuario">
         </a>
@@ -68,7 +72,9 @@
         </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
-    </div>
+    </nav>
+
+    <!--contenido principañ -->
     <div class="contenido">
       <div class="sep"></div>
       <div id="calendar"></div>
@@ -220,296 +226,13 @@
 
   <!-- FullCalendar JS -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
-  <script>
-    new Vue({
-      el: "#container",
-      data: {
-        isSidebarOpen: false,
-        form: {
-          cliente: "",
-          telefono: "",
-          email: "",
-          mesa: "",
-          fecha: "",
-          cantidad: 1,
-          comentarios: ""
-        },
-        usuarios: []
-      },
-      mounted() {
-        const savedState = localStorage.getItem('sidebarOpen');
-        this.isSidebarOpen = savedState === 'true';
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        // Aquí inicializamos el calendario de FullCalendar y lo vinculamos al método Vue
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth',
-          headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek'
-          },
-          locale: 'es',
-          events: [{
-              title: 'Evento 1',
-              start: '2024-12-01'
-            },
-            {
-              title: 'Evento 2',
-              start: '2024-12-07',
-              end: '2024-12-10'
-            },
-            {
-              title: 'Evento 3',
-              start: '2024-12-15'
-            },
-          ],
-          dateClick: (info) => {
-            // Abre el modal con la fecha seleccionada
-            this.openModal(info.dateStr); // Llamamos a la función openModal en Vue
-          },
-          eventClick: function(info) {
-            var action = prompt('¿Quieres editar o eliminar el evento? (e/d)', 'e');
-            if (action === 'e') {
-              var newTitle = prompt("Editar título del evento:", info.event.title);
-              if (newTitle) {
-                info.event.setProp('title', newTitle);
-              }
-            } else if (action === 'd') {
-              if (confirm("¿Seguro que deseas eliminar este evento?")) {
-                info.event.remove();
-              }
-            }
-          },
-          editable: true,
-          selectable: true,
-          nowIndicator: true,
-          eventTimeFormat: {
-            hour: '2-digit',
-            minute: '2-digit',
-            meridiem: 'short'
-          },
-          views: {
-            dayGridMonth: {
-              titleFormat: {
-                month: 'long',
-                year: 'numeric'
-              }
-            },
-            locale: 'es',
-            events: [{
-                title: 'Evento 1',
-                start: '2024-12-01'
-              },
-              {
-                title: 'Evento 2',
-                start: '2024-12-07',
-                end: '2024-12-10'
-              },
-              {
-                title: 'Evento 3',
-                start: '2024-12-15'
-              },
-            ],
-            dateClick: function(info) {
-              var title = prompt("Ingrese el título del evento:");
-              if (title) {
-                calendar.addEvent({
-                  title: title,
-                  start: info.dateStr,
-                  allDay: true
-                });
-              }
-            },
-            eventClick: function(info) {
-              var action = prompt('¿Quieres editar o eliminar el evento? (e/d)', 'e');
-              if (action === 'e') {
-                var newTitle = prompt("Editar título del evento:", info.event.title);
-                if (newTitle) {
-                  info.event.setProp('title', newTitle);
-                }
-              } else if (action === 'd') {
-                if (confirm("¿Seguro que deseas eliminar este evento?")) {
-                  info.event.remove();
-                }
-              }
-            },
-            editable: true,
-            selectable: true,
-            nowIndicator: true,
-            eventTimeFormat: {
-              hour: '2-digit',
-              minute: '2-digit',
-              meridiem: 'short'
-            },
-            views: {
-              dayGridMonth: {
-                titleFormat: {
-                  month: 'long',
-                  year: 'numeric'
-                }
-              },
-              timeGridWeek: {
-                titleFormat: {
-                  week: 'long'
-                },
-                slotDuration: '00:30:00' // Intervalo de 30 minutos
-              }
-            },
-            navLinks: true, // Permite hacer clic en una fecha para navegar
-            eventDurationEditable: true, // Permite cambiar la duración de los eventos
-            rerenderDelay: 10, // Asegura que la vista se actualice de inmediato cuando se cambie de vista
-            validRange: { // Rango válido de fechas sin restricciones
-              start: '1900-01-01',
-              end: '2099-12-31'
-            },
-            buttonText: {
-              today: 'Hoy',
-              month: 'Mes',
-              week: 'Semana',
-              day: 'Día',
-              list: 'Lista'
-            },
-            allDayText: 'Todo el día',
-            noEventsText: 'No hay eventos para mostrar',
+  <script src="/venta/assets/js/funcionLogout.js"></script>
+  <script src="/venta/assets/js/filtroBarra.js"></script>
 
-            // Evento que se ejecuta después de cargar el calendario
-            datesSet: function(info) {
-              var titleElement = document.querySelector('.fc-toolbar-title');
-              titleElement.style.cursor = 'pointer';
-              titleElement.onclick = function() {
-                showMonthPicker(info.start);
-              };
-            }
-          },
-          navLinks: true, // Permite hacer clic en una fecha para navegar
-          eventDurationEditable: true, // Permite cambiar la duración de los eventos
-          rerenderDelay: 10, // Asegura que la vista se actualice de inmediato cuando se cambie de vista
-          validRange: { // Rango válido de fechas sin restricciones
-            start: '1900-01-01',
-            end: '2099-12-31'
-          },
-          buttonText: {
-            today: 'Hoy',
-            month: 'Mes',
-            week: 'Semana',
-            day: 'Día',
-            list: 'Lista'
-          },
-          allDayText: 'Todo el día',
-          noEventsText: 'No hay eventos para mostrar',
-        });
-
-        // Renderizar el calendario
-        calendar.render();
-      },
-      methods: {
-        toggleSidebar() {
-          this.isSidebarOpen = !this.isSidebarOpen;
-          localStorage.setItem('sidebarOpen', this.isSidebarOpen);
-        },
-        closeSidebar() {
-          this.isSidebarOpen = false;
-          localStorage.setItem('sidebarOpen', this.isSidebarOpen);
-        },
-        openModal(date) {
-          // Abre el modal de reservación y rellena la fecha seleccionada
-          document.getElementById('modal').style.display = 'flex';
-          this.form.fecha = date + "T00:00"; // Ajusta la fecha al formato que espera el input datetime-local
-        },
-        cerrarModal() {
-          document.getElementById('modal').style.display = 'none';
-        },
-        reservar() {
-          // Añadir la nueva reservación a la lista de usuarios
-          this.usuarios.push({
-            cliente: this.form.cliente,
-            mesa: this.form.mesa,
-            hora: this.form.fecha.split('T')[1], // Solo la hora
-            fecha: this.form.fecha.split('T')[0], // Solo la fecha
-            cantidad: this.form.cantidad,
-          });
-
-          alert("Reservación realizada:\n" + JSON.stringify(this.form, null, 2));
-          this.cerrarModal(); // Cierra el modal después de hacer la reservación
-        },
-        guardarCambios() {
-          alert("Cambios guardados:\n" + JSON.stringify(this.form, null, 2));
-          this.cerrarModal();
-        },
-        cancelar() {
-          this.form = {
-            cliente: "",
-            telefono: "",
-            email: "",
-            mesa: "",
-            fecha: "",
-            cantidad: 1,
-            comentarios: ""
-          };
-          this.cerrarModal(); // Cierra el modal cuando se cancela
-        }
-      }
-    });
-
-    new Vue({
-      el: "#reservacion",
-      data: {
-        form: {
-          cliente: "",
-          telefono: "",
-          email: "",
-          mesa: "",
-          fecha: "",
-          cantidad: 1,
-          comentarios: ""
-        }
-      },
-      methods: {
-        reservar() {
-          this.usuarios.push({
-            cliente: this.form.cliente,
-            mesa: this.form.mesa,
-            hora: this.form.fecha.split('T')[1], // Obtiene solo la hora de la fecha
-            fecha: this.form.fecha.split('T')[0], // Obtiene solo la fecha
-            cantidad: this.form.cantidad,
-          });
-
-          alert("Reservación realizada:\n" + JSON.stringify(this.form, null, 2));
-          this.cerrarModal();
-        },
-        guardarCambios() {
-          alert("Cambios guardados:\n" + JSON.stringify(this.form, null, 2));
-          this.cerrarModal();
-        },
-        cancelar() {
-          this.form = {
-            cliente: "",
-            telefono: "",
-            email: "",
-            mesa: "",
-            fecha: "",
-            cantidad: 1,
-            comentarios: ""
-          };
-          this.cerrarModal(); // Cierra el modal al cancelar
-        },
-        cerrarModal() {
-          document.getElementById('modal').style.display = 'none';
-        }
-      }
-    });
-
-    function openModal(cliente, mesa, hora, fecha) {
-      document.getElementById('modal').style.display = 'flex';
-      document.getElementById('cliente').value = cliente;
-      document.getElementById('mesa').value = mesa;
-      document.getElementById('fecha').value = hora;
-      document.getElementById('fecha').value = fecha;
-    }
-  </script>
+  <script src="/venta/assets/js/Reservaciones.js"></script>
 </body>
 
 </html>

@@ -11,7 +11,7 @@ body {
 .sidebar {
   width: 60px;
   height: 100vh;
-  background-color: #2A236A;
+  background-color: #2a236a;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -159,7 +159,7 @@ body {
   overflow-y: hidden;
 }
 
-.sidebar.open~.content {
+.sidebar.open ~ .content {
   margin-left: 250px;
 }
 
@@ -223,9 +223,9 @@ h1 {
 }
 
 .filters button.active {
-  background-color: #27AE60;
+  background-color: #27ae60;
   color: white;
-  border-color: #27AE60;
+  border-color: #27ae60;
 }
 
 .filters button:hover {
@@ -234,7 +234,7 @@ h1 {
 }
 
 .add-btn {
-  background-color: #DD8C3A;
+  background-color: #dd8c3a;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -245,8 +245,7 @@ h1 {
 }
 
 .add-btn:hover {
-  background-color: rgba(220, 115, 10, 0.80);
-
+  background-color: rgba(220, 115, 10, 0.8);
 }
 
 /* Menú */
@@ -294,7 +293,7 @@ h1 {
 }
 
 .menu-description {
-  font-family: "Maname";
+  font-family: 'Maname';
   font-size: 18px;
   color: #666;
 }
@@ -315,18 +314,18 @@ h1 {
 }
 
 .edit-btn {
-  background-color: #27AE60;
+  background-color: #27ae60;
   font-family: 'Merriweather';
   color: white;
 }
 
 .edit-btn:hover {
-  background-color: #1E8449;
+  background-color: #1e8449;
 }
 
 .delete-btn {
   font-family: 'Merriweather';
-  background-color: #D64040;
+  background-color: #d64040;
   color: white;
 }
 
@@ -387,14 +386,14 @@ h1 {
   margin-bottom: 20px;
   grid-column: span 3;
   text-align: center;
-  font-family: "Merriweather";
+  font-family: 'Merriweather';
 }
 
 /* Estilos de los grupos de formulario */
 .modal-container .form-group {
   display: flex;
   flex-direction: column;
-  font-family: "Merriweather";
+  font-family: 'Merriweather';
   font-size: 20px;
   width: 91%;
 }
@@ -421,25 +420,22 @@ h1 {
   /* Ajusta el ancho como desees */
 }
 
-
 .descue {
   margin-top: -100px;
-
 }
 
 /* Botón del modal */
 .btn-cambios {
-  background: #E8EC07;
+  background: #e8ec07;
   border: none;
   padding: 15px 15px;
   font-size: 20px;
   color: #333;
-  font-family: "Merriweather";
+  font-family: 'Merriweather';
   border-radius: 16px;
   cursor: pointer;
   margin-left: 72%;
 }
-
 
 /* Estilos para la caja de imagen */
 .image-upload {
@@ -451,7 +447,7 @@ h1 {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background: rgba(81, 92, 100, 0.30);
+  background: rgba(81, 92, 100, 0.3);
 }
 
 .image-label {
@@ -463,7 +459,7 @@ h1 {
   padding: 4px 8px;
   border-radius: 4px;
   margin-bottom: 10px;
-  font-family: "Merriweather";
+  font-family: 'Merriweather';
 }
 
 .image-box {
@@ -484,8 +480,8 @@ h1 {
   font-size: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background: rgba(81, 92, 100, 0.30);
-  font-family: "Merriweather";
+  background: rgba(81, 92, 100, 0.3);
+  font-family: 'Merriweather';
 }
 
 .modal-container textarea {
@@ -508,7 +504,7 @@ body.modal-open {
 }
 
 .btn_cerrar {
-  background-color: #515C64;
+  background-color: #515c64;
   color: white;
   font-size: 16px;
   border-radius: 8px;
@@ -521,7 +517,7 @@ body.modal-open {
 }
 
 .close-btn {
-  color: #515C64;
+  color: #515c64;
   font-size: 16px;
   width: 25px;
   height: 25px;

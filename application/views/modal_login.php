@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login y Registro</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Konkhmer+Sleokchher&family=Suez+One&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
@@ -14,6 +15,7 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/venta/assets/css/style_login.css">
+
 </head>
 
 <body>
@@ -33,7 +35,9 @@
       <!-- Formulario de login y registro -->
       <div class="contenedor__login-register">
         <!-- Iniciar Sesión -->
-        <form class="formulario__login" id="formulario_inicio_sesion" method="POST">
+        <form class="formulario__login" id="formulario_inicio_sesion" method="POST"
+          data-controller-url="<?= site_url('iniciar_sesion') ?>" data-redirect="<?= site_url('dashboard') ?>">
+
           <h2 class="sesion">Iniciar sesión</h2>
           <input type="text" name="loginUsuario" placeholder="Usuario">
           <div>
@@ -42,7 +46,7 @@
             <a href="#" class="forgot-password" onclick="openPasswordModal()">¿Olvidaste tu contraseña?</a>
           </div>
 
-          <button type="submit" onclick="iniciarSesion()">Ingresar</button>
+          <button type="submit">Ingresar</button>
           <p class="coloe">¿No tienes cuenta? <a href="#" onclick="register()" class="crearr">Crear una cuenta</a></p>
           <div class="legal-links">
             <a href="#" class="privacy-link">Aviso de privacidad</a>
@@ -51,7 +55,8 @@
           </div>
         </form>
         <!-- Crear Cuenta -->
-        <form class="formulario__register" style="display: none;" id="formulario_registro" method="POST">
+        <form class="formulario__register" style="display: none;" id="formulario_registro" method="POST"
+          data-controller-url="<?= site_url('registrarse'); ?>">
           <h2 class="cuenta">Crear Cuenta</h2>
           <input type="text" placeholder="Nombre" class="estemm" name="registro_nombre">
           <input type="text" placeholder="Usuario" class="estedee" name="registro_usuario">
@@ -75,53 +80,6 @@
       </div>
     </div>
   </main>
-  <!-- verificacion de login y registro -->
-  <script>
-    $(document).ready(function() {
-      //Verificacion de usuario
-      $('#formulario_inicio_sesion').on('submit', function(event) {
-        event.preventDefault();
-        $.ajax({
-          url: "<?php echo base_url('iniciar_sesion'); ?>",
-          method: 'POST',
-          data: $(this).serialize(),
-          dataType: "json",
-          success: function(response) {
-            console.log('Verificación correcta:', response.message);
-            alert("¡Bienvenido!" + response.message);
-            window.location.href = "<?php echo base_url('dashboard'); ?>"
-          },
-          error: function(xhr, status, error) {
-            console.error('Ocurrio un error inesperado', error);
-            console.error('Detalles del error', xhr.responseText);
-
-            alert('Ocurrio un error', error);
-          }
-        });
-      });
-      //Formulario de registro
-      $('#formulario_registro').on('submit', function(event) {
-        event.preventDefault();
-        $.ajax({
-          url: "<?php echo base_url('registrarse'); ?>",
-          method: 'POST',
-          data: $(this).serialize(),
-          dataType: 'json',
-          success: function(response) {
-            console.log('Success', response.message);
-
-            alert('mensajito:' + response.message);
-            //window.location.reload();
-          },
-          error: function(xhr, status, error) {
-            console.error('Hubo un error:' + error);
-            console.error('Detalles del error:' + xhr.responseText);
-            alert('Hubo un error:', error);
-          }
-        });
-      });
-    });
-  </script>
 
   <!-- Modal de recuperación de contraseña -->
   <div class="password-modal" id="passwordModal">
@@ -138,88 +96,8 @@
     </div>
   </div>
 
-  <script>
-    // Función para mostrar el modal de recuperación de contraseña
-    function openPasswordModal() {
-      document.getElementById('passwordModal').style.display = 'flex';
-    }
-
-    // Función para cerrar el modal
-    function closePasswordModal() {
-      document.getElementById('passwordModal').style.display = 'none';
-    }
-
-    // Variables de referencia
-    var contenedor_login_register = document.querySelector(".contenedor__login-register");
-    var formulario_login = document.querySelector(".formulario__login");
-    var formulario_register = document.querySelector(".formulario__register");
-    var caja_trasera_login = document.querySelector(".caja__trasera-login");
-    var caja_trasera_register = document.querySelector(".caja__trasera-register");
-
-    // Función para mostrar el formulario de registro
-    function register() {
-      formulario_register.style.display = "block";
-      formulario_login.style.display = "none";
-      contenedor_login_register.style.left = "410px";
-      caja_trasera_register.style.opacity = "0";
-      caja_trasera_login.style.opacity = "1";
-    }
-
-    // Función para mostrar el formulario de inicio de sesión
-    function iniciarSesion() {
-      formulario_register.style.display = "none";
-      formulario_login.style.display = "block";
-      contenedor_login_register.style.left = "10px";
-      caja_trasera_register.style.opacity = "1";
-      caja_trasera_login.style.opacity = "0";
-    }
-    document.getElementById("togglePassword").addEventListener("click", function() {
-      const passwordInput = document.getElementById("password");
-      const isPasswordVisible = passwordInput.type === "password";
-      passwordInput.type = isPasswordVisible ? "text" : "password";
-
-      // Cambia el ícono
-      this.classList.toggle("fa-eye");
-      this.classList.toggle("fa-eye-slash");
-    });
-    // Mostrar/ocultar contraseña (Campo Contraseña)
-    document.getElementById("toggleRegisterPassword").addEventListener("click", function() {
-      const passwordInput = document.getElementById("register-password");
-      const isPasswordVisible = passwordInput.type === "password";
-      passwordInput.type = isPasswordVisible ? "text" : "password";
-
-      // Cambia el ícono
-      this.classList.toggle("fa-eye");
-      this.classList.toggle("fa-eye-slash");
-    });
-    // Mostrar/ocultar contraseña (Campo Contraseña)
-    document.getElementById("toggleRegisterPassword").addEventListener("click", function() {
-      const passwordInput = document.getElementById("register-password");
-      const isPasswordVisible = passwordInput.type === "password";
-      passwordInput.type = isPasswordVisible ? "text" : "password";
-
-      // Cambia el ícono
-      this.classList.toggle("fa-eye");
-      this.classList.toggle("fa-eye-slash");
-    });
-
-    // Mostrar/ocultar confirmar contraseña (Campo Asegurar Contraseña)
-    document.getElementById("toggleRegisterConfirmPassword").addEventListener("click", function() {
-      const confirmPasswordInput = document.getElementById("register-confirm-password");
-      const isConfirmPasswordVisible = confirmPasswordInput.type === "password";
-      confirmPasswordInput.type = isConfirmPasswordVisible ? "text" : "password";
-
-      // Cambia el ícono
-      this.classList.toggle("fa-eye");
-      this.classList.toggle("fa-eye-slash");
-    });
-  </script>
-
-  // Cambia el ícono
-  this.classList.toggle("fa-eye");
-  this.classList.toggle("fa-eye-slash");
-  });
-  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/venta/assets/js/login.js"></script>
 </body>
 
 </html>

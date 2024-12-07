@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal</title>
+
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -13,52 +16,55 @@
   <link rel="stylesheet" href="/venta/assets/css/style_personal.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <div id="app">
     <!-- Barra lateral -->
-    <div :class="['sidebar', { open: isSidebarOpen }]">
+    <nav :class="['sidebar', { open: isSidebarOpen }]" id="barra_navegacion" data-url-nav="<?= site_url('iniciar_sesion') ?>">
       <button class="toggle-btn" @click="toggleSidebar">☰</button>
       <div class="logo">
         <img src="img/LogoCytisum.png" alt="Logo" @click="closeSidebar">
       </div>
       <ul>
-        <li>
+        <li id="reportes_filtro" data-puesto="1 2">
           <a href="<?= site_url('graficas2') ?>">
             <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
-        <li>
+        <li id="mesas_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
           </a>
         </li>
-        <li>
+        <li id="reservaciones_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('reservaciones') ?>">
             <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
-        <li>
+        <li id="menu_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('menu') ?>">
             <img src="<?= base_url('img/Menus.png') ?>" alt="Menú"><span>Menú</span>
           </a>
         </li>
-        <li>
+        <li id="pedidos_filtro" data-puesto="1 2 4">
           <a href="<?= site_url('modal_pedidos') ?>">
             <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
-        <li>
+        <li id="inventario_filtro" data-puesto="1 2 3">
           <a href="<?= site_url('modal_producto') ?>">
             <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
-        <li>
+        <li id="personal_filtro" data-puesto="1 2">
           <a href="<?= site_url('personal') ?>">
             <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
+      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }" id="button_logout"
+        data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
+
         <a href="<?= site_url('perfil') ?>">
           <img src="img/Admin.png" alt="Usuario">
         </a>
@@ -70,7 +76,7 @@
         </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
-    </div>
+    </nav>
 
     <!-- Contenido principal -->
     <div class="content">
@@ -291,181 +297,12 @@
     </div>
   </div>
 
-  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <script>
-    const { createApp } = Vue;
-    createApp({
-      data() {
-        return {
-          isSidebarOpen: false,
-          search: '',
-          filter: 'all',
-          Employees: [
-            { id: 1, name: 'Sofía Ramírez', position: 'Supervisor', status: 'Activo', salary: 18000, image: 'img/Empleado.png', history:
-               [
-                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
-                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
-                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
-                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
-                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
-          
-              ]
-            },
-            
-            { id: 2, name: 'Lucas Fernández', position: 'Almacenista', status: 'Inactivo', salary: 15000, image: 'img/Empleado.png', history: 
-              [
-                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
-                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
-                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
-                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
-                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
-              ]
-            },
-            
-            { id: 3, name: 'Camila Torres', position: 'Mesera', status: 'Inactivo', salary: 10000, image: 'img/Empleado.png', history:
-               [
-                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
-                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
-                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
-                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
-                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
-              ]
-            },
-            { id: 4, name: 'Juan Peréz', position: 'Cajero', status: 'Activo', salary: 8000, image: 'img/Empleado.png', history:
-               [
-                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
-                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
-                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
-                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
-                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
-              ]
-            },
-            { id: 5, name: 'Shaiel Euan', position: 'Gerente', status: 'Activo', salary: 10000, image: 'img/Empleado.png', history:
-               [
-                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
-                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
-                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
-                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
-                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
-              ]
-            },
-          ],
-          isModalOpen: false,
-          isHistoryModalOpen: false,
-          isEditModalOpen: false,
-          isDeleteConfirmOpen: false,
-          employeeToDelete: false,
-          newEmployee: {
-            name: '',
-            dob: '',
-            curp: '',
-            position: '',
-            email: '',
-            rfc: '',
-            salary: ''
-          },
-          currentEmployee: {
-            id: '',
-            name: '',
-            dob: '',
-            curp: '',
-            position: '',
-            email: '',
-            rfc: '',
-            salary: '',
-          },
-        };
-      },
-      computed: {
-        filteredEmployees() {
-          return this.Employees.filter(employee => {
-            if (this.filter === 'all') return true;
-            if (this.filter === 'puesto') return employee.position === this.search;
-            return true;
-          });
-        }
-      },
-      methods: {
-        toggleSidebar() {
-          this.isSidebarOpen = !this.isSidebarOpen;
-        },
-        closeSidebar() {
-          this.isSidebarOpen = false;
-        },
-        setFilter(filter) {
-          this.filter = filter;
-        },
-        deleteItem(id) {
-          this.employeeToDelete = id;
-          this.isDeleteConfirmOpen = true;
-        },
-        deleteEmployee() {
-          this.Employees = this.Employees.filter(employee => employee.id !== this.employeeToDelete);
-          this.isDeleteConfirmOpen = false;
-          this.employeeToDelete = null;
-        },
-        closeDeleteConfirmModal() {
-          this.isDeleteConfirmOpen = false;
-          this.employeeToDelete = null;
-        },
-        openModal() {
-          this.isModalOpen = true;
-        },
-        closeModal() {
-          this.isModalOpen = false;
-          this.resetNewEmployee();
-        },
-        openEditModal(employeeId) {
-          const employee = this.Employees.find(emp => emp.id === employeeId);
-          if (employee) {
-            this.currentEmployee = { ...employee };
-          }
-          this.isEditModalOpen = true;
-        },
-        closeEditModal() {
-          this.isEditModalOpen = false;
-        },
-        openHistoryModal(employeeId) {
-          const employee = this.Employees.find(emp => emp.id === employeeId);
-          if (employee) {
-            this.currentEmployee = { ...employee };
-          }
-          this.isHistoryModalOpen = true;
-        },
-        closeHistoryModal() {
-          this.isHistoryModalOpen = false;
-          this.currentEmployee = null;
-        },
-        toggleCard(index) {
-          this.currentEmployee.history[index].isOpen = !this.currentEmployee.history[index].isOpen;
-        },
-        
-        
-        addEmployee() {
-          if (this.idValidEmployeeData()) {
-            const newId = this.Employees.length + 1;
-            this.Employees.push({ id: newId, ...this.newEmployee });
-            this.closeModal();
-          } else {
-            alert("Por favor, complete todos los campos del empleado.");
-          }
-        },
-        updateEmployee() {
-          const index = this.Employees.findIndex(emp => emp.id === this.currentEmployee.id);
-          if (index !== -1) {
-            this.Employees[index] = { ...this.currentEmployee };
-            this.closeEditModal();
-          }
-        },
-        idValidEmployeeData() {
-          return Object.values(this.newEmployee).every(value => value.trim() !== '' && value !== null);
-        },
-        resetNewEmployee() {
-          this.newEmployee = { name: '', dob: '', curp: '', position: '', email: '', rfc: '', salary: '' };
-        }
-      }
-    }).mount('#app');
-  </script>
+  <script src="/venta/assets/js/funcionLogout.js"></script>
+  <script src="/venta/assets/js/filtroBarra.js"></script>
+
+  <script src="/venta/assets/js/personal.js"></script>
 </body>
+
 </html>

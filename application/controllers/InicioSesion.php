@@ -19,9 +19,12 @@ class InicioSesion extends CI_Controller
       log_message('error', 'Errores de validación: ' . validation_errors());
       $response = [
         'status' => 'error',
-        'message' => validation_errors()
+        'message' => strip_tags(validation_errors()) // limpiar las etiquetas HTML
       ];
-      echo json_encode($response);
+      $this->output
+        ->set_status_header(400)
+        ->set_content_type('application/json')
+        ->set_output(json_encode($response));
       return;
     }
 
@@ -31,33 +34,50 @@ class InicioSesion extends CI_Controller
     $result = $this->Login->Iniciar_sesion($usuario);
 
     if (isset($result['status']) && $result['status'] === 'error') {
-      echo json_encode($result);
+      $response = $result;
+      $this->output
+        ->set_status_header(500)
+        ->set_content_type('application/json')
+        ->set_output(json_encode($response));
       return;
     }
 
     if (password_verify($contraseña, $result['contraseña'])) {
-
       $this->session->set_userdata([
         'usuario' => $result['nombre_usuario'],
         'puesto'  => $result['nombre_puesto'],
         'id_puesto' => $result['id_puesto'],
         'logged_in' => true
       ]);
-
-      echo json_encode([
+      $response = [
         'status' => 'success',
         'message' => 'Inicio de sesión exitoso: ' . $result['nombre_usuario'],
-        'redireccionar' => base_url('dashboard')
-      ]);
+        'redireccionar' => base_url('dashboard'),
+        'usuario' => $result['nombre_usuario'],
+        'puesto'  => $result['nombre_puesto'],
+        'id_puesto' => $result['id_puesto']
+      ];
+      $this->output
+        ->set_status_header(200)
+        ->set_output(json_encode($response));
       return;
     } else {
-      echo json_encode(['status' => 'error', 'message' => 'La contraseña es incorrecta']);
+      $response = [
+        'status' => 'error',
+        'message' => 'La contraseña es incorrecta'
+      ];
+      $this->output
+        ->set_status_header(400)
+        ->set_content_type('application/json')
+        ->set_output(json_encode($response));
       return;
     }
   }
 
+
   public function CrearCuenta()
   {
+
     $this->form_validation->set_rules('registro_usuario', 'Usuario', 'required|trim', ['required' => 'El campo usuario es requerido']);
     $this->form_validation->set_rules('registro_contraseña', 'Contraseña', 'required|trim', ['required' => 'El campo contraseña es requerido']);
     $this->form_validation->set_rules('registro_contraseña2', 'Verificar', 'required|trim', ['required' => 'Se necesita verificar la contraseña']);
@@ -67,9 +87,13 @@ class InicioSesion extends CI_Controller
       log_message('error', 'Errores de validación: ' . validation_errors());
       $response = [
         'status' => 'error',
-        'message' => strip_tags(validation_errors())
+        'message' => strip_tags(validation_errors()) // lo mismo quitar etiquetas HTML
       ];
-      echo json_encode($response);
+      //echo json_encode($response);
+      $this->output
+        ->set_status_header(400)
+        ->set_content_type('application/json')
+        ->set_output(json_encode($response));
       return;
     }
 
@@ -82,11 +106,26 @@ class InicioSesion extends CI_Controller
     if ($contraseña == $verificarContraseña) {
 
       $registrado = $this->Login->Registrar_usuario($usuario, $contraseña, $id);
-      echo json_encode($registrado);
+      if ($registrado['status'] === 'error') {
+        $this->output
+          ->set_status_header(500)
+          ->set_content_type('application/json')
+          ->set_output(json_encode($registrado)); // 500 es el código de error interno del servidor
+        return;
+      }
+      //echo json_encode($registrado);
+      $this->output
+        ->set_status_header(200)
+        ->set_content_type('application/json')
+        ->set_output(json_encode($registrado));
       return;
     } else {
       $response = ['status' => 'error', 'message' => 'Las contraseñas no coinciden'];
-      echo json_encode($response);
+      //echo json_encode($response);
+      $this->output
+        ->set_status_header(400)
+        ->set_content_type('application/json')
+        ->set_output(json_encode($response));
       return;
     }
   }
@@ -94,6 +133,12 @@ class InicioSesion extends CI_Controller
   public function CerrarSesion()
   {
     $this->session->sess_destroy();
-    echo json_encode(['status' => 'success', 'message' => 'Sesion cerrada']);
+    $response = ['status' => 'success', 'message' => 'Sesion cerrada'];
+    //echo json_encode($response);
+    $this->output
+      ->set_status_header(200)
+      ->set_content_type('application/json')
+      ->set_output(json_encode($response));
+    return;
   }
 }

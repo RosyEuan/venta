@@ -1,61 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventario Proveedores</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
   <link href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
-  rel="stylesheet">
+    rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/venta/assets/css/style_proveedores.css">
 </head>
+
 <body>
   <div id="inventario_proveedores">
     <!-- Barra Lateral -->
-    <div :class="['sidebar', { open: isSidebarOpen }]">
+    <nav :class="['sidebar', { open: isSidebarOpen }]" id="barra_navegacion" data-url-nav="<?= site_url('iniciar_sesion') ?>">
       <button class="toggle-btn" @click="toggleSidebar">☰</button>
       <div class="logo">
         <img src="img/LogoCytisum.png" alt="Logo" @click="closeSidebar">
       </div>
       <ul>
-        <li>
+        <li id="reportes_filtro" data-puesto="1 2">
           <a href="<?= site_url('graficas2') ?>">
             <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
-        <li>
+        <li id="mesas_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
           </a>
         </li>
-        <li>
+        <li id="reservaciones_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('reservaciones') ?>">
             <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
-        <li>
+        <li id="menu_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('menu') ?>">
             <img src="<?= base_url('img/Menus.png') ?>" alt="Menú"><span>Menú</span>
           </a>
         </li>
-        <li>
+        <li id="pedidos_filtro" data-puesto="1 2 4">
           <a href="<?= site_url('modal_pedidos') ?>">
             <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
-        <li>
+        <li id="inventario_filtro" data-puesto="1 2 3">
           <a href="<?= site_url('modal_producto') ?>">
             <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
-        <li>
+        <li id="personal_filtro" data-puesto="1 2">
           <a href="<?= site_url('personal') ?>">
             <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
+      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }" id="button_logout"
+        data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
+
         <a href="<?= site_url('perfil') ?>">
           <img src="img/Admin.png" alt="Usuario">
         </a>
@@ -67,7 +73,7 @@
         </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
-    </div>
+    </nav>
 
     <!-- Contenido del Inventario de Proveedores -->
     <div class="content">
@@ -148,83 +154,11 @@
         </div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
-      const app = Vue.createApp({
-        data() {
-          return {
-            isSidebarOpen: false,
-            isModalVisible: false,
-            isEditing: false,
-            searchQuery: "",
-            proveedor: { id: null, nombre: "", telefono: "", correo: "" },
-            productos: [
-              { id: 1, nombre: "Proovedor", telefono: "9252894503", correo: "prueba@gmail.com" },
-              { id: 2, nombre: "Prueba", telefono: "9252894503", correo: "prueba@gmail.com" },
-              { id: 3, nombre: "Admin", telefono: "9252894503", correo: "prueba@gmail.com" },
-              { id: 4, nombre: "Empleado", telefono: "9252894503", correo: "prueba@gmail.com" },
-              { id: 5, nombre: "Prueba", telefono: "9252894503", correo: "prueba@gmail.com" },
-            ],
-          };
-        },
-        computed: {
-          filteredProducts() {
-            return this.productos.filter((item) =>
-              Object.values(item).some((val) =>
-                val.toString().toLowerCase().includes(this.searchQuery.toLowerCase())
-              )
-            );
-          },
-        },
-        methods: {
-          toggleSidebar() {
-            this.isSidebarOpen = !this.isSidebarOpen;
-          },
-          closeSidebar() {
-            this.isSidebarOpen = false;
-          },
-          openModal() {
-            this.isModalVisible = true;
-            this.isEditing = false;
-            this.proveedor = { id: null, nombre: "", telefono: "", correo: "" };
-          },
-          closeModal() {
-            this.isModalVisible = false;
-          },
-          agregarProveedor() {
-            // Verificar si todos los campos están llenos
-            if (!this.proveedor.nombre || !this.proveedor.telefono || !this.proveedor.correo) {
-              return;
-            }
-            // Generar un ID único basado en el mayor ID actual
-            const nuevoId = this.productos.length > 0
-              ? Math.max(...this.productos.map(item => item.id)) + 1
-              : 1;
-
-            const nuevoProveedor = { ...this.proveedor, id: nuevoId };
-            // Agregar el nuevo proveedor a la lista
-            this.productos.push(nuevoProveedor);
-            // Cerrar el modal
-            this.closeModal();
-          },
-          editProveedor(proveedor) {
-            this.isEditing = true;
-            this.isModalVisible = true;
-            this.proveedor = { ...proveedor };
-          },
-          updateProveedor() {
-            const index = this.productos.findIndex((item) => item.id === this.proveedor.id);
-            if (index !== -1) {
-              this.productos[index] = { ...this.proveedor };
-            }
-            this.closeModal();
-          },
-          deleteProveedor(id) {
-            this.productos = this.productos.filter((item) => item.id !== id);
-          },
-        },
-      });
-      app.mount("#inventario_proveedores");
-    </script>
+    <script src="/venta/assets/js/funcionLogout.js"></script>
+    <script src="/venta/assets/js/filtroBarra.js"></script>
+    <script src="/venta/assets/js/modal_proveedores.js"></script>
 </body>
+
 </html>

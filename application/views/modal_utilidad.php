@@ -5,9 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inventario Utilidades</title>
+
   <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+
   <link href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
-  rel="stylesheet">
+    rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/venta/assets/css/style_utilidades.css">
 </head>
@@ -15,49 +17,51 @@
 <body>
   <div id="inventario_utilidades">
     <!-- Barra Lateral -->
-    <div :class="['sidebar', { open: isSidebarOpen }]">
+    <nav :class="['sidebar', { open: isSidebarOpen }]" id="barra_navegacion" data-url-nav="<?= site_url('iniciar_sesion') ?>">
       <button class="toggle-btn" @click="toggleSidebar">☰</button>
       <div class="logo">
         <img src="img/LogoCytisum.png" alt="Logo" @click="closeSidebar">
       </div>
       <ul>
-        <li>
+        <li id="reportes_filtro" data-puesto="1 2">
           <a href="<?= site_url('graficas2') ?>">
             <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
-        <li>
+        <li id="mesas_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
           </a>
         </li>
-        <li>
+        <li id="reservaciones_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('reservaciones') ?>">
             <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
-        <li>
+        <li id="menu_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('menu') ?>">
             <img src="<?= base_url('img/Menus.png') ?>" alt="Menú"><span>Menú</span>
           </a>
         </li>
-        <li>
+        <li id="pedidos_filtro" data-puesto="1 2 4">
           <a href="<?= site_url('modal_pedidos') ?>">
             <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
-        <li>
+        <li id="inventario_filtro" data-puesto="1 2 3">
           <a href="<?= site_url('modal_producto') ?>">
             <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
-        <li>
+        <li id="personal_filtro" data-puesto="1 2">
           <a href="<?= site_url('personal') ?>">
             <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
+      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }" id="button_logout"
+        data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
+
         <a href="<?= site_url('perfil') ?>">
           <img src="img/Admin.png" alt="Usuario">
         </a>
@@ -69,7 +73,7 @@
         </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
-    </div>
+    </nav>
 
     <!-- Contenido del inventario de Utilidades -->
     <div class="content">
@@ -185,98 +189,12 @@
         </div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
-      const app = Vue.createApp({
-        data() {
-          return {
-            isSidebarOpen: false,
-            busqueda: '',
-            productos: [
-              { id: 1, utilidad: "Estufa", proveedores: "Prueba", fecha_adquisicion: "2024-11-24", cant: 5, estado: "Nuevo" },
-              { id: 2, utilidad: "Cucharas", proveedores: "Prueba", fecha_adquisicion: "2024-11-24", cant: 5, estado: "Usado" },
-              { id: 3, utilidad: "Sillas", proveedores: "Prueba", fecha_adquisicion: "2024-11-24", cant: 5, estado: "Dañado" },
-              { id: 4, utilidad: "Mesas", proveedores: "Prueba", fecha_adquisicion: "2024-11-24", cant: 5, estado: "Usado" },
-              { id: 5, utilidad: "Computadoras", proveedores: "Prueba", fecha_adquisicion: "2024-11-24", cant: 5, estado: "Dañado" },
-            ],
-            mostrarModal: false,
-            productoEditando: null,
-            nuevoProducto: {
-              utilidad: "",
-              precio: "",
-              cant: "",
-              proveedores: "",
-              descripcion: "",
-              fecha_adquisicion: "",
-              estado: "",
-            },
-          };
-        },
-        computed: {
-          productosFiltrados() {
-            return this.productos.filter(item => {
-              return item.utilidad.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-                item.proveedores.toLowerCase().includes(this.busqueda.toLowerCase());
-            });
-          },
-          isFormValid() {
-            return this.nuevoProducto.utilidad && this.nuevoProducto.precio && this.nuevoProducto.cant &&
-              this.nuevoProducto.proveedores && this.nuevoProducto.descripcion &&
-              this.nuevoProducto.fecha_adquisicion && this.nuevoProducto.estado;
-          }
-        },
-        methods: {
-          toggleSidebar() {
-            this.isSidebarOpen = !this.isSidebarOpen;
-          },
-          closeSidebar() {
-            this.isSidebarOpen = false;
-          },
-          abrirModal() {
-            this.productoEditando = null;
-            this.mostrarModal = true;
-            this.resetFormulario();
-          },
-          cerrarModal() {
-            this.mostrarModal = false;
-          },
-          guardarProducto() {
-            if (this.isFormValid) {
-              if (this.productoEditando) {
-                const index = this.productos.findIndex(producto => producto.id === this.productoEditando.id);
-                if (index !== -1) {
-                  this.productos[index] = { ...this.productos[index], ...this.nuevoProducto };
-                }
-              } else {
-                this.productos.push({ ...this.nuevoProducto, id: this.productos.length + 1 });
-              }
-              this.cerrarModal();
-              this.resetFormulario();
-            }
-          },
-          editarProducto(item) {
-            this.productoEditando = item;
-            this.nuevoProducto = { ...item };
-            this.mostrarModal = true;
-          },
-          eliminarProducto(id) {
-            this.productos = this.productos.filter(producto => producto.id !== id);
-          },
-          resetFormulario() {
-            this.nuevoProducto = {
-              utilidad: "",
-              precio: "",
-              cant: "",
-              proveedores: "",
-              descripcion: "",
-              fecha_adquisicion: "",
-              estado: "",
-            };
-          },
-        },
-      });
-      app.mount("#inventario_utilidades");
-    </script>
+    <script src="/venta/assets/js/funcionLogout.js"></script>
+    <script src="/venta/assets/js/filtroBarra.js"></script>
+
+    <script src="/venta/assets/js/modal_utilidad.js"></script>
 </body>
 
 </html>

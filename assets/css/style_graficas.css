@@ -1,367 +1,367 @@
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    font-family: Arial, sans-serif;
-    background-color: #0F0D26;
-    overflow: hidden;
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-family: Arial, sans-serif;
+  background-color: #0f0d26;
+  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Barra lateral */
 .sidebar {
-    width: 60px;
-    height: 100vh;
-    background-color: #2A236A;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    transition: width 0.3s;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+  width: 60px;
+  height: 100vh;
+  background-color: #2a236a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  transition: width 0.3s;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 .sidebar.open {
-    width: 250px;
+  width: 250px;
 }
 .toggle-btn {
-    margin: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    outline: none;
-    color: white;
+  margin: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
 }
 .logo {
-    display: none;
-    margin: 10px;
-    width: 100%;
-    text-align: center;
+  display: none;
+  margin: 10px;
+  width: 100%;
+  text-align: center;
 }
 .sidebar.open .toggle-btn {
-    display: none;
+  display: none;
 }
 .sidebar.open .logo {
-    display: block;
+  display: block;
 }
 .logo img {
-    max-width: 170px;
-    cursor: pointer;
-    padding-top: 50px;
+  max-width: 170px;
+  cursor: pointer;
+  padding-top: 50px;
 }
 
 /* Estilos de la lista de navegación */
 .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 .sidebar ul li {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 15px 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 .sidebar ul li:hover {
-    background-color: rgba(81, 92, 100, 0.4);
+  background-color: rgba(81, 92, 100, 0.4);
 }
 .sidebar ul li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
 .sidebar ul li span {
-    font-size: 14px;
-    color: white;
-    display: none;
+  font-size: 14px;
+  color: white;
+  display: none;
 }
 .sidebar.open ul li span {
-    display: inline-block;
+  display: inline-block;
 }
 .admin-info {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    width: 100%;
-    border-top: 0 solid #ddd;
-    opacity: 0;
-    transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  width: 100%;
+  border-top: 0 solid #ddd;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 .sidebar.open .admin-info {
-    opacity: 1;
+  opacity: 1;
 }
 .admin-info img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 .admin-info span {
-    font-size: 14px;
-    color: white;
-    display: none;
+  font-size: 14px;
+  color: white;
+  display: none;
 }
 .sidebar.open .admin-info span {
-    display: block;
+  display: block;
 }
 .bottom-icons {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .bottom-icons img {
-    width: 30px;
-    height: 30px;
-    margin: 10px 0;
+  width: 30px;
+  height: 30px;
+  margin: 10px 0;
 }
 .bottom-icons.hidden {
-    display: none;
+  display: none;
 }
 .content {
-    margin-left: 60px;
-    padding: 20px;
-    flex: 1;
-    transition: margin-left 0.3s;
+  margin-left: 60px;
+  padding: 20px;
+  flex: 1;
+  transition: margin-left 0.3s;
 }
-.sidebar.open~.content {
-    margin-left: 250px;
+.sidebar.open ~ .content {
+  margin-left: 250px;
 }
 
 /* Gráficas */
 #user-list {
-    width: 100%; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 0%; 
-    height: 688px; 
-    overflow-y: auto;
-    scrollbar-width: none;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 0%;
+  height: 688px;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
-#user-list::-webkit-scrollbar{
+#user-list::-webkit-scrollbar {
   display: none;
 }
 .reportes-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
 }
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .header select {
-    padding: 10px;
-    font-size: 20px;
-    margin-left: 40px;
-    border-radius: 8px;
-    background-color: #F7F7F7;
-    font-family: "Merriweather";
+  padding: 10px;
+  font-size: 20px;
+  margin-left: 40px;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  font-family: 'Merriweather';
 }
 
 /* Barra de búsqueda posicionada a la derecha arriba de la gráfica de pastel */
 .search-bar {
-    display: flex;
-    align-items: center;
-    top: 40px;
-    right: -2px;
+  display: flex;
+  align-items: center;
+  top: 40px;
+  right: -2px;
 }
 .search-bar input {
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: left;
-    background-color: #F7F7F7;
-    width: 250px;
-    padding-left: 35px;
-    font-size: 20px;
-    font-family: "Merriweather";
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: left;
+  background-color: #f7f7f7;
+  width: 250px;
+  padding-left: 35px;
+  font-size: 20px;
+  font-family: 'Merriweather';
 }
 .search-bar button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    position: relative;
-    right: 50px;
-    top: -7px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  position: relative;
+  right: 50px;
+  top: -7px;
 }
 .search-bar input:focus {
-    background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 .search-bar i {
-    position: absolute;
-    left: 10px;
-    font-size: 18px;
-    color: #aaa;
+  position: absolute;
+  left: 10px;
+  font-size: 18px;
+  color: #aaa;
 }
 .charts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 20px;
-    padding: 2%;
-    justify-content: center;
-    margin-bottom: 30px;
-    gap: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  padding: 2%;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 40px;
 }
 .chart {
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    max-height: 400px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
 }
 .chart.ventas-dia canvas,
 .chart.venta-semanal canvas,
 .chart.ventas-anuales canvas {
-    width: 100% !important;
-    height: 250px !important;
+  width: 100% !important;
+  height: 250px !important;
 }
 .chart.venta-semanal canvas {
-    max-width: 300px !important;
-    height: 300px !important;
-    margin: 0 auto;
+  max-width: 300px !important;
+  height: 300px !important;
+  margin: 0 auto;
 }
 .chart.ventas-anuales canvas {
-    height: 330px !important;
-    width: 100% !important;
+  height: 330px !important;
+  width: 100% !important;
 }
 .chart.ventas-dia,
 .chart.venta-semanal,
 .chart.ventas-anuales {
-    background-color: white;
-    font-family: 'Merriweather';
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  font-family: 'Merriweather';
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 canvas {
-    width: 100% !important;
+  width: 100% !important;
 }
 .chart.ventas-anuales {
-    width: 100%;
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    margin-bottom: 0px;
+  width: 100%;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  margin-bottom: 0px;
 }
 .chart.ventas-anuales {
-    margin-top: 0px !important;
+  margin-top: 0px !important;
 }
 .chart.ventas-dia canvas,
 .chart.venta-semanal canvas {
-    height: 250px !important;
-    width: 100% !important;
+  height: 250px !important;
+  width: 100% !important;
 }
 
 /* Ajustes para la gráfica de pastel */
 .chart.venta-semanal canvas {
-    max-width: 300px !important;
-    height: 300px !important;
-    margin: 0 auto;
+  max-width: 300px !important;
+  height: 300px !important;
+  margin: 0 auto;
 }
 .legend {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-top: 10px;
-    font-size: 14px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 14px;
 }
 .chart.ventas-dia canvas,
 .chart.venta-semanal canvas {
-    height: 320px !important;
-    width: 100% !important;
+  height: 320px !important;
+  width: 100% !important;
 }
 
 /*4 cuadro de mesualidad */
 .chart.estadisticas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 50%;
-    border: 1px solid #ddd;
-    margin: 20px auto;
-    margin-top: 0px;
-    height: 400px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  border: 1px solid #ddd;
+  margin: 20px auto;
+  margin-top: 0px;
+  height: 400px !important;
 }
 .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 90%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    margin: 20px 0;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 90%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+  text-align: left;
 }
 .stat-item h3 {
-    margin: 0 10px 5px;
-    font-size: 20px;
-    color: #000;
-    font-family: "Merriweather";
+  margin: 0 10px 5px;
+  font-size: 20px;
+  color: #000;
+  font-family: 'Merriweather';
 }
 .stat-item p {
-    margin: 0;
-    font-size: 24px;
-    color: #000;
-    font-family: "Merriweather";
+  margin: 0;
+  font-size: 24px;
+  color: #000;
+  font-family: 'Merriweather';
 }
 .growth {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 16px;
-    color: green;
-    font-weight: bold;
-    font-family: "Merriweather";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+  color: green;
+  font-weight: bold;
+  font-family: 'Merriweather';
 }
 .box {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin-right: 10px;
-    border-radius: 3px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  border-radius: 3px;
 }
 
 /* Forma de pirámide */
 .nivel-1 {
-    transform: translateY(30px);
-    width: 50%;
+  transform: translateY(30px);
+  width: 50%;
 }
 .nivel-2 {
-    transform: translateY(0);
-    width: 70%;
+  transform: translateY(0);
+  width: 70%;
 }
 .nivel-3 {
-    transform: translateY(-30px);
-    width: 90%;
+  transform: translateY(-30px);
+  width: 90%;
 }

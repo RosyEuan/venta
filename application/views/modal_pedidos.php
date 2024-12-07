@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pedidos</title>
+
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
   <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -17,49 +19,52 @@
 
 <body>
   <div id="app">
-  <div :class="['sidebar', { open: isSidebarOpen }]">
+    <!-- Barra lateral-->
+    <nav :class="['sidebar', { open: isSidebarOpen }]" id="barra_navegacion" data-url-nav="<?= site_url('iniciar_sesion') ?>">
       <button class="toggle-btn" @click="toggleSidebar">☰</button>
       <div class="logo">
         <img src="img/LogoCytisum.png" alt="Logo" @click="closeSidebar">
       </div>
       <ul>
-        <li>
+        <li id="reportes_filtro" data-puesto="1 2">
           <a href="<?= site_url('graficas2') ?>">
             <img src="<?= base_url('img/Barras.png') ?>" alt="Reportes"><span>Reportes</span>
           </a>
         </li>
-        <li>
+        <li id="mesas_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('mesas') ?>">
             <img src="<?= base_url('img/Mesa.png') ?>" alt="Mesas"><span>Mesas</span>
           </a>
         </li>
-        <li>
+        <li id="reservaciones_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('reservaciones') ?>">
             <img src="<?= base_url('img/Reservas.png') ?>" alt="Reservaciones"><span>Reservaciones</span>
           </a>
         </li>
-        <li>
+        <li id="menu_filtro" data-puesto="1 2 5 6">
           <a href="<?= site_url('menu') ?>">
             <img src="<?= base_url('img/Menus.png') ?>" alt="Menú"><span>Menú</span>
           </a>
         </li>
-        <li>
+        <li id="pedidos_filtro" data-puesto="1 2 4">
           <a href="<?= site_url('modal_pedidos') ?>">
             <img src="<?= base_url('img/Pedido.png') ?>" alt="Pedidos"><span>Pedidos</span>
           </a>
         </li>
-        <li>
+        <li id="inventario_filtro" data-puesto="1 2 3">
           <a href="<?= site_url('modal_producto') ?>">
             <img src="<?= base_url('img/Inventarios.png') ?>" alt="Inventario"><span>Inventario</span>
           </a>
         </li>
-        <li>
+        <li id="personal_filtro" data-puesto="1 2">
           <a href="<?= site_url('personal') ?>">
             <img src="<?= base_url('img/Personales.png') ?>" alt="Personal"><span>Personal</span>
           </a>
         </li>
       </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
+      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }" id="button_logout"
+        data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
+
         <a href="<?= site_url('perfil') ?>">
           <img src="img/Admin.png" alt="Usuario">
         </a>
@@ -71,7 +76,9 @@
         </a>
         <span>Angel Chi<br>Administrador</span>
       </div>
-    </div>
+    </nav>
+
+    <!--contenido -->
     <div class="search-bar">
       <input type="text" placeholder="Buscar pedido por Nombre o Num#" v-model="searchQuery">
       <button><i class="fas fa-search"></i></button>
@@ -235,88 +242,19 @@
             </tbody>
           </table>
           <div class="modal-footer">
-                <button type="button" class="boton_cerrar btn btn-secondary" @click="closeModal">Cerrar</button>
-              </div>
+            <button type="button" class="boton_cerrar btn btn-secondary" @click="closeModal">Cerrar</button>
+          </div>
         </div>
-        
+
       </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-      <script>
-        const sidebarApp = Vue.createApp({
-          data() {
-            return {
-              isModalOpen: false,
-              isSidebarOpen: false,
-              nombre: '',
-              apellido: '',
-              mesa: '',
-              importe: '',
-              metodo: '',
-              cambio: '',
-              items: [
-                { food: '', quantity: '' },
-                { food: '', quantity: '' },
-                { food: '', quantity: '' },
-              ],
-              modalItems: [
-                { food: '', quantity: '' },
-                { food: '', quantity: '' },
-                { food: '', quantity: '' },
-              ], // Esta es la copia local de los datos de la tabla para el modal
-              usuarios: [
-                {
-                  id: 1,
-                  nombre: 'Alfredo Gomez',
-                  fecha: "03/Nov/2023 Domingo",
-                  numero: 98,
-                  estado: 'En espera',
-                  hora: '10:12 AM',
-                  total: 378.98,
-                  detalles: [
-                    { producto: 'Frijolito con puerquito', cantidad: 2, precio: 149.98 },
-                    { producto: 'Frijolito con puerquito', cantidad: 2, precio: 149.98 },
-                    { producto: 'Frijolito con puerquito', cantidad: 2, precio: 149.98 },
-                    { producto: 'Frijolito con puerquito', cantidad: 2, precio: 149.98 },
+      <script src="/venta/assets/js/funcionLogout.js"></script>
+      <script src="/venta/assets/js/filtroBarra.js"></script>
 
-                  ],
-                },
-                {
-                  id: 2,
-                  nombre: 'Alfredo Gomez',
-                  fecha: '03/Nov/2023 Domingo',
-                  numero: 98,
-                  estado: 'En espera',
-                  hora: '10:12 AM',
-                  total: 378.98,
-                  detalles: [
-                    { producto: 'Frijolito con puerquito', cantidad: 2, precio: 149.98 },
-                    { producto: 'Frijolito con puerquito', cantidad: 2, precio: 149.98 },
-                    { producto: 'Frijolito con puerquito', cantidad: 2, precio: 149.98 },
-                    { producto: 'Frijolito con puerquito', cantidad: 2, precio: 149.98 },
-                  ],
-                },
-              ],
-            };
-          },
-          methods: {
-            toggleSidebar() {
-              this.isSidebarOpen = !this.isSidebarOpen;
-            },
-            closeSidebar() {
-              this.isSidebarOpen = false;
-            },
-            openModal(usuario) {
-              this.modalNombre = usuario.nombre;
-              this.modalApellido = usuario.apellido;
-              this.modalMesa = usuario.mesa;
-              this.isModalOpen = true;
-            },
-            closeModal() {
-              this.isModalOpen = false;
-            },
-          },
-        }).mount('#app');
-      </script>
+      <script src="/venta/assets/js/modal_pedidos.js"></script>
+
 </body>
+
 
 </html>
