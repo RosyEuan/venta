@@ -52,6 +52,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 $route['default_controller']            = 'Welcome';
 /* Rutas para acceder a las pantallas */
+$route['404_override']                  = '';
+$route['translate_uri_dashes']          = FALSE;
 $route['barra_lateral']                 = 'Welcome/barra_lateral';
 $route['menu']                          = 'Welcome/menu';
 $route['mesas']                         = 'Welcome/mesas';
@@ -63,5 +65,8 @@ $route['modal_utilidad']                = 'Welcome/modal_utilidad';
 $route['graficas2']                     = 'Welcome/graficas2';
 $route['personal']                      = 'Welcome/personal';
 $route['barra']                         = 'Welcome/barra';
-$route['404_override']          = '';
-$route['translate_uri_dashes']  = FALSE;
+$route['registrarse']                   = 'InicioSesion/CrearCuenta';
+$route['iniciar_sesion']                = 'InicioSesion/VerificaSesion';
+$route['cerrar_sesion']                 = 'InicioSesion/CerrarSesion';
+$route['prueba']                        = 'Welcome/pruebita';
+$route['dashboard']                     = 'dashboard/dashboard';

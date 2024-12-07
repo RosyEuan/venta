@@ -23,15 +23,17 @@ class Welcome extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->helper('url');
+		$this->load->library('session');
 	}
 
 	public function index()
 	{
-		/*sirve para cargar una vista*/
-		$this->load->view('graficas2');
+
+		$this->load->view('modal_login');
 	}
 	public function graficas2()
 	{
+
 		$this->load->view('graficas2');
 	}
 	public function mesas()
@@ -56,8 +58,15 @@ class Welcome extends CI_Controller
 	}
 	public function modal_proveedores()
 	{
-		$this->load->view('modal_proveedores');
+		$logged_in = $this->session->userdata('logged_in');
+		$puesto = $this->session->userdata('puesto');
+		if (($puesto != 'Proveedor' || $puesto != 'Administrador' || $puesto != 'Supervisor') && $logged_in == false) {
+			echo json_encode(['status' => 'error', 'message' => 'No tienes acceso a esta vista']);
+			return;
+		}
+		$this->load->view('modal_proveedores2', ['logged_in' => $logged_in, 'puesto_sesion' => $puesto]);
 	}
+
 	public function modal_utilidad()
 	{
 		$this->load->view('modal_utilidad');
@@ -78,5 +87,9 @@ class Welcome extends CI_Controller
 	public function barra()
 	{
 		$this->load->view('barra');
+	}
+	public function pruebita()
+	{
+		$this->load->view('pruebita');
 	}
 }

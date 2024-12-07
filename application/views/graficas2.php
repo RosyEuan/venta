@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Barra Lateral y Gráficas</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Konkhmer+Sleokchher&family=Suez+One&display=swap"
@@ -20,7 +22,7 @@
 
 <body>
   <div id="app">
-    <div :class="['sidebar', { open: isSidebarOpen }]">
+    <nav :class="['sidebar', { open: isSidebarOpen }]">
       <button class="toggle-btn" @click="toggleSidebar">☰</button>
       <div class="logo">
         <img src="img/LogoCytisum.png" alt="Logo" @click="closeSidebar">
@@ -64,13 +66,41 @@
       </ul>
       <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
         <img src="img/Admin.png" alt="Usuario">
-        <img src="img/Logout.png" alt="Salir">
+        <img src="img/Logout.png" alt="Salir" id="button_logout">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
         <img src="img/Admin.png" alt="Usuario">
         <span>Angel Chi<br>Administrador</span>
       </div>
-    </div>
+    </nav>
+
+    <script>
+      $(document).ready(function() {
+        //$('#prueba').hide();
+        $('#button_logout').click(function() {
+          logout();
+        });
+      });
+
+      function logout() {
+        $.ajax({
+          url: '<?= site_url('cerrar_sesion') ?>',
+          type: 'POST',
+          data: $(this).serialize(),
+          dataType: 'json',
+          success: function(response) {
+            window.location.href = '<?= site_url('/') ?>';
+            alert('Detalles:  ' + response.message);
+          },
+          error: function(xhr, status, error) {
+            console.error('Ocurrio un error' + error);
+            consoleñ.error('Detalles del error' + xhr.responseText);
+            alert('Ocurrio un error :' + error);
+          }
+        });
+      }
+    </script>
+
     <div class="content">
       <div class="reportes-container">
         <div class="header">
@@ -138,7 +168,9 @@
 
 
   <script>
-    const { createApp } = Vue;
+    const {
+      createApp
+    } = Vue;
 
     createApp({
       data() {
@@ -187,10 +219,10 @@
     const ventasAnualesCtx = document.getElementById("ventasAnuales").getContext("2d");
     // Crear el gradiente
     const gradient = ventasAnualesCtx.createLinearGradient(0, 0, 0, 400); // De arriba a abajo (puedes ajustar las coordenadas)
-    gradient.addColorStop(0, "rgba(139, 146, 241, 0.40)");  // Color inicial
-    gradient.addColorStop(0.7, "rgba(119, 126, 232, 0.40)");  // Color intermedio
+    gradient.addColorStop(0, "rgba(139, 146, 241, 0.40)"); // Color inicial
+    gradient.addColorStop(0.7, "rgba(119, 126, 232, 0.40)"); // Color intermedio
     gradient.addColorStop(0.91, "rgba(128, 136, 251, 0.40)"); // Otro color intermedio
-    gradient.addColorStop(1, "rgba(129, 138, 255, 0.40)");  // Color final
+    gradient.addColorStop(1, "rgba(129, 138, 255, 0.40)"); // Color final
 
     new Chart(ventasAnualesCtx, {
       type: "line",
