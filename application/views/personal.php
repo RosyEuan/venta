@@ -135,6 +135,14 @@
           </div>
           <div class="form-row align-items-center mb-3">
             <div class="col-4">
+              <label for="lastname">Apellido</label>
+            </div>
+            <div class="col-8">
+              <input type="text" id="lastname" v-model="newEmployee.lastname" required />
+            </div>
+          </div>
+          <div class="form-row align-items-center mb-3">
+            <div class="col-4">
               <label for="dob">Fecha de Nacimiento</label>
             </div class="col-8">
             <div>
@@ -341,7 +349,7 @@
                 { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
               ]
             },
-            { id: 5, name: 'Shaiel Euan', position: 'Gerente', status: 'Activo', salary: 10000, image: 'img/Empleado.png', history:
+            { id: 5, name: 'Shaiel Ramirez', position: 'Gerente', status: 'Activo', salary: 10000, image: 'img/Empleado.png', history:
                [
                 { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
                 { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
@@ -358,6 +366,7 @@
           employeeToDelete: false,
           newEmployee: {
             name: '',
+            lastname: '',
             dob: '',
             curp: '',
             position: '',
@@ -381,7 +390,6 @@
         filteredEmployees() {
           return this.Employees.filter(employee => {
             if (this.filter === 'all') return true;
-            if (this.filter === 'puesto') return employee.position === this.search;
             return true;
           });
         }
@@ -462,7 +470,7 @@
           return Object.values(this.newEmployee).every(value => value.trim() !== '' && value !== null);
         },
         resetNewEmployee() {
-          this.newEmployee = { name: '', dob: '', curp: '', position: '', email: '', rfc: '', salary: '' };
+          this.newEmployee = { name: '', lastname:'', dob: '', curp: '', position: '', email: '', rfc: '', salary: '' };
         }
       }
     }).mount('#app');
