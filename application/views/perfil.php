@@ -84,33 +84,34 @@
       <h2 class="content-title">Perfil</h2>
       <div class="profile-container">
         <!-- Sección izquierda: campos en dos columnas -->
-        <div class="left-section">
+        <form class="left-section" method ="GET" id="formulario_datosPerfil"
+            data-controller ="<?=site_url('datos_perfil');?>"> <!-- Debe iniciar siempre con data y '-' -->
           <div class="form-group">
             <label for="nombre">Nombre(s):</label>
-            <input type="text" id="nombre" placeholder="Ej. Jorge Alejandro">
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. Jorge Alejandro" disabled>
           </div>
           <div class="form-group">
             <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos" placeholder="Ej. Pérez Domínguez">
+            <input type="text" id="apellidos"name="apellidos" placeholder="Ej. Pérez Domínguez" disabled>
           </div>
           <div class="form-group">
             <label for="fecha-nacimiento">Fecha de nacimiento:</label>
-            <input type="date" id="fecha-nacimiento" class="fecha">
+            <input type="date" id="fecha-nacimiento" name="fecha-nacimiento"class="fecha" disabled>
           </div>
           <div class="form-group">
             <label for="domicilio">Domicilio:</label>
-            <input type="text" id="domicilio" placeholder="Ej. C32 M52 L9">
+            <input type="text" id="domicilio"name="domicilio" placeholder="Ej. C32 M52 L9" disabled>
           </div>
           <div class="form-group">
             <label for="usuario">Usuario:</label>
-            <input type="text" id="usuario" placeholder="Ej. JorgePerez">
+            <input type="text" id="usuario"name="usuario" placeholder="Ej. JorgePerez" disabled>
           </div>
 
           <!-- Campo de contraseña con el icono de ojito dentro del campo y botón azul al lado -->
           <div class="form-group">
             <label for="contraseña">Contraseña:</label>
             <div class="password-container">
-              <input type="password" id="contraseña" placeholder="**********">
+              <input type="password" id="contraseña" placeholder="**********" disabled>
               <span class="eye-icon" onclick="togglePasswordVisibility()">
                 <i class="fas fa-eye"></i>
               </span>
@@ -118,29 +119,30 @@
           </div>
           <div class="form-group">
             <label for="correo">Correo electrónico:</label>
-            <input type="email" id="correo" placeholder="Ej. JorgePD@gmail.com">
+            <input type="email" id="correo" placeholder="Ej. JorgePD@gmail.com" disabled>
           </div>
           <div class="form-group">
             <label for="telefono">Teléfono:</label>
-            <input type="text" id="telefono" placeholder="Ej. +52 998 424 2539">
+            <input type="text" id="telefono" placeholder="Ej. +52 998 424 2539" disabled>
           </div>
           <div class="form-group">
             <label for="curp">CURP:</label>
-            <input type="text" id="curp" placeholder="Ej. PEDJ010118HQRRNA5">
+            <input type="text" id="curp" placeholder="Ej. PEDJ010118HQRRNA5" disabled>
           </div>
           <div class="form-group">
             <label for="rfc">RFC:</label>
-            <input type="text" id="rfc" placeholder="Ej. PEDJ010118PY7">
+            <input type="text" id="rfc" placeholder="Ej. PEDJ010118PY7" disabled>
           </div>
           <div class="form-group">
             <label for="puesto">Puesto:</label>
-            <input type="text" id="puesto" placeholder="Ej. Mesero">
+            <input type="text" id="puesto" placeholder="Ej. Mesero" disabled>
           </div>
           <div class="form-group">
             <label for="salario">Salario:</label>
-            <input type="text" id="salario" placeholder="Ej. $10,000 MXN">
+            <input type="text" id="salario" placeholder="Ej. $10,000 MXN" disabled>
           </div>
-        </div>
+        </form>
+
         <div class="right-section">
           <div class="profile-image">
             <img src="img/Empleado.png" alt="Foto de perfil">
@@ -156,11 +158,12 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>           
   <script src="/venta/assets/js/funcionLogout.js"></script>
   <script src="/venta/assets/js/filtroBarra.js"></script>
-
+  <script src="/venta/assets/js/Mostrardatosperfil.js"></script>
   <script src="/venta/assets/js/perfil.js"></script>
 </body>
 
