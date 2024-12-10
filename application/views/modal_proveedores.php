@@ -117,7 +117,7 @@
             data-controller4="<?= site_url('eliminar/proveedores'); ?>">
             <table>
               <tbody>
-                <tr v-for="item in filteredProducts" :key="item.id" class="itemss">
+                <tr v-for="item in filteredProducts" :key="item.id" :class="{'fila-baja-cantidad': parseInt(item.cantidad) <= 20}"class="itemss">
                   <td>{{ item.id }}</td>
                   <td>{{ item.nombre }}</td>
                   <td>{{ item.telefono}}</td>

@@ -120,7 +120,7 @@
   >
     <table>
       <tbody>
-        <tr v-for="item in productosFiltrados" :key="item.id" class="siguiente">
+        <tr v-for="item in productosFiltrados" :key="item.id" :class="{'fila-baja-cantidad': parseInt(item.cant) <= 20}" class="siguiente">
             <td>{{ item.id }}</td>
               <td>{{ item.utilidad }}</td>
               <td>{{ item.proveedores }}</td>

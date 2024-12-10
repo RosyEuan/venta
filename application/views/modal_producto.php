@@ -117,7 +117,7 @@
           data-controller4="<?= site_url('eliminar/inventario'); ?>">
             <table>
               <tbody>
-                <tr v-for="item in productosFiltrados" :key="item.id" class="cosas">
+                <tr v-for="item in productosFiltrados" :key="item.id" :class="{'fila-baja-cantidad': parseInt(item.cantidad) <= 20}" class="cosas">
                   <td>{{ item.id }}</td>
                   <td>{{ item.producto }}</td>
                   <td>{{ item.proveedores }}</td>

@@ -90,7 +90,9 @@ table {
     margin-top:-21px;
     width: 102%;
   }
-
+  .fila-baja-cantidad {
+    background-color: #af6868 !important;
+  }
   .table-body table {
     width: 100%; /* Asegura que las columnas coincidan */
     border-collapse: collapse;
