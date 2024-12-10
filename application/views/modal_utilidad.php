@@ -116,10 +116,11 @@
   </div>
 
   <!-- Cuerpo -->
-  <div class="table-body">
+  <div id="utilidades" class="table-body" data-controller="<?= site_url('obtener/utilidades'); ?>" method="GET"
+  >
     <table>
       <tbody>
-        <tr v-for="item in productosFiltrados" :key="item.id" class="siguiente">
+        <tr v-for="item in productosFiltrados" :key="item.id" :class="{'fila-baja-cantidad': parseInt(item.cant) <= 20}" class="siguiente">
             <td>{{ item.id }}</td>
               <td>{{ item.utilidad }}</td>
               <td>{{ item.proveedores }}</td>
@@ -173,7 +174,8 @@
           <div class="modal-content">
             <button type="button" class="btn-close" @click="cerrarModal" aria-label="Close">X</button>
             <h2 class="modal-header">{{ productoEditando ? 'Editar Utilidad' : 'Agregar Utilidad' }}</h2>
-            <form @submit.prevent="guardarProducto">
+
+            <form @submit.prevent="guardarProducto" id="insertar" data-controller2="<?= site_url('insertar/utilidades'); ?>" method="POST">
               <div>
                 <div class="form-group">
                   <label for="nombreProducto">Nombre de la utilidad</label>
@@ -194,6 +196,11 @@
                   <label for="proveedor">Proveedor</label>
                   <input class="orden" type="text" id="proveedor" v-model="nuevoProducto.proveedores"
                     placeholder="Escribe el nombre del proveedor" />
+                      <!-- <select class="orden" id="proveedor" v-model="nuevoProducto.proveedores"
+                    data-controller1="<?= site_url('proveedores/inventario'); ?>" method="GET" placeholder="Seleccionar">
+                    <option v-for="proveedor in proveedores" :key="proveedor.id_proveedor" :value="proveedor.id_proveedor">
+                    {{ proveedor.nombre_proveedor }}
+                    </option> -->
                 </div>
               </div>
               <div class="grid-container">

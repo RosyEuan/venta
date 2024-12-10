@@ -26,6 +26,10 @@ class Login extends CI_Model
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($result) {
+                $this->session->set_userdata([
+                    'id_usuario' => $result['id_Usuario_Empleado'],  // Guardamos el id_Usuario_Empleado
+                    'logged_in' => true
+                ]);
                 return $result;
             } else {
                 return ['status' => 'error', 'message' => 'Usuario no encontrado.'];

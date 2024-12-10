@@ -89,12 +89,16 @@ body {
     font-size: 18px;
     color: #aaa;
 }
+.fila-baja-cantidad {
+    background-color: #af6868 !important;
+  }
 table {
     margin: 0 auto;
     border-collapse: collapse;
     margin-bottom: -1px;
     margin-left: 1%;
 }
+
 th,
 td {
     border: 1px solid black;

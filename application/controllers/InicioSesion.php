@@ -47,6 +47,7 @@ class InicioSesion extends CI_Controller
         'usuario' => $result['nombre_usuario'],
         'puesto'  => $result['nombre_puesto'],
         'id_puesto' => $result['id_puesto'],
+        'id_usuario' => $result['id_Usuario_Empleado'],  // Guardamos el id_Usuario_Empleado
         'logged_in' => true
       ]);
       $response = [
@@ -54,6 +55,7 @@ class InicioSesion extends CI_Controller
         'message' => 'Inicio de sesión exitoso: ' . $result['nombre_usuario'],
         'redireccionar' => base_url('dashboard'),
         'usuario' => $result['nombre_usuario'],
+        'id_usuario' => $result['id_Usuario_Empleado'],  // Guardamos el id_Usuario_Empleado
         'puesto'  => $result['nombre_puesto'],
         'id_puesto' => $result['id_puesto']
       ];

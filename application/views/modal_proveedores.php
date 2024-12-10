@@ -97,30 +97,43 @@
             <button><i class="fas fa-search"></i></button>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr class="columna">
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Telefono</th>
-              <th>Correo</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in filteredProducts" :key="item.id" class="itemss">
-              <td>{{ item.id }}</td>
-              <td>{{ item.nombre }}</td>
-              <td>{{ item.telefono}}</td>
-              <td>{{ item.correo }}</td>
-              <td class="actions">
-                <button class="editar-btn" @click="editProveedor(item)"><i class="fas fa-pencil-alt"></i>Editar</button>
-                <button class="eliminar-btn" @click="deleteProveedor(item.id)"><i
-                    class="fas fa-trash"></i>Eliminar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-container">
+          <!-- Encabezado -->
+          <div class="table-header">
+            <table>
+              <thead>
+                <tr class="columna">
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Telefono</th>
+                  <th>Correo</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+
+          <!-- Cuerpo -->
+          <div id="proveedores" class="table-body" data-controller="<?= site_url('obtener/proveedores'); ?>" method="GET"
+            data-controller4="<?= site_url('eliminar/proveedores'); ?>">
+            <table>
+              <tbody>
+                <tr v-for="item in filteredProducts" :key="item.id" :class="{'fila-baja-cantidad': parseInt(item.cantidad) <= 20}"class="itemss">
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.nombre }}</td>
+                  <td>{{ item.telefono}}</td>
+                  <td>{{ item.correo }}</td>
+                  <td class="actions">
+                    <button class="editar-btn" @click="editProveedor(item)"><i class="fas fa-pencil-alt"></i>Editar</button>
+                    <button class="eliminar-btn" @click="deleteProveedor(item.id)"><i class="fas fa-trash"></i>Eliminar</button>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <div class="bottom-buttons">
           <button type="submit" class="btn-submit" @click="openModal()">Agregar proveedor</button>
         </div>
@@ -131,7 +144,10 @@
             <span class="close" @click="closeModal">&times;</span>
             <button type="button" class="btn-close" @click="closeModal" aria-label="Close">X</button>
             <h1 class="pon">{{ isEditing ? "Editar proveedor" : "Agregar proveedor" }}</h1>
-            <form @submit.prevent="isEditing ? updateProveedor() : agregarProveedor()">
+
+            <form @submit.prevent="agregarProveedor"
+              id="insertar" data-controller2="<?= site_url('insertar/proveedores'); ?>"
+              data-controller3="<?= site_url('actualizar/proveedores'); ?>" method="POST">
               <div class="form-group">
                 <label for="nombreproveedor">Nombre proveedor</label>
                 <input class="medi" type="text" id="nombreproveedor" v-model="proveedor.nombre"
