@@ -77,7 +77,7 @@
     <!-- Contenido del Inventario de Productos -->
     <div class="content">
       <div id="inventario_productos" class="Product">
-        <h2 class="titul">Inventario de Ingredientes</h2>
+        <h2 class="titul">Inventario de ingredientes</h2>
         <div class="header">
           <div class="header-buttons">
             <a href="<?= site_url('modal_producto') ?>">
@@ -91,35 +91,46 @@
             </a>
           </div>
           <div class="search-bar">
-            <input type="text" v-model="textoBusqueda" placeholder="Buscar">
+            <input type="text" v-model="searchQuery" placeholder="Buscar">
             <button><i class="fas fa-search"></i></button>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr class="tipo">
-              <th>ID</th>
-              <th>Producto</th>
-              <th>Proveedores</th>
-              <th>Cantidad</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in productosFiltrados" :key="item.id" class="cosas">
-              <td>{{ item.id }}</td>
-              <td>{{ item.producto }}</td>
-              <td>{{ item.proveedores }}</td>
-              <td>{{ item.cantidad }}</td>
-              <td class="actions">
-                <button class="editar-btn" @click="abrirModalEditar(item)">
-                  <i class="fas fa-pencil-alt"></i>Editar</button>
-                <button class="eliminar-btn" @click="eliminarProducto(item.id)">
-                  <i class="fas fa-trash"></i>Eliminar</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div class="table-container">
+          <!-- Encabezado -->
+          <div class="table-header">
+            <table>
+              <thead>
+                <tr class="tipo">
+                  <th>ID</th>
+                  <th>Producto</th>
+                  <th>Proveedores</th>
+                  <th>Cantidad</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+
+          <!-- Cuerpo -->
+          <div id="inventario" class="table-body" data-controller="<?= site_url('productos/inventario'); ?>" method="GET"
+          data-controller4="<?= site_url('eliminar/inventario'); ?>">
+            <table>
+              <tbody>
+                <tr v-for="item in productosFiltrados" :key="item.id" class="cosas">
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.producto }}</td>
+                  <td>{{ item.proveedores }}</td>
+                  <td>{{ item.cantidad }}</td>
+                  <td class="actions">
+                    <button class="editar-btn" @click="abrirModalEditar(item)"> <i class="fas fa-pencil-alt"></i>Editar</button>
+                    <button class="eliminar-btn" @click="eliminarProducto(item.id)"> <i class="fas fa-trash"></i>Eliminar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <div class="bottom-buttons">
           <button @click="abrirModal" class="btn-colore">Agregar producto</button>
         </div>
@@ -128,19 +139,31 @@
           <div class="modal-content">
             <button type="button" class="btn-close" @click="cerrarModal" aria-label="Close">X</button>
             <h2 class="poner">{{ editando ? "Editar producto" : "Agregar producto" }}</h2>
-            <form @submit.prevent="agregarOEditarProducto">
+
+            <form @submit.prevent="agregarOEditarProducto" id="insertar" data-controller2="<?= site_url('insertar/inventario'); ?>"
+               data-controller3="<?= site_url('actualizar/inventario'); ?>" method="POST">
               <label for="nombreProducto" class="estil">Nombre producto</label>
               <input class="intento" id="nombreProducto" v-model="nuevoProducto.producto"
                 placeholder="Escribe el nombre del producto">
-              <label for="precioProducto" class="estil">Precio producto</label>
+              <!-- <label for="precioProducto" class="estil">Precio producto</label>
               <input class="intento" id="precioProducto" v-model="nuevoProducto.precio"
-                placeholder="Escribe el precio del producto">
+                placeholder="Escribe el precio del producto"> -->
               <label for="cantidadStock" class="estil">Cantidad en stock</label>
-              <input class="intento" id="cantidadStock" v-model="nuevoProducto.cantidad"
+              <input class="intento" id="cantidadStock" type="number" v-model="nuevoProducto.cantidad"
                 placeholder="Escribe la cantidad disponible">
-              <label for="proveedor" class="estil">Proveedor</label>
-              <input class="intento" id="proveedor" v-model="nuevoProducto.proveedores"
-                placeholder="Escribe el nombre del proveedor">
+              <!-- <input class="intento" id="proveedor" v-model="nuevoProducto.proveedores"
+                placeholder="Escribe el nombre del proveedor"> -->
+              <div>
+                <label for="proveedor" class="estil">Proveedor</label>
+                <select class="intento" id="proveedor" v-model="nuevoProducto.proveedores"
+                  data-controller1="<?= site_url('proveedores/inventario'); ?>" method="GET" 
+                  placeholder="Seleccionar">
+                  <!-- <option value="">Seleccionar</option> -->
+                  <option v-for="proveedor in proveedores" :key="proveedor.id_proveedor" :value="proveedor.id_proveedor">
+                    {{ proveedor.nombre_proveedor }}
+                  </option>
+                </select>
+              </div>
               <button type="submit" class="close-btn">{{ editando ? "Guardar cambios" : "Agregar producto" }}</button>
               <div class="modal-footer">
                 <button type="button" class="boton_cerrar btn btn-secondary" @click="cerrarModal">Cerrar</button>

@@ -81,6 +81,22 @@ table {
     margin-bottom: 20px;
     margin-left: 2%;
 }
+
+/* Contenedor del cuerpo */
+.table-body {
+    display: block; /* Asegura scroll solo en el cuerpo */
+    max-height: 320px; /* Altura máxima para el cuerpo */
+    overflow-y: auto; /* Scroll vertical si es necesario */
+    overflow-x: hidden; /* Evitar scroll horizontal */
+    margin-top:-21px;
+    width: 102%;
+  }
+
+  .table-body table {
+    width: 100%; /* Asegura que las columnas coincidan */
+    border-collapse: collapse;
+}
+
 th,
 td {
     border: 1px solid black;
