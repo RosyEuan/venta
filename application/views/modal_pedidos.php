@@ -17,7 +17,7 @@
 
 <body>
   <div id="app">
-  <div :class="['sidebar', { open: isSidebarOpen }]">
+    <div :class="['sidebar', { open: isSidebarOpen }]">
       <button class="toggle-btn" @click="toggleSidebar">☰</button>
       <div class="logo">
         <img src="img/LogoCytisum.png" alt="Logo" @click="closeSidebar">
@@ -99,32 +99,34 @@
           </div>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th colspan="2" class="alimentos">Registrar Alimentos</th>
-            </tr>
-            <tr>
-              <th class="col-alimento">Alimento/Bebida</th>
-              <th class="alimento">Cantidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in items" :key="index" style="cursor: pointer;">
-            <td class="col-alimento">
-                <select v-model="item.food" class="select-alimento editable">
-                  <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
-                  <option value="Frijolito con puerquito">Frijolito con puerquito</option>
-                  <option value="Tacos al pastor">Tacos al pastor</option>
-                </select>
-              </td>
-              <td>
-                <div class="editable" contenteditable="true" v-text="item.quantity"
-                  @input="item.quantity = $event.target.innerText"></div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-wrapper">
+          <table style="width: 100%;">
+            <thead>
+              <tr>
+                <th colspan="2" class="alimentos">Registrar Alimentos</th>
+              </tr>
+              <tr>
+                <th class="col-alimento">Alimento/Bebida</th>
+                <th class="alimento">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in items" :key="index" style="cursor: pointer;">
+                <td class="col-alimento">
+                  <select v-model="item.food" class="select-alimento editable">
+                    <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                    <option value="Frijolito con puerquito">Frijolito con puerquito</option>
+                    <option value="Tacos al pastor">Tacos al pastor</option>
+                  </select>
+                </td>
+                <td>
+                  <div class="editable" contenteditable="true" v-text="item.quantity"
+                    @input="updateRow(index, 'quantity', $event.target.innerText)"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <button class="btn">Registrar</button>
       </div>
 
@@ -213,7 +215,36 @@
             <p>Actualizar estos datos modificaría el ticket final.</p>
           </div>
 
-          <table class="popup-table">
+          <div class="table-wrapper2">
+          <table  class="popup-table" style="width: 100%;">
+            <thead>
+              <tr>
+                <th colspan="2" class="table-header">Registrar Alimentos</th>
+              </tr>
+              <tr>
+                <th class="table-column-header">Alimento/Bebida</th>
+                <th class="table-column-header">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in modalItems" :key="index" style="cursor: pointer;">
+                <td  class="table-cell">
+                  <select v-model="item.food" class="select-table-column-header editable">
+                    <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                    <option value="Frijolito con puerquito">Frijolito con puerquito</option>
+                    <option value="Tacos al pastor">Tacos al pastor</option>
+                  </select>
+                </td>
+                <td  class="table-cell">
+                  <div class="editable-cell" contenteditable="true" v-text="item.quantity"
+                    @input="updateModalRow(index, 'quantity', $event.target.innerText)"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+          <!-- <table class="popup-table">
             <thead>
               <tr>
                 <th colspan="2" class="table-header">Registrar Alimentos</th>
@@ -235,12 +266,12 @@
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
           <div class="modal-footer">
-                <button type="button" class="boton_cerrar btn btn-secondary" @click="closeModal">Cerrar</button>
-              </div>
+            <button type="button" class="boton_cerrar btn btn-secondary" @click="closeModal">Cerrar</button>
+          </div>
         </div>
-        
+
       </div>
 
       <script>
@@ -261,7 +292,6 @@
                 { food: '', quantity: '' },
               ],
               modalItems: [
-                { food: '', quantity: '' },
                 { food: '', quantity: '' },
                 { food: '', quantity: '' },
               ], // Esta es la copia local de los datos de la tabla para el modal
@@ -315,6 +345,18 @@
             },
             closeModal() {
               this.isModalOpen = false;
+            },
+            updateRow(index, field, value) {
+              this.items[index][field] = value;
+              if (index === this.items.length - 1) {
+                this.items.push({ food: '', quantity: '' });
+              }
+            },
+            updateModalRow(index, field, value) {
+              this.modalItems[index][field] = value;
+              if (index === this.modalItems.length - 1) {
+                this.modalItems.push({ food: '', quantity: '' });
+              }
             },
           },
         }).mount('#app');
