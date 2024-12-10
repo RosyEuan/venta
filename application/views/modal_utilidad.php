@@ -155,6 +155,11 @@
                   <label for="proveedor">Proveedor</label>
                   <input class="orden" type="text" id="proveedor" v-model="nuevoProducto.proveedores"
                     placeholder="Escribe el nombre del proveedor" />
+                      <!-- <select class="orden" id="proveedor" v-model="nuevoProducto.proveedores"
+                    data-controller1="<?= site_url('proveedores/inventario'); ?>" method="GET" placeholder="Seleccionar">
+                    <option v-for="proveedor in proveedores" :key="proveedor.id_proveedor" :value="proveedor.id_proveedor">
+                    {{ proveedor.nombre_proveedor }}
+                    </option> -->
                 </div>
               </div>
               <div class="grid-container">

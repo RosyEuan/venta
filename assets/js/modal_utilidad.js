@@ -86,6 +86,24 @@ const app = Vue.createApp({
     closeSidebar() {
       this.isSidebarOpen = false;
     },
+    cargarProveedores() {
+      const url = $('#proveedor').data('controller1');
+      $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: (response) => {
+          if (response.status === 'success') {
+            this.proveedores = response.data;
+          } else {
+            alert('No se pudieron cargar los proveedores');
+          }
+        },
+        error: (jqXHR, textStatus, error) => {
+          console.error('Error al cargar los proveedores:', textStatus, error);
+        }
+      });
+    }, 
     abrirModal() {
       this.productoEditando = null;
       this.mostrarModal = true;
