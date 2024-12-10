@@ -328,7 +328,8 @@ h1 {
     gap: 40px;
     flex-direction: row;
     justify-content: space-evenly;
-    margin-bottom: 6%;
+    margin-bottom: 4%;
+    padding-left: 13%;
 }
 .forms-row {
     display: inline-flex;
@@ -415,7 +416,7 @@ h1 {
     color: black;
     height: 48px;
     margin-bottom: 40px;
-    margin-right: 82px;
+    margin-right: 158px;
 }
 .btn_cerrar {
     background-color: #515C64;

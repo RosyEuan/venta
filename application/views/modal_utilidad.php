@@ -96,7 +96,46 @@
             <button><i class="fas fa-search"></i></button>
           </div>
         </div>
-        <table>
+        
+        <div class="table-container">
+  <!-- Encabezado -->
+  <div class="table-header">
+    <table>
+      <thead>
+        <tr class="lempo">
+        <th>ID</th>
+          <th>Utilidad</th>
+          <th>Proveedores</th>
+          <th>Fecha adquisición</th>
+          <th>Cant.</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <!-- Cuerpo -->
+  <div class="table-body">
+    <table>
+      <tbody>
+        <tr v-for="item in productosFiltrados" :key="item.id" class="siguiente">
+            <td>{{ item.id }}</td>
+              <td>{{ item.utilidad }}</td>
+              <td>{{ item.proveedores }}</td>
+              <td>{{ item.fecha_adquisicion }}</td>
+              <td>{{ item.cant }}</td>
+              <td>{{ item.estado }}</td>
+          <td class="actions">
+            <button class="editar-btn" @click="abrirModalEditar(item)"><i class="fas fa-pencil-alt"></i>Editar</button>
+            <button class="eliminar-btn" @click="eliminarProducto(item.id)"><i class="fas fa-trash"></i>Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+        <!-- <table>
           <thead>
             <tr class="lempo">
               <th>ID</th>
@@ -124,7 +163,7 @@
               </td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
         <div class="bottom-buttons">
           <button @click="abrirModal" class="btn-submit">Agregar utilidad</button>
         </div>

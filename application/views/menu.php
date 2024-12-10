@@ -123,14 +123,14 @@
         <!-- Nombre -->
         <div class="form-group" style="grid-column: span 2;">
           <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" v-model="nombre" name="nombre_platillo">
+          <input type="text" id="nombre" v-model="nombre" :disabled="isEditing" name="nombre_platillo">
         </div>
 
         <!-- Categoría y Precio (en la misma fila) -->
         <div class="form-group-row" style="grid-column: span 2;">
           <div class="form-group">
             <label for="categoria">Categoría:</label>
-            <select id="categoria" v-model="categoria" name="categorias_platillo">
+            <select id="categoria" v-model="categoria">
               <option value="">Seleccionar</option>
               <option value="Platillos">Platillos</option>
               <option value="Bebidas">Bebidas</option>
@@ -153,7 +153,7 @@
           </div>
           <div class="form-group">
             <label for="precio-descuento">Precio con descuento:</label>
-            <input type="number" id="precio-descuento" :value="precioConDescuento" readonly>
+            <input type="number" id="precio-descuento" :value="precioConDescuento" readonly disabled>
           </div>
         </div>
 

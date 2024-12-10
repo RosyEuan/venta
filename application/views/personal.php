@@ -142,6 +142,14 @@
           </div>
           <div class="form-row align-items-center mb-3">
             <div class="col-4">
+              <label for="lastname">Apellido</label>
+            </div>
+            <div class="col-8">
+              <input type="text" id="lastname" v-model="newEmployee.lastname" required />
+            </div>
+          </div>
+          <div class="form-row align-items-center mb-3">
+            <div class="col-4">
               <label for="dob">Fecha de Nacimiento</label>
             </div class="col-8">
             <div>

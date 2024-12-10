@@ -15,6 +15,22 @@ body {
     gap: 10px;
     padding-left: 168px;
 }
+
+.table-body table {
+    width: 100%; 
+    border-collapse: collapse;
+  }
+  .table-header{
+    margin-left: 13px;
+  }
+  .table-body {
+    display: block; 
+    max-height: 300px; 
+    overflow-y: auto; 
+    margin-left: 13px;
+    overflow-x: hidden;
+  }
+
 .inactivo {
     padding: 10px 20px;
     background-color: #423BAA;
@@ -74,11 +90,10 @@ body {
     color: #aaa;
 }
 table {
-    width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
-    margin-bottom: 20px;
-    margin-left: 2%;
+    margin-bottom: -1px;
+    margin-left: 1%;
 }
 th,
 td {
@@ -243,17 +258,55 @@ tr:nth-child(even) {
     font-weight: 400;
     line-height: normal;
 }
-th:nth-child(2),
+th:first-child{
+    width: 10.7%;
+    padding-left: 0;
+    padding-right: 0;
+}
+td:first-child {
+    width: 11.21%;
+}
+th:nth-child(2){
+    width: 16.7%;
+}
 td:nth-child(2) {
-    width: 200px;
+    width: 17.1%;
 }
-th:nth-child(3),
+th:nth-child(3){
+    width: 15.4%;
+    padding-left: 0;
+    padding-right: 0;
+}
 td:nth-child(3) {
-    width: 200px;
+    width: 15.88%;
 }
-th:nth-child(4),
+th:nth-child(4){
+    width: 16.3%;
+    padding-left: 0;
+    padding-right: 0;
+}
 td:nth-child(4) {
-    width: 170px;
+    width: 16.9%;
+}
+th:nth-child(5){
+    width: 7%;
+    padding-left: 0;
+    padding-right: 0;
+}
+td:nth-child(5) {
+    width: 7.3%;
+}
+th:nth-child(6){
+    width: 8%;
+}
+td:nth-child(6) {
+    width: 9%;
+}
+th:nth-child(7){
+    width: 24%;
+}
+td:nth-child(7) {
+    width: 92%;
 }
 .btn-submit:hover {
     background-color: #ffc107;

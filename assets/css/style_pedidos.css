@@ -597,7 +597,9 @@ width: 75%;
     width: 127%;
 }
 .mesa-tam{
-    margin-right: 146px;
+    margin-right: 91px;
+    margin-left: 4%;
+    width: 340px;
 }
 .importe-input, .cambio-input, .metodo-input {
 gap:20px;
