@@ -9,6 +9,8 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJr+6tSey1PfEfh1r5Vtgg4f1uD1rfLql5r+9siT5PwbYO0xJYniFZp4j9S+" crossorigin="anonymous">
+
 
   <link href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
@@ -88,7 +90,7 @@
             <button :class="{ active: filter === 'Platillos' }" @click="setFilter('Platillos')">Platillos</button>
             <button :class="{ active: filter === 'Bebidas' }" @click="setFilter('Bebidas')">Bebidas</button>
             <button :class="{ active: filter === 'Postres' }" @click="setFilter('Postres')">Postres</button>
-            <button :class="{ active: filter === 'alcohol' }" @click="setFilter('Alcohol')">Alcohol</button>
+            <button :class="{ active: filter === 'Alcohol' }" @click="setFilter('Alcohol')">Alcohol</button>
           </div>
           <button @click="openAddModal" class="add-btn">Agregar</button>
         </div>
@@ -130,7 +132,7 @@
         <div class="form-group-row" style="grid-column: span 2;">
           <div class="form-group">
             <label for="categoria">Categoría:</label>
-            <select id="categoria" v-model="categoria">
+            <select id="categoria" v-model="categoria" :disabled="isEditing">
               <option value="">Seleccionar</option>
               <option value="Platillos">Platillos</option>
               <option value="Bebidas">Bebidas</option>

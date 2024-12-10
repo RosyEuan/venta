@@ -1,5 +1,5 @@
 <?php
-require_once APPPATH . 'models/MenuModel.php'; // Carga el modelo basado en PDO
+require_once APPPATH . 'models/MenuModel.php';
 
 class MenuController extends CI_Controller
 {
@@ -9,7 +9,7 @@ class MenuController extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->menuModel = new MenuModel(); // Instancia el modelo basado en PDO
+    $this->menuModel = new MenuModel();
     $this->load->library('form_validation');
   }
   //-------------------------------------------------------------------------------------------------------------------

@@ -109,7 +109,7 @@
       <div class="modal">
         <button type="submit" class="close-btn" @click="closeModal">X</button>
         <h2 class="titulo_modal">Formulario de Reservación</h2>
-        <form @submit.prevent="submitForm">
+        <form @submit.prevent="submitForm" class="formulario">
           <div class="form-row">
             <div class="form-column">
               <div class="form-group">

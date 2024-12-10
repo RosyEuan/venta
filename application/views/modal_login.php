@@ -58,7 +58,6 @@
         <form class="formulario__register" style="display: none;" id="formulario_registro" method="POST"
           data-controller-url="<?= site_url('registrarse'); ?>">
           <h2 class="cuenta">Crear Cuenta</h2>
-          <input type="text" placeholder="Nombre" class="estemm" name="registro_nombre">
           <input type="text" placeholder="Usuario" class="estedee" name="registro_usuario">
           <div class="password-container" style="position: relative;">
             <input id="register-password" type="password" placeholder="Contraseña" class="estedee" name="registro_contraseña">
@@ -68,7 +67,7 @@
             <input id="register-confirm-password" type="password" placeholder="Asegurar contraseña" class="estedee" name="registro_contraseña2">
             <i id="toggleRegisterConfirmPassword" class="fas fa-eye confirm-password-icon"></i>
           </div>
-          <input type="text" placeholder="Puesto" class="estedee" name="registro_id_empleado">
+          <input type="text" placeholder="ID" class="estedee" name="registro_id_empleado">
           <button type="submit" class="porq">Crear</button>
           <p class="colpe">¿Ya tienes una cuenta? <a href="#" onclick="iniciarSesion()" class="mercure">Iniciar Sesión</a></p>
           <div class="legal-links">

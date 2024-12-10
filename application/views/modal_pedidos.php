@@ -87,23 +87,23 @@
 
     <div class="content">
       <!-- Registro de pedido -->
-      <div class="registro-pedidoss">
+      <form class="registro-pedidoss" method="POST" id="formulario_registro">
         <h2 class="titulo-registro">Registro de Pedido</h2>
 
         <div class="form-group">
           <div>
             <label for="nombre" class="nombre-cliente">Nombre(s) del cliente</label>
-            <input type="text" id="nombre" v-model="nombre" placeholder="Nombre(s)" class="campo-nombre">
+            <input type="text" id="nombre" v-model="nombre" name="registro_nombre" placeholder="Nombre(s)" class="campo-nombre">
           </div>
           <div>
-            <label for="apellido" class="apellido-cliente">Apellido(s) del cliente</label>
-            <input type="text" id="apellido" v-model="apellido(s)" placeholder="Apellido(s)" class="campo-apellido">
+            <label for="correo" class="correo-cliente">Correo del cliente</label>
+            <input type="text" id="correo" v-model="correo(s)" name="registro_correo" placeholder="correo" class="campo-correo">
           </div>
         </div>
         <div class="form-group">
           <div>
             <label for="mesa" class="mesa">Mesa</label>
-            <input type="number" id="mesa" v-model="mesa" placeholder="Num.Mesa" class="campo-mesa" min="1" max="200">
+            <input type="number" id="mesa" v-model="mesa" name="registro_mesa" placeholder="Num.Mesa" class="campo-mesa" min="1" max="200">
           </div>
         </div>
 
@@ -121,18 +121,18 @@
             <tr v-for="(item, index) in items" :key="index" style="cursor: pointer;">
               <td class="col-alimento">
                 <div class="editable" contenteditable="true" v-text="item.food"
-                  @input="item.food = $event.target.innerText"></div>
+                  @input="item.food = $event.target.innerText" name="registro_pedido"></div>
               </td>
 
               <td>
                 <div class="editable" contenteditable="true" v-text="item.quantity"
-                  @input="item.quantity = $event.target.innerText"></div>
+                  @input="item.quantity = $event.target.innerText" name="registro_cantidad"></div>
               </td>
             </tr>
           </tbody>
         </table>
-        <button class="btn">Registrar</button>
-      </div>
+        <button type="submit" class="btn">Registrar</button>
+      </form>
 
 
       <!-- Usuarios -->

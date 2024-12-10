@@ -114,8 +114,21 @@ createApp({
             this.menuItems.push(response);
           }
           console.log('Respuesta del servidor', response);
-          alert(this.isEditing ? 'Platillo actualizado' : 'Platillo agregado');
-          this.closeModal();
+          //alert(this.isEditing ? 'Platillo actualizado' : 'Platillo agregado');
+          $('#formulario_editarMenu').html(
+            '<div class="alert alert-success text-center">' +
+              '<h1 class="custom-message">' +
+              (this.isEditing
+                ? 'Se ha actualizado el platillo/bebida'
+                : 'Se ha agregado un nuevo platillo/bebida') +
+              '</h1>' +
+              '<h1 class="mt-3">Puede cerrar la ventana</h1>' +
+              '</div>'
+          );
+          /* setTimeout(function () {
+            $('.modal-container').html('');
+          }, 2500);
+          $('#formulario_editarMenu').modal('hide');*/
         },
         error: (xhr, status, error) => {
           console.error(
