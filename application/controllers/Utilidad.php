@@ -12,7 +12,7 @@ class Utilidad extends CI_Controller{
     // Método para mostrar las utilidades
     public function obtenerUtilidades() {
         // Obtener las utilidades del modelo
-        $resultados = $this->UtilidadesM->obtenerUtilidades();
+        $resultados = $this->UtilidadM->obtenerUtilidades();
 
         // Verificar si hay resultados
         if (!empty($resultados)) {
@@ -36,63 +36,143 @@ class Utilidad extends CI_Controller{
         }
     }
 
+//     public function obtenerUtilidades()
+// {
+//     // Obtener los productos desde la base de datos
+//     $productos = $this->UtilidadM->obtenerUtilidades();
+
+//     // Enviar la respuesta en formato JSON
+//     if ($productos) {
+//         echo json_encode([
+//             'status' => 'success',
+//             'data' => $productos
+//         ]);
+//     } else {
+//         echo json_encode([
+//             'status' => 'error',
+//             'message' => 'No se encontraron productos'
+//         ]);
+//     }
+// }
+
+
+
+    // public function insertarUtilidad()
+    // {
+    //     // Recibir y validar los datos del formulario
+    //     $nombre_utilidad = $this->input->post('nombre_utilidad');
+    //     $descripcion = $this->input->post('descripcion');
+    //     $cantidad = $this->input->post('cantidad');
+    //     $estado = $this->input->post('estado');
+    //     $id_proveedor = $this->input->post('id_proveedor');
+    //     $fecha_adquisicion = $this->input->post('fecha_adquisicion');
+    //     $precio_unitario = $this->input->post('precio_unitario');
+
+    //     // Validación de datos
+    //     if (empty($nombre_utilidad) || empty($descripcion) || empty($cantidad) || empty($estado) || empty($id_proveedor) || empty($fecha_adquisicion) || empty($precio_unitario)) {
+    //         $response = [
+    //             'status' => 'error',
+    //             'message' => 'Datos inválidos o incompletos'
+    //         ];
+    //         $this->output
+    //             ->set_status_header(400) // Bad Request
+    //             ->set_content_type('application/json')
+    //             ->set_output(json_encode($response));
+    //         return;
+    //     }
+
+    //     // Llamar al modelo para insertar la utilidad
+    //     $insert = $this->UtilidadesM->insertarUtilidad(
+    //         $nombre_utilidad, 
+    //         $descripcion, 
+    //         $cantidad, 
+    //         $estado, 
+    //         $id_proveedor, 
+    //         $fecha_adquisicion, 
+    //         $precio_unitario
+    //     );
+
+    //     // Verificar la respuesta del modelo
+    //     if ($insert['status'] === 'success') {
+    //         $response = [
+    //             'status' => 'success',
+    //             'message' => $insert['message']
+    //         ];
+    //         $this->output
+    //             ->set_status_header(200) // OK
+    //             ->set_content_type('application/json')
+    //             ->set_output(json_encode($response));
+    //     } else {
+    //         $response = [
+    //             'status' => 'error',
+    //             'message' => $insert['message']
+    //         ];
+    //         $this->output
+    //             ->set_status_header(500) // Internal Server Error
+    //             ->set_content_type('application/json')
+    //             ->set_output(json_encode($response));
+    //     }
+    // }
 
     public function insertarUtilidad()
-    {
-        // Recibir y validar los datos del formulario
-        $nombre_utilidad = $this->input->post('nombre_utilidad');
-        $descripcion = $this->input->post('descripcion');
-        $cantidad = $this->input->post('cantidad');
-        $estado = $this->input->post('estado');
-        $id_proveedor = $this->input->post('id_proveedor');
-        $fecha_adquisicion = $this->input->post('fecha_adquisicion');
-        $precio_unitario = $this->input->post('precio_unitario');
+{
+    // Decodificar JSON del cuerpo de la solicitud
+    $input = json_decode(file_get_contents('php://input'), true);
 
-        // Validación de datos
-        if (empty($nombre_utilidad) || empty($descripcion) || empty($cantidad) || empty($estado) || empty($id_proveedor) || empty($fecha_adquisicion) || empty($precio_unitario)) {
-            $response = [
-                'status' => 'error',
-                'message' => 'Datos inválidos o incompletos'
-            ];
-            $this->output
-                ->set_status_header(400) // Bad Request
-                ->set_content_type('application/json')
-                ->set_output(json_encode($response));
-            return;
-        }
+    // Validar y asignar los datos
+    $nombre_utilidad = $input['nombre_utilidad'] ?? null;
+    $descripcion = $input['descripcion'] ?? null;
+    $cantidad = $input['cantidad'] ?? null;
+    $estado = $input['estado'] ?? null;
+    $id_proveedor = $input['id_proveedor'] ?? null;
+    $fecha_adquisicion = $input['fecha_adquisicion'] ?? null;
+    $precio_unitario = $input['precio_unitario'] ?? null;
 
-        // Llamar al modelo para insertar la utilidad
-        $insert = $this->UtilidadesM->insertarUtilidad(
-            $nombre_utilidad, 
-            $descripcion, 
-            $cantidad, 
-            $estado, 
-            $id_proveedor, 
-            $fecha_adquisicion, 
-            $precio_unitario
-        );
-
-        // Verificar la respuesta del modelo
-        if ($insert['status'] === 'success') {
-            $response = [
-                'status' => 'success',
-                'message' => $insert['message']
-            ];
-            $this->output
-                ->set_status_header(200) // OK
-                ->set_content_type('application/json')
-                ->set_output(json_encode($response));
-        } else {
-            $response = [
-                'status' => 'error',
-                'message' => $insert['message']
-            ];
-            $this->output
-                ->set_status_header(500) // Internal Server Error
-                ->set_content_type('application/json')
-                ->set_output(json_encode($response));
-        }
+    // Validación de datos
+    if (empty($nombre_utilidad) || empty($descripcion) || empty($cantidad) || empty($estado) || empty($id_proveedor) || empty($fecha_adquisicion) || empty($precio_unitario)) {
+        $response = [
+            'status' => 'error',
+            'message' => 'Datos inválidos o incompletos'
+        ];
+        $this->output
+            ->set_status_header(400)
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+        return;
     }
+
+    // Llamar al modelo para insertar la utilidad
+    $insert = $this->UtilidadM->insertarUtilidad(
+        $nombre_utilidad, 
+        $descripcion, 
+        $cantidad, 
+        $estado, 
+        $id_proveedor, 
+        $fecha_adquisicion, 
+        $precio_unitario
+    );
+
+    // Respuesta
+    if ($insert['status'] === 'success') {
+        $response = [
+            'status' => 'success',
+            'message' => $insert['message']
+        ];
+        $this->output
+            ->set_status_header(200)
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    } else {
+        $response = [
+            'status' => 'error',
+            'message' => $insert['message']
+        ];
+        $this->output
+            ->set_status_header(500)
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+}
 
     public function actualizarInventario()
     {

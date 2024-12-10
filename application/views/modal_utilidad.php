@@ -96,7 +96,47 @@
             <button><i class="fas fa-search"></i></button>
           </div>
         </div>
-        <table>
+        
+        <div class="table-container">
+  <!-- Encabezado -->
+  <div class="table-header">
+    <table>
+      <thead>
+        <tr class="lempo">
+        <th>ID</th>
+          <th>Utilidad</th>
+          <th>Proveedores</th>
+          <th>Fecha adquisición</th>
+          <th>Cant.</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <!-- Cuerpo -->
+  <div id="utilidades" class="table-body" data-controller="<?= site_url('obtener/utilidades'); ?>" method="GET"
+  >
+    <table>
+      <tbody>
+        <tr v-for="item in productosFiltrados" :key="item.id" class="siguiente">
+            <td>{{ item.id }}</td>
+              <td>{{ item.utilidad }}</td>
+              <td>{{ item.proveedores }}</td>
+              <td>{{ item.fecha_adquisicion }}</td>
+              <td>{{ item.cant }}</td>
+              <td>{{ item.estado }}</td>
+          <td class="actions">
+            <button class="editar-btn" @click="abrirModalEditar(item)"><i class="fas fa-pencil-alt"></i>Editar</button>
+            <button class="eliminar-btn" @click="eliminarProducto(item.id)"><i class="fas fa-trash"></i>Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+        <!-- <table>
           <thead>
             <tr class="lempo">
               <th>ID</th>
@@ -124,7 +164,7 @@
               </td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
         <div class="bottom-buttons">
           <button @click="abrirModal" class="btn-submit">Agregar utilidad</button>
         </div>
@@ -134,7 +174,8 @@
           <div class="modal-content">
             <button type="button" class="btn-close" @click="cerrarModal" aria-label="Close">X</button>
             <h2 class="modal-header">{{ productoEditando ? 'Editar Utilidad' : 'Agregar Utilidad' }}</h2>
-            <form @submit.prevent="guardarProducto">
+
+            <form @submit.prevent="guardarProducto" id="insertar" data-controller2="<?= site_url('insertar/utilidades'); ?>" method="POST">
               <div>
                 <div class="form-group">
                   <label for="nombreProducto">Nombre de la utilidad</label>

@@ -1,7 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
-      isSidebarOpen:true,
+      isSidebarOpen:false,
       productos: [],
       searchQuery: '',
       modalActivo: false,

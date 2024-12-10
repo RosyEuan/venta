@@ -86,3 +86,5 @@ $route['obtener/proveedores']           = 'Proveedores/obtenerProveedores';
 $route['insertar/proveedores']          = 'Proveedores/insertarProveedores';
 $route['actualizar/proveedores']        = 'Proveedores/actualizar';
 $route['eliminar/proveedores']          = 'Proveedores/eliminar';
+$route['obtener/utilidades']          = 'Utilidad/obtenerUtilidades';
+$route['insertar/utilidades']          = 'Utilidad/insertarUtilidad';

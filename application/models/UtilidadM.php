@@ -22,7 +22,7 @@ class UtilidadM extends CI_Model{
                 i.id_utilidad AS ID,
                 i.nombre_utilidad AS Utilidad,
                 i.descripcion AS Descripción,
-                i.cantidad AS Cantidad,
+                i.cantidad AS Cant,
                 i.estado AS Estado,
                 p.nombre_proveedor AS Proveedor,
                 i.fecha_adquisicion AS FechaAdquisicion,
