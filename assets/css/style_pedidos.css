@@ -636,15 +636,16 @@ width:85%;
 
 .popup-table {
 width: 94%;
-margin: 8px auto;
+margin: 0 auto;
 border-collapse: separate;
+margin-bottom: 0;
 }
 
 .table-header {
 text-align: center;
 background: #D9D9D9;
 border: 2px solid #000;
-padding: 10px;
+padding: 14px;
 font-size: 24px;
 font-family: "Merriweather";
 }
