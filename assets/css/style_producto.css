@@ -14,6 +14,9 @@ body {
     gap: 16px;
     padding-left: 168px;
 }
+.fila-baja-cantidad {
+    background-color: #af6868 !important;
+  }
 .inactivo {
     padding: 10px 20px;
     background-color: #423BAA;

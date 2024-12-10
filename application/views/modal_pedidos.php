@@ -111,11 +111,13 @@
           </thead>
           <tbody>
             <tr v-for="(item, index) in items" :key="index" style="cursor: pointer;">
-              <td class="col-alimento">
-                <div class="editable" contenteditable="true" v-text="item.food"
-                  @input="item.food = $event.target.innerText"></div>
+            <td class="col-alimento">
+                <select v-model="item.food" class="select-alimento editable">
+                  <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                  <option value="Frijolito con puerquito">Frijolito con puerquito</option>
+                  <option value="Tacos al pastor">Tacos al pastor</option>
+                </select>
               </td>
-
               <td>
                 <div class="editable" contenteditable="true" v-text="item.quantity"
                   @input="item.quantity = $event.target.innerText"></div>

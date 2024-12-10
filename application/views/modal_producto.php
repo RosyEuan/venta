@@ -101,7 +101,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in productosFiltrados" :key="item.id" class="cosas">
+            <tr v-for="item in productosFiltrados" :key="item.id" :class="{'fila-baja-cantidad': parseInt(item.cantidad) <= 20}"  class="cosas">
               <td>{{ item.id }}</td>
               <td>{{ item.producto }}</td>
               <td>{{ item.proveedores }}</td>
@@ -152,10 +152,10 @@
               isSidebarOpen: false,
               productos: [
                 { id: 1, producto: "Pollo asado", proveedores: "Prueba", cantidad: 5 },
-                { id: 2, producto: "Panuchos", proveedores: "Prueba", cantidad: 5 },
-                { id: 3, producto: "Tacos al pastor", proveedores: "Prueba", cantidad: 5 },
-                { id: 4, producto: "Pollo asado", proveedores: "Prueba", cantidad: 5 },
-                { id: 5, producto: "Pollo asado", proveedores: "Prueba", cantidad: 5 },
+                { id: 2, producto: "Panuchos", proveedores: "Prueba", cantidad: 50 },
+                { id: 3, producto: "Tacos al pastor", proveedores: "Prueba", cantidad: 15 },
+                { id: 4, producto: "Pollo asado", proveedores: "Prueba", cantidad: 25 },
+                { id: 5, producto: "Pollo asado", proveedores: "Prueba", cantidad: 20 },
               ],
               textoBusqueda: "", // Agregamos una variable para almacenar el texto de búsqueda
               modalActivo: false,
