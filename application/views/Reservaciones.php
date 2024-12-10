@@ -8,6 +8,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
+
   <!-- FullCalendar CSS -->
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.css" rel="stylesheet">
 
@@ -58,19 +59,19 @@
           </a>
         </li>
       </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }" id="button_logout"
-        data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
+      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
 
         <a href="<?= site_url('perfil') ?>">
           <img src="img/Admin.png" alt="Usuario">
         </a>
-        <img src="img/Logout.png" alt="Salir">
+        <img src="img/Logout.png" alt="Salir" id="button_logout"
+          data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
         <a href="<?= site_url('perfil') ?>">
           <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
         </a>
-        <span>Angel Chi<br>Administrador</span>
+        <span>Hola! <?php echo $this->session->userdata('usuario'); ?><br><?php echo $this->session->userdata('puesto'); ?></span>
       </div>
     </nav>
 

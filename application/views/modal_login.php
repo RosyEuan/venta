@@ -82,21 +82,24 @@
   </main>
 
   <!-- Modal de recuperación de contraseña -->
-  <div class="password-modal" id="passwordModal">
+  <form class="password-modal" id="passwordModal" method="POST" data-controller-verify="<?= site_url('verificar_correo'); ?>">
     <div class="password-recovery">
       <h2>¡Recuperar tu contraseña!</h2>
       <p>Te enviaremos un correo para cambiar tu contraseña</p>
       <div class="form-container">
-        <input type="email" placeholder="Ingrese su correo" required />
+        <input type="email" id="solicitud_recuperar" name="solicitud_recuperar"
+          placeholder="Ingrese su correo" required />
         <button type="submit">Enviar</button>
       </div>
       <div class="back">
         <a href="#" onclick="closePasswordModal()">Regresar <i>&#x21B6;</i></a>
       </div>
     </div>
-  </div>
+  </form>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="/venta/assets/js/verificar_correo.js"></script>
   <script src="/venta/assets/js/login.js"></script>
 </body>
 

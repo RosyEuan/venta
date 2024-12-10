@@ -29,7 +29,7 @@ class dashboard extends CI_Controller
         break;
       case $rolBase[4]['id_puesto']:
 
-        $this->load->view('Reservacioes');
+        $this->load->view('Reservaciones');
         break;
       case $rolBase[5]['id_puesto']:
 
