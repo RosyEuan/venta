@@ -87,6 +87,7 @@ $route['api/menu/guardarplatillo']      = 'MenuController/GuardarPlatillo';
 $route['api/menu/mostrarplatillo']      = 'MenuController/obtenerMenu';
 $route['api/menu/actualizarplatillo']   = 'MenuController/ActualizarPlatillo';
 $route['api/menu/mostrarcategorias']    = 'MenuController/MostrarCategorias';
+
 $route['actualizarPassword']            = 'Welcome/actualizarPassword';
 $route['datos_perfil']                  = 'MEditar_Perfil/obtenerPerfil';
 $route['actualizar_perfil']             = 'MEditar_Perfil/actualizarPerfil';
@@ -99,5 +100,7 @@ $route['obtener/proveedores']           = 'Proveedores/obtenerProveedores';
 $route['insertar/proveedores']          = 'Proveedores/insertarProveedores';
 $route['actualizar/proveedores']        = 'Proveedores/actualizar';
 $route['eliminar/proveedores']          = 'Proveedores/eliminar';
-$route['obtener/utilidades']          = 'Utilidad/obtenerUtilidades';
+$route['obtener/utilidades']            = 'Utilidad/obtenerUtilidades';
 $route['insertar/utilidades']          = 'Utilidad/insertarUtilidad';
+// Pedidos
+$route['api/pedidos']                = 'pedidosController/GenerarPedido';

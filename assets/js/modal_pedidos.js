@@ -92,6 +92,51 @@ const sidebarApp = Vue.createApp({
     },
     closeModal() {
       this.isModalOpen = false;
+    },
+    registrarPedido(event) {
+      event.preventDefault();
+
+      const data = {
+        registro_nombre: this.nombre,
+        registro_correo: this.correo,
+        registro_mesa: this.mesa,
+        items: this.items
+      };
+
+      fetch('http://localhost/venta/api/pedidos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status === 'success') {
+            alert('Pedido registrado correctamente');
+            this.nombre = ''; // Limpiar campos
+            this.correo = '';
+            this.mesa = '';
+            this.items = [
+              { food: '', quantity: '' },
+              { food: '', quantity: '' },
+              { food: '', quantity: '' }
+            ];
+          } else {
+            alert('Error: ' + data.message);
+            console.error('Error en consola' + data.message);
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          alert('Hubo un problema al registrar el pedido.');
+        });
     }
+
+    /*,
+
+    actualizarUsuarios() {
+      
+    */
   }
 }).mount('#app');

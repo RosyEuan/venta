@@ -8,106 +8,34 @@ class pedidosController extends CI_Controller
     $this->load->library('form_validation');
     $this->load->model('pedidosModel');
   }
-  private function registrarCliente()
+
+  private function validarFormularioCliente($data)
   {
-    $this->validarFormularioCliente();
-    if ($this->form_validation->run() === FALSE) {
-      return $this->GetResponse_data(400, 'error', strip_tags(validation_errors()));
+    if (empty($data['registro_nombre']) || empty($data['registro_correo'])) {
+      return 'El campo nombre y correo son requeridos';
     }
-    $data = $this->obtenerDatosFormularioCliente();
-    $id_cliente = $this->pedidosModel->insertCliente($data['registro_nombre'], $data['registro_correo']);
+    return true;
+  }
 
-    if (isset($id_cliente['status']) && $id_cliente['status'] == 'error') {
-      return $this->GetResponse_data(500, 'error', 'El id del cliente no se encontro');
+  private function validarFormularioMesa($data)
+  {
+    if (empty($data['registro_mesa'])) {
+      return 'El campo mesa es requerido';
     }
-    $cliente = $this->pedidosModel->selectClienteId($id_cliente);
+    return true;
+  }
 
-    if (isset($cliente['status']) && $cliente['status'] == 'error') {
-      return $this->GetResponse_data(500, 'error', 'El cliente no se guardo correctamente');
+  private function validarFormularioPedidos($data)
+  {
+    if (empty($data['registro_pedido']) || empty($data['registro_cantidad'])) {
+      return 'El campo de platillo y cantidad son requeridos';
     }
-
-    return $this->GetResponse_data(200, 'success', 'El cliente fue insertado correctamente', $cliente);
-  }
-  //----------------------------------------------------------------------------------------------------------------
-  private function registrarMesa()
-  {
-    $this->validarFormularioMesa();
-    if ($this->form_validation->run() === FALSE) {
-      return $this->GetResponse_data(400, 'error', strip_tags(validation_errors()));
+    if (!is_numeric($data['registro_cantidad'])) {
+      return 'La cantidad debe ser un número';
     }
-
-    $data = $this->obtenerDatosFormularioMesa();
-    $id_mesa = $this->pedidosModel->insertMesa($data['id_mesa']);
-
-    if (isset($id_mesa['status']) && $id_mesa['status'] == 'error') {
-      return $this->GetResponse_data(500, 'error', 'El id de la mesa no se encontro');
-    }
-    $mesa = $this->pedidosModel->selectMesaId($id_mesa);
-
-    if (isset($mesa['status']) && $mesa['status'] == 'error') {
-      return $this->GetResponse_data(500, 'error', 'La mesa no se guardo correctamente');
-    }
-
-    return $this->GetResponse_data(200, 'success', 'El cliente fue insertado correctamente', $mesa);
-  }
-  //-------------------------------------------------------------------------------------------------------------------------
-  private function registrarPedido($id_cliente, $id_empleado, $id_mesa)
-  {
-    $this->validarFormularioPedidos();
-    if ($this->form_validation->run() === FALSE) {
-      return $this->GetResponse_data(400, 'error', strip_tags(validation_errors()));
-    }
-
-    $data_pedido = $this->obtenerDatosFormularioPedidos();
-    $id_pedido = $this->pedidosModel->insertPedido($id_cliente, $id_empleado, $id_mesa);
-
-    if (isset($data_pedido['status']) && $data_pedido['status'] === 'error') {
-      return $this->GetResponse_data(500, 'error', strip_tags(validation_errors()));
-    }
-    $pedido = $this->pedidosModel->selectIdPedido($id_pedido);
+    return true;
   }
 
-  //----------------------------------------------------------------------------------------------------------------------------
-  private function validarFormularioCliente()
-  {
-    $this->form_validation->set_rules('registro_nombre', 'Nombre', 'required|trim', ['required' => 'El campo nombre es requerido']);
-    $this->form_validation->set_rules('registro_correo', 'Correo', 'required|trim', ['required' => 'El campo correo es requerido']);
-  }
-  //----------------------------------------------------------------------------------------------------------------------------------
-  private function validarFormularioMesa()
-  {
-    $this->form_validation->set_rules('registro_mesa', 'Mesa', 'required|trim', ['required' => 'El campo mesa es requerido']);
-  }
-  //--------------------------------------------------------------------------------------------------------------------------------
-  private function validarFormularioPedidos()
-  {
-    $this->form_validation->set_rules('registro_pedido', 'Platillo', 'required|trim', ['required' => 'El campo de platillo es requerido']);
-    $this->form_validation->set_rules('descripcion_cantidad', 'Cantidad', 'required|trim|numeric', ['required' => 'El cantidad descripción es requerido']);
-  }
-  //-----------------------------------------------------------------------------------------------------------------------------
-  private function obtenerDatosFormularioCliente()
-  {
-    return [
-      'registro_nombre' => $this->input->post('registro_nombre'),
-      'registro_correo' => $this->input->post('registro_correo')
-    ];
-  }
-  //--------------------------------------------------------------------------------------------------------------
-  private function obtenerDatosFormularioMesa()
-  {
-    return ['registro_mesa' => $this->input->post('registro_mesa')];
-  }
-  //---------------------------------------------------------------------------------------------------------------
-  private function obtenerDatosFormularioPedidos()
-  {
-    return [
-      'registro_pedido' => $this->input->post('registro_pedido'),
-      'descripcion_cantidad' => $this->input->post('descripcion_cantidad')
-    ];
-  }
-  //------------------------------------------------------------------------------------------------------------
-  private function GeneraPedido() {}
-  //-----------------------------------------------------------------------------------------------------------
   private function GetResponse_data($status, $status_tipo, $message, $data = [])
   {
     $response = [
@@ -120,5 +48,108 @@ class pedidosController extends CI_Controller
       ->set_status_header($status)
       ->set_content_type('application/json')
       ->set_output(json_encode($response));
+  }
+
+  public function GenerarPedido()
+  {
+    // Leer los datos JSON recibidos en el body de la solicitud
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    if (empty($data)) {
+      return $this->GetResponse_data(400, 'error', 'No se recibieron datos.');
+    }
+
+    // Validar los formularios
+    $validationError = $this->validarFormularioCliente($data);
+    if ($validationError !== true) {
+      return $this->GetResponse_data(400, 'error', $validationError);
+    }
+
+    $validationError = $this->validarFormularioMesa($data);
+    if ($validationError !== true) {
+      return $this->GetResponse_data(400, 'error', $validationError);
+    }
+
+    // Validar que al menos un platillo esté incluido
+    if (empty($data['items']) || !is_array($data['items'])) {
+      return $this->GetResponse_data(400, 'error', 'Se deben incluir al menos un platillo en el pedido.');
+    }
+
+    // Registrar cliente
+    $clienteResult = $this->pedidosModel->insertCliente($data['registro_nombre'], $data['registro_correo']);
+
+    if ($clienteResult['status'] === 'error') {
+      return $this->GetResponse_data(500, 'error', $clienteResult['message']);
+    }
+
+    $cliente = $this->pedidosModel->selectClienteId($clienteResult['id']);
+    if (!$cliente) {
+      return $this->GetResponse_data(500, 'error', 'Error al recuperar cliente registrado.');
+    }
+
+    // Registrar mesa
+    $mesaResult = $this->pedidosModel->insertMesas($data['registro_mesa']);
+
+    if ($mesaResult['status'] === 'error') {
+      return $this->GetResponse_data(500, 'error', $mesaResult['message']);
+    }
+
+    $mesa = $this->pedidosModel->selectById('mesas', 'id_mesa', $mesaResult['id']);
+    if (!$mesa) {
+      return $this->GetResponse_data(500, 'error', 'Error al recuperar mesa registrada.');
+    }
+
+    // Registrar pedido
+    $pedidoResult = $this->pedidosModel->insertPedidos($clienteResult['id'], 3, $mesaResult['id']);
+
+    if ($pedidoResult['status'] === 'error') {
+      return $this->GetResponse_data(500, 'error', $pedidoResult['message']);
+    }
+
+    $pedido = $this->pedidosModel->selectPedidos($pedidoResult['id']);
+    if (!$pedido) {
+      return $this->GetResponse_data(500, 'error', 'Error al recuperar pedido registrado.');
+    }
+
+    // Registrar detalles del pedido (múltiples platillos)
+    $detalles = [];
+    foreach ($data['items'] as $item) {
+      // Verificar que cada item tenga un platillo y cantidad
+      if (empty($item['food']) || empty($item['quantity']) || !is_numeric($item['quantity'])) {
+        return $this->GetResponse_data(400, 'error', 'Cada platillo debe tener nombre y cantidad válida.');
+      }
+
+      // Buscar el platillo
+      $platillo = $this->pedidosModel->selectPlatillo($item['food']);
+      if (!$platillo) {
+        return $this->GetResponse_data(500, 'error', 'Platillo no encontrado: ' . $item['food']);
+      }
+
+      // Calcular el precio total
+      $precioTotal = $item['quantity'] * $platillo['precio'];
+
+      // Insertar el detalle
+      $detalleResult = $this->pedidosModel->insertDetalles(
+        $pedidoResult['id'],
+        $platillo['id_platillo'],
+        $item['quantity'],
+        $precioTotal
+      );
+
+      if ($detalleResult['status'] === 'error') {
+        return $this->GetResponse_data(500, 'error', $detalleResult['message']);
+      }
+
+      // Almacenar el detalle insertado
+      $detalles[] = $this->pedidosModel->selectDetalles($detalleResult['id']);
+    }
+
+    // Respuesta final con todos los detalles
+    return $this->GetResponse_data(200, 'success', 'Pedido generado correctamente', [
+      'cliente' => $cliente,
+      'mesa' => $mesa,
+      'pedido' => $pedido,
+      'detalles' => $detalles
+    ]);
   }
 }

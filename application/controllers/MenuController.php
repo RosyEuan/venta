@@ -22,7 +22,7 @@ class MenuController extends CI_Controller
       return $this->GetResponse_data(400, 'error', strip_tags(validation_errors()));
     }
     // Subir imagen
-    $imagen = $this->subirImagen($_FILES['imagen'], 'uploads/img/LogoCytisum.png');
+    $imagen = '/venta/img/Logo.png'; //$this->subirImagen($_FILES['imagen'], 'uploads/img/LogoCytisum.png');
 
     if (isset($imagen['error'])) {
       return $this->GetResponse_data(400, 'error', $imagen['error']);

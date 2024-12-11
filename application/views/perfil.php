@@ -86,27 +86,27 @@
       <h2 class="content-title">Perfil</h2>
       <div class="profile-container">
         <!-- Sección izquierda: campos en dos columnas -->
-        <form class="left-section" method ="GET" id="formulario_datosPerfil"
-            data-controller ="<?=site_url('datos_perfil');?>"> <!-- Debe iniciar siempre con data y '-' -->
+        <form class="left-section" method="GET" id="formulario_datosPerfil"
+          data-controller="<?= site_url('datos_perfil'); ?>"> <!-- Debe iniciar siempre con data y '-' -->
           <div class="form-group">
             <label for="nombre">Nombre(s):</label>
             <input type="text" id="nombre" name="nombre" placeholder="Ej. Jorge Alejandro" disabled>
           </div>
           <div class="form-group">
             <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos"name="apellidos" placeholder="Ej. Pérez Domínguez" disabled>
+            <input type="text" id="apellidos" name="apellidos" placeholder="Ej. Pérez Domínguez" disabled>
           </div>
           <div class="form-group">
             <label for="fecha-nacimiento">Fecha de nacimiento:</label>
-            <input type="date" id="fecha-nacimiento" name="fecha-nacimiento"class="fecha" disabled>
+            <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" class="fecha" disabled>
           </div>
           <div class="form-group">
             <label for="domicilio">Domicilio:</label>
-            <input type="text" id="domicilio"name="domicilio" placeholder="Ej. C32 M52 L9" disabled>
+            <input type="text" id="domicilio" name="domicilio" placeholder="Ej. C32 M52 L9" disabled>
           </div>
           <div class="form-group">
             <label for="usuario">Usuario:</label>
-            <input type="text" id="usuario"name="usuario" placeholder="Ej. JorgePerez" disabled>
+            <input type="text" id="usuario" name="usuario" placeholder="Ej. JorgePerez" disabled>
           </div>
 
           <!-- Campo de contraseña con el icono de ojito dentro del campo y botón azul al lado -->
@@ -162,7 +162,7 @@
   </div>
 
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>           
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/venta/assets/js/funcionLogout.js"></script>
   <script src="/venta/assets/js/filtroBarra.js"></script>
   <script src="/venta/assets/js/Mostrardatosperfil.js"></script>

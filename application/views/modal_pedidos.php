@@ -87,7 +87,7 @@
 
     <div class="content">
       <!-- Registro de pedido -->
-      <form class="registro-pedidoss" method="POST" id="formulario_registro">
+      <form class="registro-pedidoss" method="POST" id="formulario_registro" @submit="registrarPedido">
         <h2 class="titulo-registro">Registro de Pedido</h2>
 
         <div class="form-group">
@@ -97,7 +97,7 @@
           </div>
           <div>
             <label for="correo" class="correo-cliente">Correo del cliente</label>
-            <input type="text" id="correo" v-model="correo(s)" name="registro_correo" placeholder="correo" class="campo-correo">
+            <input type="text" id="correo" v-model="correo" name="registro_correo" placeholder="correo" class="campo-correo">
           </div>
         </div>
         <div class="form-group">
