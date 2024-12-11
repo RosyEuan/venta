@@ -972,3 +972,870 @@ INFO - 2024-12-11 11:46:31 --> Model "PedidosM" initialized
 INFO - 2024-12-11 11:46:31 --> Session: Class initialized using 'files' driver.
 INFO - 2024-12-11 11:46:31 --> Final output sent to browser
 DEBUG - 2024-12-11 11:46:31 --> Total execution time: 0.0690
+INFO - 2024-12-11 11:50:23 --> Config Class Initialized
+INFO - 2024-12-11 11:50:23 --> Hooks Class Initialized
+DEBUG - 2024-12-11 11:50:23 --> UTF-8 Support Enabled
+INFO - 2024-12-11 11:50:23 --> Utf8 Class Initialized
+INFO - 2024-12-11 11:50:23 --> URI Class Initialized
+INFO - 2024-12-11 11:50:23 --> Router Class Initialized
+INFO - 2024-12-11 11:50:23 --> Output Class Initialized
+INFO - 2024-12-11 11:50:23 --> Security Class Initialized
+DEBUG - 2024-12-11 11:50:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 11:50:23 --> Input Class Initialized
+INFO - 2024-12-11 11:50:23 --> Language Class Initialized
+INFO - 2024-12-11 11:50:23 --> Loader Class Initialized
+INFO - 2024-12-11 11:50:23 --> Helper loaded: url_helper
+INFO - 2024-12-11 11:50:23 --> Controller Class Initialized
+INFO - 2024-12-11 11:50:23 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 11:50:23 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_pedidos.php
+INFO - 2024-12-11 11:50:23 --> Final output sent to browser
+DEBUG - 2024-12-11 11:50:23 --> Total execution time: 0.0568
+INFO - 2024-12-11 11:50:23 --> Config Class Initialized
+INFO - 2024-12-11 11:50:23 --> Hooks Class Initialized
+DEBUG - 2024-12-11 11:50:23 --> UTF-8 Support Enabled
+INFO - 2024-12-11 11:50:23 --> Utf8 Class Initialized
+INFO - 2024-12-11 11:50:23 --> URI Class Initialized
+INFO - 2024-12-11 11:50:23 --> Router Class Initialized
+INFO - 2024-12-11 11:50:23 --> Output Class Initialized
+INFO - 2024-12-11 11:50:23 --> Security Class Initialized
+DEBUG - 2024-12-11 11:50:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 11:50:23 --> Input Class Initialized
+INFO - 2024-12-11 11:50:23 --> Language Class Initialized
+INFO - 2024-12-11 11:50:23 --> Loader Class Initialized
+INFO - 2024-12-11 11:50:23 --> Helper loaded: url_helper
+INFO - 2024-12-11 11:50:23 --> Controller Class Initialized
+INFO - 2024-12-11 11:50:23 --> Model "PedidosM" initialized
+INFO - 2024-12-11 11:50:23 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 11:50:23 --> Final output sent to browser
+DEBUG - 2024-12-11 11:50:23 --> Total execution time: 0.0538
+INFO - 2024-12-11 12:14:52 --> Config Class Initialized
+INFO - 2024-12-11 12:14:52 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:14:52 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:14:52 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:14:52 --> URI Class Initialized
+DEBUG - 2024-12-11 12:14:52 --> No URI present. Default controller set.
+INFO - 2024-12-11 12:14:52 --> Router Class Initialized
+INFO - 2024-12-11 12:14:52 --> Output Class Initialized
+INFO - 2024-12-11 12:14:52 --> Security Class Initialized
+DEBUG - 2024-12-11 12:14:52 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:14:52 --> Input Class Initialized
+INFO - 2024-12-11 12:14:52 --> Language Class Initialized
+INFO - 2024-12-11 12:14:52 --> Loader Class Initialized
+INFO - 2024-12-11 12:14:52 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:14:52 --> Controller Class Initialized
+INFO - 2024-12-11 12:14:53 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:14:53 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_login.php
+INFO - 2024-12-11 12:14:53 --> Final output sent to browser
+DEBUG - 2024-12-11 12:14:53 --> Total execution time: 1.2406
+INFO - 2024-12-11 12:15:02 --> Config Class Initialized
+INFO - 2024-12-11 12:15:02 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:15:02 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:15:02 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:15:02 --> URI Class Initialized
+INFO - 2024-12-11 12:15:02 --> Router Class Initialized
+INFO - 2024-12-11 12:15:02 --> Output Class Initialized
+INFO - 2024-12-11 12:15:02 --> Security Class Initialized
+DEBUG - 2024-12-11 12:15:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:02 --> Input Class Initialized
+INFO - 2024-12-11 12:15:02 --> Language Class Initialized
+INFO - 2024-12-11 12:15:02 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:02 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:02 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:02 --> Model "Login" initialized
+INFO - 2024-12-11 12:15:03 --> Helper loaded: form_helper
+INFO - 2024-12-11 12:15:03 --> Form Validation Class Initialized
+INFO - 2024-12-11 12:15:03 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:15:03 --> Language file loaded: language/english/form_validation_lang.php
+INFO - 2024-12-11 12:15:03 --> Final output sent to browser
+DEBUG - 2024-12-11 12:15:03 --> Total execution time: 0.4219
+INFO - 2024-12-11 12:15:04 --> Config Class Initialized
+INFO - 2024-12-11 12:15:04 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:15:04 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:15:04 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:15:04 --> URI Class Initialized
+INFO - 2024-12-11 12:15:04 --> Router Class Initialized
+INFO - 2024-12-11 12:15:04 --> Output Class Initialized
+INFO - 2024-12-11 12:15:04 --> Security Class Initialized
+DEBUG - 2024-12-11 12:15:04 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:04 --> Input Class Initialized
+INFO - 2024-12-11 12:15:04 --> Language Class Initialized
+INFO - 2024-12-11 12:15:04 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:04 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:04 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:04 --> Model "Login" initialized
+INFO - 2024-12-11 12:15:04 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:15:04 --> File loaded: C:\xampp\htdocs\venta\application\views\graficas2.php
+INFO - 2024-12-11 12:15:04 --> Final output sent to browser
+DEBUG - 2024-12-11 12:15:04 --> Total execution time: 0.1154
+INFO - 2024-12-11 12:15:05 --> Config Class Initialized
+INFO - 2024-12-11 12:15:05 --> Hooks Class Initialized
+INFO - 2024-12-11 12:15:05 --> Config Class Initialized
+INFO - 2024-12-11 12:15:05 --> Hooks Class Initialized
+INFO - 2024-12-11 12:15:05 --> Config Class Initialized
+DEBUG - 2024-12-11 12:15:05 --> UTF-8 Support Enabled
+DEBUG - 2024-12-11 12:15:05 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:15:05 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:15:05 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:15:05 --> URI Class Initialized
+INFO - 2024-12-11 12:15:05 --> URI Class Initialized
+INFO - 2024-12-11 12:15:05 --> Hooks Class Initialized
+INFO - 2024-12-11 12:15:05 --> Router Class Initialized
+INFO - 2024-12-11 12:15:05 --> Router Class Initialized
+DEBUG - 2024-12-11 12:15:05 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:15:05 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:15:05 --> Output Class Initialized
+INFO - 2024-12-11 12:15:05 --> URI Class Initialized
+INFO - 2024-12-11 12:15:05 --> Output Class Initialized
+INFO - 2024-12-11 12:15:05 --> Security Class Initialized
+INFO - 2024-12-11 12:15:05 --> Security Class Initialized
+INFO - 2024-12-11 12:15:05 --> Router Class Initialized
+DEBUG - 2024-12-11 12:15:05 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:05 --> Input Class Initialized
+DEBUG - 2024-12-11 12:15:05 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:05 --> Config Class Initialized
+INFO - 2024-12-11 12:15:05 --> Input Class Initialized
+INFO - 2024-12-11 12:15:05 --> Hooks Class Initialized
+INFO - 2024-12-11 12:15:05 --> Language Class Initialized
+INFO - 2024-12-11 12:15:05 --> Output Class Initialized
+INFO - 2024-12-11 12:15:05 --> Language Class Initialized
+INFO - 2024-12-11 12:15:05 --> Security Class Initialized
+DEBUG - 2024-12-11 12:15:05 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:15:05 --> Utf8 Class Initialized
+DEBUG - 2024-12-11 12:15:05 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:05 --> URI Class Initialized
+INFO - 2024-12-11 12:15:05 --> Input Class Initialized
+INFO - 2024-12-11 12:15:05 --> Language Class Initialized
+INFO - 2024-12-11 12:15:05 --> Router Class Initialized
+INFO - 2024-12-11 12:15:05 --> Output Class Initialized
+INFO - 2024-12-11 12:15:05 --> Security Class Initialized
+DEBUG - 2024-12-11 12:15:05 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:05 --> Input Class Initialized
+INFO - 2024-12-11 12:15:05 --> Language Class Initialized
+INFO - 2024-12-11 12:15:05 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:05 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:05 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:05 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:05 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:05 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:05 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:05 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:05 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:05 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:05 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:05 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:05 --> Model "ReportesModel" initialized
+INFO - 2024-12-11 12:15:05 --> Model "ReportesModel" initialized
+INFO - 2024-12-11 12:15:05 --> Model "ReportesModel" initialized
+INFO - 2024-12-11 12:15:05 --> Model "ReportesModel" initialized
+INFO - 2024-12-11 12:15:05 --> Final output sent to browser
+DEBUG - 2024-12-11 12:15:05 --> Total execution time: 0.1188
+INFO - 2024-12-11 12:15:05 --> Final output sent to browser
+DEBUG - 2024-12-11 12:15:05 --> Total execution time: 0.1221
+INFO - 2024-12-11 12:15:05 --> Final output sent to browser
+INFO - 2024-12-11 12:15:05 --> Final output sent to browser
+DEBUG - 2024-12-11 12:15:05 --> Total execution time: 0.1036
+DEBUG - 2024-12-11 12:15:05 --> Total execution time: 0.1197
+INFO - 2024-12-11 12:15:08 --> Config Class Initialized
+INFO - 2024-12-11 12:15:08 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:15:08 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:15:08 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:15:08 --> URI Class Initialized
+INFO - 2024-12-11 12:15:08 --> Router Class Initialized
+INFO - 2024-12-11 12:15:08 --> Output Class Initialized
+INFO - 2024-12-11 12:15:08 --> Security Class Initialized
+DEBUG - 2024-12-11 12:15:08 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:08 --> Input Class Initialized
+INFO - 2024-12-11 12:15:08 --> Language Class Initialized
+INFO - 2024-12-11 12:15:08 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:08 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:08 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:08 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:15:08 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_pedidos.php
+INFO - 2024-12-11 12:15:08 --> Final output sent to browser
+DEBUG - 2024-12-11 12:15:08 --> Total execution time: 0.0717
+INFO - 2024-12-11 12:15:08 --> Config Class Initialized
+INFO - 2024-12-11 12:15:08 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:15:08 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:15:08 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:15:08 --> URI Class Initialized
+INFO - 2024-12-11 12:15:08 --> Router Class Initialized
+INFO - 2024-12-11 12:15:08 --> Output Class Initialized
+INFO - 2024-12-11 12:15:08 --> Security Class Initialized
+DEBUG - 2024-12-11 12:15:08 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:08 --> Input Class Initialized
+INFO - 2024-12-11 12:15:08 --> Language Class Initialized
+INFO - 2024-12-11 12:15:08 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:08 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:08 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:08 --> Model "PedidosM" initialized
+INFO - 2024-12-11 12:15:08 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:15:08 --> Final output sent to browser
+DEBUG - 2024-12-11 12:15:08 --> Total execution time: 0.1475
+INFO - 2024-12-11 12:15:10 --> Config Class Initialized
+INFO - 2024-12-11 12:15:10 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:15:10 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:15:10 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:15:10 --> URI Class Initialized
+INFO - 2024-12-11 12:15:10 --> Router Class Initialized
+INFO - 2024-12-11 12:15:10 --> Output Class Initialized
+INFO - 2024-12-11 12:15:10 --> Security Class Initialized
+DEBUG - 2024-12-11 12:15:10 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:10 --> Input Class Initialized
+INFO - 2024-12-11 12:15:10 --> Language Class Initialized
+INFO - 2024-12-11 12:15:10 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:10 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:10 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:10 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:15:10 --> File loaded: C:\xampp\htdocs\venta\application\views\menu.php
+INFO - 2024-12-11 12:15:10 --> Final output sent to browser
+DEBUG - 2024-12-11 12:15:10 --> Total execution time: 0.0913
+INFO - 2024-12-11 12:15:10 --> Config Class Initialized
+INFO - 2024-12-11 12:15:10 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:15:10 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:15:10 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:15:10 --> URI Class Initialized
+INFO - 2024-12-11 12:15:10 --> Router Class Initialized
+INFO - 2024-12-11 12:15:10 --> Output Class Initialized
+INFO - 2024-12-11 12:15:10 --> Security Class Initialized
+DEBUG - 2024-12-11 12:15:10 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:10 --> Input Class Initialized
+INFO - 2024-12-11 12:15:10 --> Language Class Initialized
+INFO - 2024-12-11 12:15:10 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:10 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:10 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:10 --> Helper loaded: form_helper
+INFO - 2024-12-11 12:15:10 --> Form Validation Class Initialized
+INFO - 2024-12-11 12:15:10 --> Final output sent to browser
+DEBUG - 2024-12-11 12:15:10 --> Total execution time: 0.1496
+INFO - 2024-12-11 12:15:52 --> Config Class Initialized
+INFO - 2024-12-11 12:15:52 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:15:52 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:15:52 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:15:52 --> URI Class Initialized
+INFO - 2024-12-11 12:15:52 --> Router Class Initialized
+INFO - 2024-12-11 12:15:52 --> Output Class Initialized
+INFO - 2024-12-11 12:15:52 --> Security Class Initialized
+DEBUG - 2024-12-11 12:15:52 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:15:52 --> Input Class Initialized
+INFO - 2024-12-11 12:15:52 --> Language Class Initialized
+INFO - 2024-12-11 12:15:52 --> Loader Class Initialized
+INFO - 2024-12-11 12:15:52 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:15:52 --> Controller Class Initialized
+INFO - 2024-12-11 12:15:52 --> Helper loaded: form_helper
+INFO - 2024-12-11 12:15:52 --> Form Validation Class Initialized
+INFO - 2024-12-11 12:15:52 --> Language file loaded: language/english/form_validation_lang.php
+ERROR - 2024-12-11 12:15:53 --> Severity: Warning --> Undefined array key "imagen" C:\xampp\htdocs\venta\application\controllers\MenuController.php 25
+INFO - 2024-12-11 12:15:53 --> Final output sent to browser
+DEBUG - 2024-12-11 12:15:53 --> Total execution time: 0.1215
+INFO - 2024-12-11 12:16:02 --> Config Class Initialized
+INFO - 2024-12-11 12:16:02 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:16:02 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:16:02 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:16:02 --> URI Class Initialized
+INFO - 2024-12-11 12:16:02 --> Router Class Initialized
+INFO - 2024-12-11 12:16:02 --> Output Class Initialized
+INFO - 2024-12-11 12:16:02 --> Security Class Initialized
+DEBUG - 2024-12-11 12:16:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:16:02 --> Input Class Initialized
+INFO - 2024-12-11 12:16:02 --> Language Class Initialized
+INFO - 2024-12-11 12:16:02 --> Loader Class Initialized
+INFO - 2024-12-11 12:16:02 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:16:02 --> Controller Class Initialized
+INFO - 2024-12-11 12:16:02 --> Helper loaded: form_helper
+INFO - 2024-12-11 12:16:02 --> Form Validation Class Initialized
+INFO - 2024-12-11 12:16:02 --> Language file loaded: language/english/form_validation_lang.php
+ERROR - 2024-12-11 12:16:02 --> Severity: Warning --> Undefined array key "imagen" C:\xampp\htdocs\venta\application\controllers\MenuController.php 25
+INFO - 2024-12-11 12:16:02 --> Final output sent to browser
+DEBUG - 2024-12-11 12:16:02 --> Total execution time: 0.0475
+INFO - 2024-12-11 12:16:23 --> Config Class Initialized
+INFO - 2024-12-11 12:16:23 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:16:23 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:16:23 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:16:23 --> URI Class Initialized
+INFO - 2024-12-11 12:16:23 --> Router Class Initialized
+INFO - 2024-12-11 12:16:23 --> Output Class Initialized
+INFO - 2024-12-11 12:16:23 --> Security Class Initialized
+DEBUG - 2024-12-11 12:16:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:16:23 --> Input Class Initialized
+INFO - 2024-12-11 12:16:23 --> Language Class Initialized
+INFO - 2024-12-11 12:16:23 --> Loader Class Initialized
+INFO - 2024-12-11 12:16:23 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:16:23 --> Controller Class Initialized
+INFO - 2024-12-11 12:16:23 --> Helper loaded: form_helper
+INFO - 2024-12-11 12:16:23 --> Form Validation Class Initialized
+INFO - 2024-12-11 12:16:23 --> Language file loaded: language/english/form_validation_lang.php
+INFO - 2024-12-11 12:16:23 --> Final output sent to browser
+DEBUG - 2024-12-11 12:16:23 --> Total execution time: 0.0382
+INFO - 2024-12-11 12:16:29 --> Config Class Initialized
+INFO - 2024-12-11 12:16:29 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:16:29 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:16:29 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:16:29 --> URI Class Initialized
+INFO - 2024-12-11 12:16:29 --> Router Class Initialized
+INFO - 2024-12-11 12:16:29 --> Output Class Initialized
+INFO - 2024-12-11 12:16:29 --> Security Class Initialized
+DEBUG - 2024-12-11 12:16:29 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:16:29 --> Input Class Initialized
+INFO - 2024-12-11 12:16:29 --> Language Class Initialized
+INFO - 2024-12-11 12:16:29 --> Loader Class Initialized
+INFO - 2024-12-11 12:16:29 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:16:29 --> Controller Class Initialized
+INFO - 2024-12-11 12:16:30 --> Helper loaded: form_helper
+INFO - 2024-12-11 12:16:30 --> Form Validation Class Initialized
+INFO - 2024-12-11 12:16:30 --> Language file loaded: language/english/form_validation_lang.php
+INFO - 2024-12-11 12:16:30 --> Final output sent to browser
+DEBUG - 2024-12-11 12:16:30 --> Total execution time: 0.0464
+INFO - 2024-12-11 12:17:34 --> Config Class Initialized
+INFO - 2024-12-11 12:17:34 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:17:34 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:17:34 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:17:34 --> URI Class Initialized
+INFO - 2024-12-11 12:17:34 --> Router Class Initialized
+INFO - 2024-12-11 12:17:34 --> Output Class Initialized
+INFO - 2024-12-11 12:17:34 --> Security Class Initialized
+DEBUG - 2024-12-11 12:17:34 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:17:34 --> Input Class Initialized
+INFO - 2024-12-11 12:17:34 --> Language Class Initialized
+INFO - 2024-12-11 12:17:34 --> Loader Class Initialized
+INFO - 2024-12-11 12:17:34 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:17:34 --> Controller Class Initialized
+INFO - 2024-12-11 12:17:34 --> Helper loaded: form_helper
+INFO - 2024-12-11 12:17:34 --> Form Validation Class Initialized
+INFO - 2024-12-11 12:17:34 --> Language file loaded: language/english/form_validation_lang.php
+INFO - 2024-12-11 12:17:34 --> Final output sent to browser
+DEBUG - 2024-12-11 12:17:34 --> Total execution time: 0.0566
+INFO - 2024-12-11 12:17:40 --> Config Class Initialized
+INFO - 2024-12-11 12:17:40 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:17:40 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:17:40 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:17:40 --> URI Class Initialized
+INFO - 2024-12-11 12:17:40 --> Router Class Initialized
+INFO - 2024-12-11 12:17:40 --> Output Class Initialized
+INFO - 2024-12-11 12:17:40 --> Security Class Initialized
+DEBUG - 2024-12-11 12:17:40 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:17:40 --> Input Class Initialized
+INFO - 2024-12-11 12:17:40 --> Language Class Initialized
+INFO - 2024-12-11 12:17:40 --> Loader Class Initialized
+INFO - 2024-12-11 12:17:40 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:17:40 --> Controller Class Initialized
+INFO - 2024-12-11 12:17:40 --> Helper loaded: form_helper
+INFO - 2024-12-11 12:17:40 --> Form Validation Class Initialized
+INFO - 2024-12-11 12:17:40 --> Language file loaded: language/english/form_validation_lang.php
+INFO - 2024-12-11 12:17:40 --> Final output sent to browser
+DEBUG - 2024-12-11 12:17:40 --> Total execution time: 0.0359
+INFO - 2024-12-11 12:17:44 --> Config Class Initialized
+INFO - 2024-12-11 12:17:44 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:17:44 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:17:44 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:17:44 --> URI Class Initialized
+INFO - 2024-12-11 12:17:44 --> Router Class Initialized
+INFO - 2024-12-11 12:17:44 --> Output Class Initialized
+INFO - 2024-12-11 12:17:44 --> Security Class Initialized
+DEBUG - 2024-12-11 12:17:44 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:17:44 --> Input Class Initialized
+INFO - 2024-12-11 12:17:44 --> Language Class Initialized
+INFO - 2024-12-11 12:17:44 --> Loader Class Initialized
+INFO - 2024-12-11 12:17:44 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:17:44 --> Controller Class Initialized
+INFO - 2024-12-11 12:17:44 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:17:44 --> File loaded: C:\xampp\htdocs\venta\application\views\menu.php
+INFO - 2024-12-11 12:17:44 --> Final output sent to browser
+DEBUG - 2024-12-11 12:17:44 --> Total execution time: 0.0343
+INFO - 2024-12-11 12:17:44 --> Config Class Initialized
+INFO - 2024-12-11 12:17:44 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:17:44 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:17:44 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:17:44 --> URI Class Initialized
+INFO - 2024-12-11 12:17:44 --> Router Class Initialized
+INFO - 2024-12-11 12:17:44 --> Output Class Initialized
+INFO - 2024-12-11 12:17:44 --> Security Class Initialized
+DEBUG - 2024-12-11 12:17:44 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:17:44 --> Input Class Initialized
+INFO - 2024-12-11 12:17:44 --> Language Class Initialized
+INFO - 2024-12-11 12:17:44 --> Loader Class Initialized
+INFO - 2024-12-11 12:17:44 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:17:44 --> Controller Class Initialized
+INFO - 2024-12-11 12:17:44 --> Helper loaded: form_helper
+INFO - 2024-12-11 12:17:44 --> Form Validation Class Initialized
+INFO - 2024-12-11 12:17:44 --> Final output sent to browser
+DEBUG - 2024-12-11 12:17:44 --> Total execution time: 0.0529
+INFO - 2024-12-11 12:17:44 --> Config Class Initialized
+INFO - 2024-12-11 12:17:44 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:17:44 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:17:44 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:17:44 --> URI Class Initialized
+INFO - 2024-12-11 12:17:44 --> Router Class Initialized
+INFO - 2024-12-11 12:17:44 --> Output Class Initialized
+INFO - 2024-12-11 12:17:44 --> Security Class Initialized
+DEBUG - 2024-12-11 12:17:44 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:17:44 --> Input Class Initialized
+INFO - 2024-12-11 12:17:44 --> Language Class Initialized
+ERROR - 2024-12-11 12:17:44 --> 404 Page Not Found: Uploads/img
+INFO - 2024-12-11 12:18:29 --> Config Class Initialized
+INFO - 2024-12-11 12:18:29 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:18:29 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:18:29 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:18:29 --> URI Class Initialized
+INFO - 2024-12-11 12:18:29 --> Router Class Initialized
+INFO - 2024-12-11 12:18:29 --> Output Class Initialized
+INFO - 2024-12-11 12:18:29 --> Security Class Initialized
+DEBUG - 2024-12-11 12:18:29 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:18:29 --> Input Class Initialized
+INFO - 2024-12-11 12:18:29 --> Language Class Initialized
+ERROR - 2024-12-11 12:18:29 --> 404 Page Not Found: Uploads/img
+INFO - 2024-12-11 12:18:49 --> Config Class Initialized
+INFO - 2024-12-11 12:18:49 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:18:49 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:18:49 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:18:49 --> URI Class Initialized
+INFO - 2024-12-11 12:18:49 --> Router Class Initialized
+INFO - 2024-12-11 12:18:49 --> Output Class Initialized
+INFO - 2024-12-11 12:18:49 --> Security Class Initialized
+DEBUG - 2024-12-11 12:18:49 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:18:49 --> Input Class Initialized
+INFO - 2024-12-11 12:18:49 --> Language Class Initialized
+ERROR - 2024-12-11 12:18:49 --> 404 Page Not Found: Uploads/img
+INFO - 2024-12-11 12:18:54 --> Config Class Initialized
+INFO - 2024-12-11 12:18:54 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:18:54 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:18:54 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:18:54 --> URI Class Initialized
+INFO - 2024-12-11 12:18:54 --> Router Class Initialized
+INFO - 2024-12-11 12:18:54 --> Output Class Initialized
+INFO - 2024-12-11 12:18:54 --> Security Class Initialized
+DEBUG - 2024-12-11 12:18:54 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:18:54 --> Input Class Initialized
+INFO - 2024-12-11 12:18:54 --> Language Class Initialized
+INFO - 2024-12-11 12:18:54 --> Loader Class Initialized
+INFO - 2024-12-11 12:18:54 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:18:54 --> Controller Class Initialized
+INFO - 2024-12-11 12:18:54 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:18:54 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_producto.php
+INFO - 2024-12-11 12:18:54 --> Final output sent to browser
+DEBUG - 2024-12-11 12:18:54 --> Total execution time: 0.0730
+INFO - 2024-12-11 12:18:54 --> Config Class Initialized
+INFO - 2024-12-11 12:18:54 --> Config Class Initialized
+INFO - 2024-12-11 12:18:54 --> Hooks Class Initialized
+INFO - 2024-12-11 12:18:54 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:18:54 --> UTF-8 Support Enabled
+DEBUG - 2024-12-11 12:18:54 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:18:54 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:18:54 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:18:54 --> URI Class Initialized
+INFO - 2024-12-11 12:18:54 --> URI Class Initialized
+INFO - 2024-12-11 12:18:54 --> Router Class Initialized
+INFO - 2024-12-11 12:18:54 --> Router Class Initialized
+INFO - 2024-12-11 12:18:54 --> Output Class Initialized
+INFO - 2024-12-11 12:18:54 --> Output Class Initialized
+INFO - 2024-12-11 12:18:54 --> Security Class Initialized
+INFO - 2024-12-11 12:18:54 --> Security Class Initialized
+DEBUG - 2024-12-11 12:18:54 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:18:54 --> Input Class Initialized
+INFO - 2024-12-11 12:18:54 --> Language Class Initialized
+DEBUG - 2024-12-11 12:18:54 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:18:54 --> Input Class Initialized
+INFO - 2024-12-11 12:18:54 --> Language Class Initialized
+INFO - 2024-12-11 12:18:54 --> Loader Class Initialized
+INFO - 2024-12-11 12:18:54 --> Loader Class Initialized
+INFO - 2024-12-11 12:18:54 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:18:54 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:18:54 --> Controller Class Initialized
+INFO - 2024-12-11 12:18:54 --> Controller Class Initialized
+INFO - 2024-12-11 12:18:54 --> Model "InventarioM" initialized
+INFO - 2024-12-11 12:18:54 --> Model "InventarioM" initialized
+INFO - 2024-12-11 12:18:54 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:18:54 --> Final output sent to browser
+DEBUG - 2024-12-11 12:18:54 --> Total execution time: 0.1403
+INFO - 2024-12-11 12:18:54 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:18:54 --> Final output sent to browser
+DEBUG - 2024-12-11 12:18:54 --> Total execution time: 0.1429
+INFO - 2024-12-11 12:18:58 --> Config Class Initialized
+INFO - 2024-12-11 12:18:58 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:18:58 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:18:58 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:18:58 --> URI Class Initialized
+INFO - 2024-12-11 12:18:58 --> Router Class Initialized
+INFO - 2024-12-11 12:18:58 --> Output Class Initialized
+INFO - 2024-12-11 12:18:58 --> Security Class Initialized
+DEBUG - 2024-12-11 12:18:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:18:58 --> Input Class Initialized
+INFO - 2024-12-11 12:18:58 --> Language Class Initialized
+INFO - 2024-12-11 12:18:58 --> Loader Class Initialized
+INFO - 2024-12-11 12:18:58 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:18:58 --> Controller Class Initialized
+INFO - 2024-12-11 12:18:58 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:18:58 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_utilidad.php
+INFO - 2024-12-11 12:18:58 --> Final output sent to browser
+DEBUG - 2024-12-11 12:18:58 --> Total execution time: 0.0639
+INFO - 2024-12-11 12:18:58 --> Config Class Initialized
+INFO - 2024-12-11 12:18:58 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:18:58 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:18:58 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:18:58 --> URI Class Initialized
+INFO - 2024-12-11 12:18:58 --> Router Class Initialized
+INFO - 2024-12-11 12:18:58 --> Output Class Initialized
+INFO - 2024-12-11 12:18:58 --> Security Class Initialized
+DEBUG - 2024-12-11 12:18:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:18:58 --> Input Class Initialized
+INFO - 2024-12-11 12:18:58 --> Language Class Initialized
+INFO - 2024-12-11 12:18:58 --> Loader Class Initialized
+INFO - 2024-12-11 12:18:58 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:18:58 --> Controller Class Initialized
+INFO - 2024-12-11 12:18:58 --> Model "UtilidadM" initialized
+INFO - 2024-12-11 12:18:58 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:18:58 --> Final output sent to browser
+DEBUG - 2024-12-11 12:18:58 --> Total execution time: 0.1379
+INFO - 2024-12-11 12:19:00 --> Config Class Initialized
+INFO - 2024-12-11 12:19:00 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:00 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:00 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:00 --> URI Class Initialized
+INFO - 2024-12-11 12:19:00 --> Router Class Initialized
+INFO - 2024-12-11 12:19:00 --> Output Class Initialized
+INFO - 2024-12-11 12:19:00 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:00 --> Input Class Initialized
+INFO - 2024-12-11 12:19:00 --> Language Class Initialized
+INFO - 2024-12-11 12:19:00 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:00 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:00 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:00 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:00 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_proveedores.php
+INFO - 2024-12-11 12:19:00 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:00 --> Total execution time: 0.0667
+INFO - 2024-12-11 12:19:00 --> Config Class Initialized
+INFO - 2024-12-11 12:19:00 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:00 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:00 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:00 --> URI Class Initialized
+INFO - 2024-12-11 12:19:00 --> Router Class Initialized
+INFO - 2024-12-11 12:19:00 --> Output Class Initialized
+INFO - 2024-12-11 12:19:00 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:00 --> Input Class Initialized
+INFO - 2024-12-11 12:19:00 --> Language Class Initialized
+INFO - 2024-12-11 12:19:00 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:00 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:00 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:00 --> Model "ProveedoresM" initialized
+INFO - 2024-12-11 12:19:00 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:00 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:00 --> Total execution time: 0.0997
+INFO - 2024-12-11 12:19:02 --> Config Class Initialized
+INFO - 2024-12-11 12:19:02 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:02 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:02 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:02 --> URI Class Initialized
+INFO - 2024-12-11 12:19:02 --> Router Class Initialized
+INFO - 2024-12-11 12:19:02 --> Output Class Initialized
+INFO - 2024-12-11 12:19:02 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:02 --> Input Class Initialized
+INFO - 2024-12-11 12:19:02 --> Language Class Initialized
+INFO - 2024-12-11 12:19:02 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:02 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:02 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:02 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:02 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_utilidad.php
+INFO - 2024-12-11 12:19:02 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:02 --> Total execution time: 0.0336
+INFO - 2024-12-11 12:19:02 --> Config Class Initialized
+INFO - 2024-12-11 12:19:02 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:02 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:02 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:02 --> URI Class Initialized
+INFO - 2024-12-11 12:19:02 --> Router Class Initialized
+INFO - 2024-12-11 12:19:02 --> Output Class Initialized
+INFO - 2024-12-11 12:19:02 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:02 --> Input Class Initialized
+INFO - 2024-12-11 12:19:02 --> Language Class Initialized
+INFO - 2024-12-11 12:19:02 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:02 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:02 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:02 --> Model "UtilidadM" initialized
+INFO - 2024-12-11 12:19:02 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:02 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:02 --> Total execution time: 0.0370
+INFO - 2024-12-11 12:19:04 --> Config Class Initialized
+INFO - 2024-12-11 12:19:04 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:04 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:04 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:04 --> URI Class Initialized
+INFO - 2024-12-11 12:19:04 --> Router Class Initialized
+INFO - 2024-12-11 12:19:04 --> Output Class Initialized
+INFO - 2024-12-11 12:19:04 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:04 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:04 --> Input Class Initialized
+INFO - 2024-12-11 12:19:04 --> Language Class Initialized
+INFO - 2024-12-11 12:19:04 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:04 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:04 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:04 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:04 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_proveedores.php
+INFO - 2024-12-11 12:19:04 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:04 --> Total execution time: 0.0328
+INFO - 2024-12-11 12:19:04 --> Config Class Initialized
+INFO - 2024-12-11 12:19:04 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:04 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:04 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:04 --> URI Class Initialized
+INFO - 2024-12-11 12:19:04 --> Router Class Initialized
+INFO - 2024-12-11 12:19:04 --> Output Class Initialized
+INFO - 2024-12-11 12:19:04 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:04 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:04 --> Input Class Initialized
+INFO - 2024-12-11 12:19:04 --> Language Class Initialized
+INFO - 2024-12-11 12:19:04 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:04 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:04 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:04 --> Model "ProveedoresM" initialized
+INFO - 2024-12-11 12:19:04 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:04 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:04 --> Total execution time: 0.0352
+INFO - 2024-12-11 12:19:07 --> Config Class Initialized
+INFO - 2024-12-11 12:19:07 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:07 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:07 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:07 --> URI Class Initialized
+INFO - 2024-12-11 12:19:07 --> Router Class Initialized
+INFO - 2024-12-11 12:19:07 --> Output Class Initialized
+INFO - 2024-12-11 12:19:07 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:07 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:07 --> Input Class Initialized
+INFO - 2024-12-11 12:19:07 --> Language Class Initialized
+INFO - 2024-12-11 12:19:07 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:07 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:07 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:07 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:07 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_utilidad.php
+INFO - 2024-12-11 12:19:07 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:07 --> Total execution time: 0.0317
+INFO - 2024-12-11 12:19:07 --> Config Class Initialized
+INFO - 2024-12-11 12:19:07 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:07 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:07 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:07 --> URI Class Initialized
+INFO - 2024-12-11 12:19:07 --> Router Class Initialized
+INFO - 2024-12-11 12:19:07 --> Output Class Initialized
+INFO - 2024-12-11 12:19:07 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:07 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:07 --> Input Class Initialized
+INFO - 2024-12-11 12:19:07 --> Language Class Initialized
+INFO - 2024-12-11 12:19:07 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:07 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:07 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:07 --> Model "UtilidadM" initialized
+INFO - 2024-12-11 12:19:07 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:07 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:07 --> Total execution time: 0.0497
+INFO - 2024-12-11 12:19:12 --> Config Class Initialized
+INFO - 2024-12-11 12:19:12 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:12 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:12 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:12 --> URI Class Initialized
+INFO - 2024-12-11 12:19:12 --> Router Class Initialized
+INFO - 2024-12-11 12:19:12 --> Output Class Initialized
+INFO - 2024-12-11 12:19:12 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:12 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:12 --> Input Class Initialized
+INFO - 2024-12-11 12:19:12 --> Language Class Initialized
+INFO - 2024-12-11 12:19:12 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:12 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:12 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:12 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:12 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_proveedores.php
+INFO - 2024-12-11 12:19:12 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:12 --> Total execution time: 0.0316
+INFO - 2024-12-11 12:19:12 --> Config Class Initialized
+INFO - 2024-12-11 12:19:12 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:12 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:12 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:12 --> URI Class Initialized
+INFO - 2024-12-11 12:19:12 --> Router Class Initialized
+INFO - 2024-12-11 12:19:12 --> Output Class Initialized
+INFO - 2024-12-11 12:19:12 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:12 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:12 --> Input Class Initialized
+INFO - 2024-12-11 12:19:12 --> Language Class Initialized
+INFO - 2024-12-11 12:19:12 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:12 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:12 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:12 --> Model "ProveedoresM" initialized
+INFO - 2024-12-11 12:19:12 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:12 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:12 --> Total execution time: 0.0477
+INFO - 2024-12-11 12:19:18 --> Config Class Initialized
+INFO - 2024-12-11 12:19:18 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:18 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:18 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:18 --> URI Class Initialized
+INFO - 2024-12-11 12:19:18 --> Router Class Initialized
+INFO - 2024-12-11 12:19:18 --> Output Class Initialized
+INFO - 2024-12-11 12:19:18 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:18 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:18 --> Input Class Initialized
+INFO - 2024-12-11 12:19:18 --> Language Class Initialized
+INFO - 2024-12-11 12:19:18 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:18 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:18 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:18 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:18 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_pedidos.php
+INFO - 2024-12-11 12:19:18 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:18 --> Total execution time: 0.0313
+INFO - 2024-12-11 12:19:19 --> Config Class Initialized
+INFO - 2024-12-11 12:19:19 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:19 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:19 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:19 --> URI Class Initialized
+INFO - 2024-12-11 12:19:19 --> Router Class Initialized
+INFO - 2024-12-11 12:19:19 --> Output Class Initialized
+INFO - 2024-12-11 12:19:19 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:19 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:19 --> Input Class Initialized
+INFO - 2024-12-11 12:19:19 --> Language Class Initialized
+INFO - 2024-12-11 12:19:19 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:19 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:19 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:19 --> Model "PedidosM" initialized
+INFO - 2024-12-11 12:19:19 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:19 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:19 --> Total execution time: 0.0646
+INFO - 2024-12-11 12:19:30 --> Config Class Initialized
+INFO - 2024-12-11 12:19:30 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:30 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:30 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:30 --> URI Class Initialized
+INFO - 2024-12-11 12:19:30 --> Router Class Initialized
+INFO - 2024-12-11 12:19:30 --> Output Class Initialized
+INFO - 2024-12-11 12:19:30 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:30 --> Input Class Initialized
+INFO - 2024-12-11 12:19:30 --> Language Class Initialized
+INFO - 2024-12-11 12:19:30 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:30 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:30 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:30 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:30 --> File loaded: C:\xampp\htdocs\venta\application\views\modal_pedidos.php
+INFO - 2024-12-11 12:19:30 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:30 --> Total execution time: 0.0331
+INFO - 2024-12-11 12:19:30 --> Config Class Initialized
+INFO - 2024-12-11 12:19:30 --> Hooks Class Initialized
+DEBUG - 2024-12-11 12:19:30 --> UTF-8 Support Enabled
+INFO - 2024-12-11 12:19:30 --> Utf8 Class Initialized
+INFO - 2024-12-11 12:19:30 --> URI Class Initialized
+INFO - 2024-12-11 12:19:30 --> Router Class Initialized
+INFO - 2024-12-11 12:19:30 --> Output Class Initialized
+INFO - 2024-12-11 12:19:30 --> Security Class Initialized
+DEBUG - 2024-12-11 12:19:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 12:19:30 --> Input Class Initialized
+INFO - 2024-12-11 12:19:30 --> Language Class Initialized
+INFO - 2024-12-11 12:19:30 --> Loader Class Initialized
+INFO - 2024-12-11 12:19:30 --> Helper loaded: url_helper
+INFO - 2024-12-11 12:19:30 --> Controller Class Initialized
+INFO - 2024-12-11 12:19:30 --> Model "PedidosM" initialized
+INFO - 2024-12-11 12:19:30 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 12:19:30 --> Final output sent to browser
+DEBUG - 2024-12-11 12:19:30 --> Total execution time: 0.0503
+INFO - 2024-12-11 13:50:01 --> Config Class Initialized
+INFO - 2024-12-11 13:50:01 --> Hooks Class Initialized
+DEBUG - 2024-12-11 13:50:01 --> UTF-8 Support Enabled
+INFO - 2024-12-11 13:50:01 --> Utf8 Class Initialized
+INFO - 2024-12-11 13:50:01 --> URI Class Initialized
+INFO - 2024-12-11 13:50:01 --> Router Class Initialized
+INFO - 2024-12-11 13:50:01 --> Output Class Initialized
+INFO - 2024-12-11 13:50:01 --> Security Class Initialized
+DEBUG - 2024-12-11 13:50:01 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 13:50:01 --> Input Class Initialized
+INFO - 2024-12-11 13:50:01 --> Language Class Initialized
+INFO - 2024-12-11 13:50:01 --> Loader Class Initialized
+INFO - 2024-12-11 13:50:01 --> Helper loaded: url_helper
+INFO - 2024-12-11 13:50:01 --> Controller Class Initialized
+INFO - 2024-12-11 13:50:01 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 13:50:01 --> Final output sent to browser
+DEBUG - 2024-12-11 13:50:01 --> Total execution time: 0.2117
+INFO - 2024-12-11 13:55:14 --> Config Class Initialized
+INFO - 2024-12-11 13:55:14 --> Hooks Class Initialized
+DEBUG - 2024-12-11 13:55:14 --> UTF-8 Support Enabled
+INFO - 2024-12-11 13:55:14 --> Utf8 Class Initialized
+INFO - 2024-12-11 13:55:14 --> URI Class Initialized
+INFO - 2024-12-11 13:55:14 --> Router Class Initialized
+INFO - 2024-12-11 13:55:14 --> Output Class Initialized
+INFO - 2024-12-11 13:55:15 --> Security Class Initialized
+DEBUG - 2024-12-11 13:55:15 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 13:55:15 --> Input Class Initialized
+INFO - 2024-12-11 13:55:15 --> Language Class Initialized
+INFO - 2024-12-11 13:55:15 --> Loader Class Initialized
+INFO - 2024-12-11 13:55:15 --> Helper loaded: url_helper
+INFO - 2024-12-11 13:55:15 --> Controller Class Initialized
+INFO - 2024-12-11 13:55:15 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 13:55:15 --> Final output sent to browser
+DEBUG - 2024-12-11 13:55:15 --> Total execution time: 0.0678
+INFO - 2024-12-11 13:56:17 --> Config Class Initialized
+INFO - 2024-12-11 13:56:17 --> Hooks Class Initialized
+DEBUG - 2024-12-11 13:56:17 --> UTF-8 Support Enabled
+INFO - 2024-12-11 13:56:17 --> Utf8 Class Initialized
+INFO - 2024-12-11 13:56:17 --> URI Class Initialized
+INFO - 2024-12-11 13:56:17 --> Router Class Initialized
+INFO - 2024-12-11 13:56:17 --> Output Class Initialized
+INFO - 2024-12-11 13:56:17 --> Security Class Initialized
+DEBUG - 2024-12-11 13:56:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 13:56:17 --> Input Class Initialized
+INFO - 2024-12-11 13:56:17 --> Language Class Initialized
+INFO - 2024-12-11 13:56:17 --> Loader Class Initialized
+INFO - 2024-12-11 13:56:18 --> Helper loaded: url_helper
+INFO - 2024-12-11 13:56:18 --> Controller Class Initialized
+INFO - 2024-12-11 13:56:18 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 13:56:18 --> Final output sent to browser
+DEBUG - 2024-12-11 13:56:18 --> Total execution time: 1.4332
+INFO - 2024-12-11 13:56:58 --> Config Class Initialized
+INFO - 2024-12-11 13:56:58 --> Hooks Class Initialized
+DEBUG - 2024-12-11 13:56:58 --> UTF-8 Support Enabled
+INFO - 2024-12-11 13:56:58 --> Utf8 Class Initialized
+INFO - 2024-12-11 13:56:58 --> URI Class Initialized
+INFO - 2024-12-11 13:56:58 --> Router Class Initialized
+INFO - 2024-12-11 13:56:58 --> Output Class Initialized
+INFO - 2024-12-11 13:56:58 --> Security Class Initialized
+DEBUG - 2024-12-11 13:56:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 13:56:58 --> Input Class Initialized
+INFO - 2024-12-11 13:56:58 --> Language Class Initialized
+INFO - 2024-12-11 13:56:58 --> Loader Class Initialized
+INFO - 2024-12-11 13:56:58 --> Helper loaded: url_helper
+INFO - 2024-12-11 13:56:58 --> Controller Class Initialized
+INFO - 2024-12-11 13:56:58 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 13:56:58 --> Final output sent to browser
+DEBUG - 2024-12-11 13:56:58 --> Total execution time: 0.0571
+INFO - 2024-12-11 13:57:22 --> Config Class Initialized
+INFO - 2024-12-11 13:57:22 --> Hooks Class Initialized
+DEBUG - 2024-12-11 13:57:22 --> UTF-8 Support Enabled
+INFO - 2024-12-11 13:57:22 --> Utf8 Class Initialized
+INFO - 2024-12-11 13:57:22 --> URI Class Initialized
+INFO - 2024-12-11 13:57:22 --> Router Class Initialized
+INFO - 2024-12-11 13:57:22 --> Output Class Initialized
+INFO - 2024-12-11 13:57:22 --> Security Class Initialized
+DEBUG - 2024-12-11 13:57:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 13:57:22 --> Input Class Initialized
+INFO - 2024-12-11 13:57:22 --> Language Class Initialized
+INFO - 2024-12-11 13:57:22 --> Loader Class Initialized
+INFO - 2024-12-11 13:57:22 --> Helper loaded: url_helper
+INFO - 2024-12-11 13:57:22 --> Controller Class Initialized
+INFO - 2024-12-11 13:57:22 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 13:57:22 --> Final output sent to browser
+DEBUG - 2024-12-11 13:57:22 --> Total execution time: 0.0635
+INFO - 2024-12-11 13:57:47 --> Config Class Initialized
+INFO - 2024-12-11 13:57:47 --> Hooks Class Initialized
+DEBUG - 2024-12-11 13:57:47 --> UTF-8 Support Enabled
+INFO - 2024-12-11 13:57:47 --> Utf8 Class Initialized
+INFO - 2024-12-11 13:57:47 --> URI Class Initialized
+INFO - 2024-12-11 13:57:47 --> Router Class Initialized
+INFO - 2024-12-11 13:57:47 --> Output Class Initialized
+INFO - 2024-12-11 13:57:47 --> Security Class Initialized
+DEBUG - 2024-12-11 13:57:47 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-12-11 13:57:47 --> Input Class Initialized
+INFO - 2024-12-11 13:57:47 --> Language Class Initialized
+INFO - 2024-12-11 13:57:48 --> Loader Class Initialized
+INFO - 2024-12-11 13:57:48 --> Helper loaded: url_helper
+INFO - 2024-12-11 13:57:48 --> Controller Class Initialized
+INFO - 2024-12-11 13:57:48 --> Session: Class initialized using 'files' driver.
+INFO - 2024-12-11 13:57:48 --> Final output sent to browser
+DEBUG - 2024-12-11 13:57:48 --> Total execution time: 0.0548

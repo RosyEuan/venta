@@ -48,14 +48,14 @@ class TicketLib{
 
         // Atendido por
         $pdf->SetFont('Arial', 'B', 8);
-        $pdf->Cell(30, 5, 'Atendido por: ', 0, 0, 'L');
+        $pdf->Cell(30, 5, 'Cliente: ', 0, 0, 'L');
         $pdf->SetFont('Arial', '', 8);
-        $pdf->Cell(40, 5, 'Cajero Juan', 0, 1, 'R');
+        $pdf->Cell(40, 5, 'Juan', 0, 1, 'R');
 
         // Número de mesa y comensales
-        $pdf->Cell(30, 5, 'Mesa: ', 0, 0, 'L');
-        $pdf->Cell(20, 5, 'D5', 0, 0, 'L');
-        $pdf->Cell(20, 5, 'Comensales: 4', 0, 1, 'R');
+        // $pdf->Cell(30, 5, 'Mesa: ', 0, 0, 'L');
+        // $pdf->Cell(20, 5, 'D5', 0, 1, 'L');
+        // $pdf->Cell(20, 5, 'Comensales: 4', 0, 1, 'R');
 
         // Línea de separación
         $pdf->Ln(2);
@@ -83,27 +83,29 @@ class TicketLib{
         // Subtotal, IVA, descuento y total
         $pdf->Ln(5);
         $pdf->SetFont('Arial', 'B', 8);
-        $pdf->Cell(50, 5, 'Subtotal: ', 0, 0, 'R');
-        $pdf->Cell(20, 5, '$140.00', 0, 1, 'R');
-        $pdf->Cell(50, 5, 'Descuento: ', 0, 0, 'R');
-        $pdf->Cell(20, 5, '$10.00', 0, 1, 'R');
-        $pdf->Cell(50, 5, 'IVA 16%: ', 0, 0, 'R');
-        $pdf->Cell(20, 5, '$20.80', 0, 1, 'R');
+        // $pdf->Cell(50, 5, 'Subtotal: ', 0, 0, 'R');
+        // $pdf->Cell(20, 5, '$0.00', 0, 1, 'R');
+        // $pdf->Cell(50, 5, 'Descuento: ', 0, 0, 'R');
+        // $pdf->Cell(20, 5, '$0.00', 0, 1, 'R');
         $pdf->Cell(50, 5, 'Total: ', 0, 0, 'R');
-        $pdf->Cell(20, 5, '$150.80', 0, 1, 'R');
+        $pdf->Cell(20, 5, '$0.0', 0, 1, 'R');
+        $pdf->Cell(50, 5, 'Importe: ', 0, 0, 'R');
+        $pdf->Cell(20, 5, '$0.0', 0, 1, 'R');
+        $pdf->Cell(50, 5, 'Cambio: ', 0, 0, 'R');
+        $pdf->Cell(20, 5, '$0.0', 0, 1, 'R');
 
         // Promociones de descuento
-        $pdf->Ln(5);
-        $pdf->SetFont('Arial', 'B', 8);
-        $pdf->Cell(50, 5, 'Promociones aplicadas: ', 0, 1, 'L');
-        $pdf->SetFont('Arial', '', 8);
-        $pdf->Cell(70, 5, 'Descuento especial 10%', 0, 1, 'L');
+        // $pdf->Ln(5);
+        // $pdf->SetFont('Arial', 'B', 8);
+        // $pdf->Cell(50, 5, 'Promociones aplicadas: ', 0, 1, 'L');
+        // $pdf->SetFont('Arial', '', 8);
+        // $pdf->Cell(70, 5, 'Descuento especial 10%', 0, 1, 'L');
 
         // Total de descuentos
-        $pdf->SetFont('Arial', 'B', 8);
-        $pdf->Cell(50, 5, 'Total de descuentos: ', 0, 0, 'R');
-        $pdf->SetFont('Arial', '', 8);
-        $pdf->Cell(20, 5, '$10.00', 0, 1, 'R');
+        // $pdf->SetFont('Arial', 'B', 8);
+        // $pdf->Cell(50, 5, 'Total de descuentos: ', 0, 0, 'R');
+        // $pdf->SetFont('Arial', '', 8);
+        // $pdf->Cell(20, 5, '$10.00', 0, 1, 'R');
 
         // Método de pago
         $pdf->Ln(5);
