@@ -119,10 +119,14 @@
           <tbody>
             <tr v-for="(item, index) in items" :key="index" style="cursor: pointer;">
               <td class="col-alimento">
-                <div class="editable" contenteditable="true" v-text="item.food"
-                  @input="item.food = $event.target.innerText"></div>
+                <select v-model="item.food" id="platillo" class="select-alimento editable"
+                  data-controller1="<?= site_url('obtener/platillos'); ?>" method="GET">
+                  <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                  <option v-for="platillo in platillos" :key="platillo.id_platillo" :value="platillo.id_platillo">
+                    {{ platillo.nombre_platillo }}
+                  </option>
+                </select>
               </td>
-
               <td>
                 <div class="editable" contenteditable="true" v-text="item.quantity"
                   @input="item.quantity = $event.target.innerText"></div>
@@ -247,12 +251,13 @@
         </div>
 
       </div>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-      <script src="/venta/assets/js/funcionLogout.js"></script>
-      <script src="/venta/assets/js/filtroBarra.js"></script>
+    <script src="/venta/assets/js/funcionLogout.js"></script>
+    <script src="/venta/assets/js/filtroBarra.js"></script>
 
-      <script src="/venta/assets/js/modal_pedidos.js"></script>
+    <script src="/venta/assets/js/modal_pedidos.js"></script>
 
 </body>
 

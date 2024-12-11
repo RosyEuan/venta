@@ -9,6 +9,7 @@ const sidebarApp = Vue.createApp({
       importe: '',
       metodo: '',
       cambio: '',
+      platillos: [],
       items: [
         { food: '', quantity: '' },
         { food: '', quantity: '' },
@@ -84,6 +85,24 @@ const sidebarApp = Vue.createApp({
     closeSidebar() {
       this.isSidebarOpen = false;
     },
+    cargarPlatillos() {
+      const url = $('#platillo').data('controller1');
+      $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: (response) => {
+          if (response.status === 'success') {
+            this.platillos = response.data;
+          } else {
+            alert('No se pudieron cargar los platillos');
+          }
+        },
+        error: (jqXHR, textStatus, error) => {
+          console.error('Error al cargar los platillos:', textStatus, error);
+        }
+      });
+    },
     openModal(usuario) {
       this.modalNombre = usuario.nombre;
       this.modalApellido = usuario.apellido;
@@ -93,5 +112,8 @@ const sidebarApp = Vue.createApp({
     closeModal() {
       this.isModalOpen = false;
     }
+  },
+  mounted() {
+    this.cargarPlatillos();
   }
 }).mount('#app');
