@@ -67,7 +67,6 @@ class pedidosController extends CI_Controller
     $pedido = $this->pedidosModel->selectIdPedido($id_pedido);
   }
 
-
   //----------------------------------------------------------------------------------------------------------------------------
   private function validarFormularioCliente()
   {
