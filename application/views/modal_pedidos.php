@@ -106,34 +106,43 @@
           </div>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th colspan="2" class="alimentos">Registrar Alimentos</th>
-            </tr>
-            <tr>
-              <th class="col-alimento">Alimento/Bebida</th>
-              <th class="alimento">Cantidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in items" :key="index" style="cursor: pointer;">
-              <td class="col-alimento">
-                <select v-model="item.food" id="platillo" class="select-alimento editable"
-                  data-controller1="<?= site_url('obtener/platillos'); ?>" method="GET">
-                  <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
-                  <option v-for="platillo in platillos" :key="platillo.id_platillo" :value="platillo.id_platillo">
-                    {{ platillo.nombre_platillo }}
-                  </option>
-                </select>
-              </td>
-              <td>
-                <div class="editable" contenteditable="true" v-text="item.quantity"
-                  @input="item.quantity = $event.target.innerText"></div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-wrapper">
+          <table style="width: 100%;">
+            <thead>
+              <tr>
+                <th colspan="2" class="alimentos">Registrar Alimentos</th>
+              </tr>
+              <tr>
+                <th class="col-alimento">Alimento/Bebida</th>
+                <th class="alimento">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in items" :key="index" style="cursor: pointer;">
+                <!-- <td class="col-alimento">
+                  <select v-model="item.food" class="select-alimento editable">
+                    <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                    <option value="Frijolito con puerquito">Frijolito con puerquito</option>
+                    <option value="Tacos al pastor">Tacos al pastor</option>
+                  </select>
+                </td> -->
+                <td class="col-alimento">
+                  <select v-model="item.food" id="platillo" class="select-alimento editable"
+                    data-controller1="<?= site_url('obtener/platillos'); ?>" method="GET">
+                    <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                    <option v-for="platillo in platillos" :key="platillo.id_platillo" :value="platillo.id_platillo">
+                      {{ platillo.nombre_platillo }}
+                    </option>
+                  </select>
+                </td>
+                <td>
+                  <div class="editable" contenteditable="true" v-text="item.quantity"
+                    @input="updateRow(index, 'quantity', $event.target.innerText)"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <button class="btn">Registrar</button>
       </div>
 
@@ -222,7 +231,47 @@
             <p>Actualizar estos datos modificaría el ticket final.</p>
           </div>
 
-          <table class="popup-table">
+          <div class="table-wrapper2">
+            <table class="popup-table" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th colspan="2" class="table-header">Registrar Alimentos</th>
+                </tr>
+                <tr>
+                  <th class="table-column-header">Alimento/Bebida</th>
+                  <th class="table-column-header">Cantidad</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(item, index) in modalItems" :key="index" style="cursor: pointer;">
+                  <td class="table-cell">
+                    <select v-model="item.food" id="platillo" class="select-table-column-header editable"
+                      data-controller1="<?= site_url('obtener/platillos'); ?>" method="GET">
+                      <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                      <option v-for="platillo in platillos" :key="platillo.id_platillo" :value="platillo.id_platillo">
+                        {{ platillo.nombre_platillo }}
+                      </option>
+                    </select>
+                  </td>
+                  <!-- <td class="col-alimento">
+                <select v-model="item.food" id="platillo" class="select-alimento editable"
+                  data-controller1="<?= site_url('obtener/platillos'); ?>" method="GET">
+                  <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                  <option v-for="platillo in platillos" :key="platillo.id_platillo" :value="platillo.id_platillo">
+                    {{ platillo.nombre_platillo }}
+                  </option>
+                </select>
+              </td> -->
+                  <td class="table-cell">
+                    <div class="editable-cell" contenteditable="true" v-text="item.quantity"
+                      @input="updateModalRow(index, 'quantity', $event.target.innerText)"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- <table class="popup-table">
             <thead>
               <tr>
                 <th colspan="2" class="table-header">Registrar Alimentos</th>
@@ -244,11 +293,12 @@
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
           <div class="modal-footer">
             <button type="button" class="boton_cerrar btn btn-secondary" @click="closeModal">Cerrar</button>
           </div>
         </div>
+
 
       </div>
     </div>

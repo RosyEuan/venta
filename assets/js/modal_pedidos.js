@@ -111,7 +111,20 @@ const sidebarApp = Vue.createApp({
     },
     closeModal() {
       this.isModalOpen = false;
-    }
+    },
+    updateRow(index, field, value) {
+      this.items[index][field] = value;
+      if (index === this.items.length - 1) {
+        this.items.push({ food: '', quantity: '' });
+      }
+    },
+    updateModalRow(index, field, value) {
+      this.modalItems[index][field] = value;
+      if (index === this.modalItems.length - 1) {
+        this.modalItems.push({ food: '', quantity: '' });
+      }
+    },
+
   },
   mounted() {
     this.cargarPlatillos();
