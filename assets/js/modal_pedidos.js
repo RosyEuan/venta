@@ -9,6 +9,7 @@ const sidebarApp = Vue.createApp({
       importe: '',
       metodo: '',
       cambio: '',
+      platillos: [],
       items: [
         { food: '', quantity: '' },
         { food: '', quantity: '' },
@@ -84,6 +85,24 @@ const sidebarApp = Vue.createApp({
     closeSidebar() {
       this.isSidebarOpen = false;
     },
+    cargarPlatillos() {
+      const url = $('#platillo').data('controller1');
+      $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: (response) => {
+          if (response.status === 'success') {
+            this.platillos = response.data;
+          } else {
+            alert('No se pudieron cargar los platillos');
+          }
+        },
+        error: (jqXHR, textStatus, error) => {
+          console.error('Error al cargar los platillos:', textStatus, error);
+        }
+      });
+    },
     openModal(usuario) {
       this.modalNombre = usuario.nombre;
       this.modalcorreo = usuario.correo;
@@ -131,12 +150,27 @@ const sidebarApp = Vue.createApp({
           console.error('Error:', error);
           alert('Hubo un problema al registrar el pedido.');
         });
-    }
+    },
 
     /*,
 
-    actualizarUsuarios() {
+    actualizarUsuarios() {},
       
     */
+    updateRow(index, field, value) {
+      this.items[index][field] = value;
+      if (index === this.items.length - 1) {
+        this.items.push({ food: '', quantity: '' });
+      }
+    },
+    updateModalRow(index, field, value) {
+      this.modalItems[index][field] = value;
+      if (index === this.modalItems.length - 1) {
+        this.modalItems.push({ food: '', quantity: '' });
+      }
+    }
+  },
+  mounted() {
+    this.cargarPlatillos();
   }
 }).mount('#app');

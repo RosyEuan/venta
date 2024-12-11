@@ -116,7 +116,7 @@
 
           <!-- Cuerpo -->
           <div id="inventario" class="table-body" data-controller="<?= site_url('productos/inventario'); ?>" method="GET"
-          data-controller4="<?= site_url('eliminar/inventario'); ?>">
+            data-controller4="<?= site_url('eliminar/inventario'); ?>">
             <table>
               <tbody>
                 <tr v-for="item in productosFiltrados" :key="item.id" :class="{'fila-baja-cantidad': parseInt(item.cantidad) <= 20}" class="cosas">
@@ -143,7 +143,7 @@
             <h2 class="poner">{{ editando ? "Editar producto" : "Agregar producto" }}</h2>
 
             <form @submit.prevent="agregarOEditarProducto" id="insertar" data-controller2="<?= site_url('insertar/inventario'); ?>"
-               data-controller3="<?= site_url('actualizar/inventario'); ?>" method="POST">
+              data-controller3="<?= site_url('actualizar/inventario'); ?>" method="POST">
               <label for="nombreProducto" class="estil">Nombre producto</label>
               <input class="intento" id="nombreProducto" v-model="nuevoProducto.producto"
                 placeholder="Escribe el nombre del producto">
@@ -158,7 +158,7 @@
               <div>
                 <label for="proveedor" class="estil">Proveedor</label>
                 <select class="intento" id="proveedor" v-model="nuevoProducto.proveedores"
-                  data-controller1="<?= site_url('proveedores/inventario'); ?>" method="GET" 
+                  data-controller1="<?= site_url('proveedores/inventario'); ?>" method="GET"
                   placeholder="Seleccionar">
                   <!-- <option value="">Seleccionar</option> -->
                   <option v-for="proveedor in proveedores" :key="proveedor.id_proveedor" :value="proveedor.id_proveedor">

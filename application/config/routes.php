@@ -104,3 +104,5 @@ $route['obtener/utilidades']            = 'Utilidad/obtenerUtilidades';
 $route['insertar/utilidades']          = 'Utilidad/insertarUtilidad';
 // Pedidos
 $route['api/pedidos']                = 'pedidosController/GenerarPedido';
+
+$route['obtener/platillos']             = 'Pedidos/obtenerPlatillos';

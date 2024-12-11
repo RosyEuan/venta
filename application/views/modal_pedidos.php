@@ -107,119 +107,172 @@
           </div>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th colspan="2" class="alimentos">Registrar Alimentos</th>
-            </tr>
-            <tr>
-              <th class="col-alimento">Alimento/Bebida</th>
-              <th class="alimento">Cantidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in items" :key="index" style="cursor: pointer;">
-              <td class="col-alimento">
-                <div class="editable" contenteditable="true" v-text="item.food"
-                  @input="item.food = $event.target.innerText" name="registro_pedido"></div>
-              </td>
+        <div class="table-wrapper">
+          <table style="width: 100%;">
+            <thead>
+              <tr>
+                <th colspan="2" class="alimentos">Registrar Alimentos</th>
+              </tr>
+              <tr>
+                <th class="col-alimento">Alimento/Bebida</th>
+                <th class="alimento">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in items" :key="index" style="cursor: pointer;">
+                <!-- <td class="col-alimento">
+                  <select v-model="item.food" class="select-alimento editable">
+                    <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                    <option value="Frijolito con puerquito">Frijolito con puerquito</option>
+                    <option value="Tacos al pastor">Tacos al pastor</option>
+                  </select>
+                </td> -->
+                <td class="col-alimento">
+                  <select v-model="item.food" id="platillo" class="select-alimento editable"
+                    data-controller1="<?= site_url('obtener/platillos'); ?>" method="GET">
+                    <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                    <option v-for="platillo in platillos" :key="platillo.id_platillo" :value="platillo.id_platillo">
+                      {{ platillo.nombre_platillo }}
+                    </option>
+                  </select>
+                </td>
+                <td>
+                  <div class="editable" contenteditable="true" v-text="item.quantity"
+                    @input="updateRow(index, 'quantity', $event.target.innerText)"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn">Registrar</button>
+    </div>
 
-              <td>
-                <div class="editable" contenteditable="true" v-text="item.quantity"
-                  @input="item.quantity = $event.target.innerText" name="registro_cantidad"></div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <button type="submit" class="btn">Registrar</button>
-      </form>
 
-
-      <!-- Usuarios -->
-      <div class="usuarios-list">
-        <div class="usuario" v-for="usuario in usuarios" :key="usuario.id">
-          <!-- Encabezado -->
-          <div class="usuario-header">
-            <h3>{{ usuario.nombre }}</h3>
-            <span class="fecha">{{usuario.fecha}}</span>
-            <div class="usuario-meta">
-              <div class="estado-info">
-                <span class="numero">#{{ usuario.numero }}</span>
-                <span class="estado">{{ usuario.estado }}</span>
-              </div>
-              <span class="hora">{{ usuario.hora }}</span>
+    <!-- Usuarios -->
+    <div class="usuarios-list">
+      <div class="usuario" v-for="usuario in usuarios" :key="usuario.id">
+        <!-- Encabezado -->
+        <div class="usuario-header">
+          <h3>{{ usuario.nombre }}</h3>
+          <span class="fecha">{{usuario.fecha}}</span>
+          <div class="usuario-meta">
+            <div class="estado-info">
+              <span class="numero">#{{ usuario.numero }}</span>
+              <span class="estado">{{ usuario.estado }}</span>
             </div>
-          </div>
-          <!-- Detalle del pedido -->
-          <div class="usuario-detalle">
-            <div class="detalle-item" v-for="detalle in usuario.detalles" :key="detalle.producto">
-              <span class="producto">{{ detalle.producto }}</span>
-              <span class="cantidad">{{ detalle.cantidad }}</span>
-              <span class="precio">{{ detalle.precio | currency }}</span>
-            </div>
-          </div>
-          <!-- Total y botón -->
-          <div class="usuario-footer">
-            <button @click="openModal">Detalles</button>
-            <span class="total">Total: ${{ usuario.total }}</span>
+            <span class="hora">{{ usuario.hora }}</span>
           </div>
         </div>
+        <!-- Detalle del pedido -->
+        <div class="usuario-detalle">
+          <div class="detalle-item" v-for="detalle in usuario.detalles" :key="detalle.producto">
+            <span class="producto">{{ detalle.producto }}</span>
+            <span class="cantidad">{{ detalle.cantidad }}</span>
+            <span class="precio">{{ detalle.precio | currency }}</span>
+          </div>
+        </div>
+        <!-- Total y botón -->
+        <div class="usuario-footer">
+          <button @click="openModal">Detalles</button>
+          <span class="total">Total: ${{ usuario.total }}</span>
+        </div>
       </div>
+    </div>
 
-      <!-- Modal -->
-      <div class="popup" v-if="isModalOpen">
-        <div class="popup-content">
-          <button type="submit" class="close-btn" @click="closeModal">X</button>
-          <h2 class="popup-title">Registro de Pedido</h2>
+    <!-- Modal -->
+    <div class="popup" v-if="isModalOpen">
+      <div class="popup-content">
+        <button type="submit" class="close-btn" @click="closeModal">X</button>
+        <h2 class="popup-title">Registro de Pedido</h2>
 
-          <div class="form-section">
-            <div>
-              <label for="modal-nombre" class="form-label">Nombre(s) del cliente</label>
-              <input type="text" id="modal-nombre" v-model="modalNombre" placeholder="Nombre(s)"
-                class="form-input nombre-input">
-            </div>
-            <div class="mesa-tam">
-              <label for="modal-mesa" class="form-label">Mesa</label>
-              <input type="text" id="modal-mesa" v-model="modalMesa" placeholder="Num.Mesa"
-                class="form-input mesa-input" min="1" max="200">
-            </div>
-            <div class="apellido-tam">
-              <label for="modal-apellido" class="form-label">Apellido(s) del cliente</label>
-              <input type="text" id="modal-apellido" v-model="modalApellido" placeholder="Apellido(s)"
-                class="form-input apellido-input">
-            </div>
+        <div class="form-section">
+          <div>
+            <label for="modal-nombre" class="form-label">Nombre(s) del cliente</label>
+            <input type="text" id="modal-nombre" v-model="modalNombre" placeholder="Nombre(s)"
+              class="form-input nombre-input">
           </div>
-          <div class="form-section">
-            <div>
-              <label for="modal-importe" class="form-label">Importe</label>
-              <input type="number" id="modal-importe" v-model="modalImporte" placeholder="Importe total"
-                class="form-input importe-input" min="0">
-            </div>
-            <div>
-              <label for="modal-cambio" class="form-label">Cambio</label>
-              <input type="number" id="modal-cambio" v-model="modalCambio" placeholder="Cambio"
-                class="form-input cambio-input" min="0">
-            </div>
-            <div>
-              <label for="modal-metodoPago" class="form-label">Tipo de método a pagar</label>
-              <select id="modal-metodoPago" v-model="modalMetodoPago" class="form-input metodo-input">
-                <option value="Efectivo">Efectivo</option>
-                <option value="Tarjeta">Tarjeta</option>
-                <option value="Transferencia">Transferencia</option>
-              </select>
-            </div>
+          <div class="mesa-tam">
+            <label for="modal-mesa" class="form-label">Mesa</label>
+            <input type="text" id="modal-mesa" v-model="modalMesa" placeholder="Num.Mesa"
+              class="form-input mesa-input" min="1" max="200">
           </div>
-
-          <div class="button-group">
-            <button class="popup-btn">Actualizar datos</button>
-            <button class="popup-btn">Completar pedido</button>
+          <div class="apellido-tam">
+            <label for="modal-apellido" class="form-label">Apellido(s) del cliente</label>
+            <input type="text" id="modal-apellido" v-model="modalApellido" placeholder="Apellido(s)"
+              class="form-input apellido-input">
           </div>
-
-          <div class="popup-warning">
-            <p>Actualizar estos datos modificaría el ticket final.</p>
+        </div>
+        <div class="form-section">
+          <div>
+            <label for="modal-importe" class="form-label">Importe</label>
+            <input type="number" id="modal-importe" v-model="modalImporte" placeholder="Importe total"
+              class="form-input importe-input" min="0">
           </div>
+          <div>
+            <label for="modal-cambio" class="form-label">Cambio</label>
+            <input type="number" id="modal-cambio" v-model="modalCambio" placeholder="Cambio"
+              class="form-input cambio-input" min="0">
+          </div>
+          <div>
+            <label for="modal-metodoPago" class="form-label">Tipo de método a pagar</label>
+            <select id="modal-metodoPago" v-model="modalMetodoPago" class="form-input metodo-input">
+              <option value="Efectivo">Efectivo</option>
+              <option value="Tarjeta">Tarjeta</option>
+              <option value="Transferencia">Transferencia</option>
+            </select>
+          </div>
+        </div>
 
-          <table class="popup-table">
+        <div class="button-group">
+          <button class="popup-btn">Actualizar datos</button>
+          <button class="popup-btn">Completar pedido</button>
+        </div>
+
+        <div class="popup-warning">
+          <p>Actualizar estos datos modificaría el ticket final.</p>
+        </div>
+
+        <div class="table-wrapper2">
+          <table class="popup-table" style="width: 100%;">
+            <thead>
+              <tr>
+                <th colspan="2" class="table-header">Registrar Alimentos</th>
+              </tr>
+              <tr>
+                <th class="table-column-header">Alimento/Bebida</th>
+                <th class="table-column-header">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in modalItems" :key="index" style="cursor: pointer;">
+                <td class="table-cell">
+                  <select v-model="item.food" id="platillo" class="select-table-column-header editable"
+                    data-controller1="<?= site_url('obtener/platillos'); ?>" method="GET">
+                    <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                    <option v-for="platillo in platillos" :key="platillo.id_platillo" :value="platillo.id_platillo">
+                      {{ platillo.nombre_platillo }}
+                    </option>
+                  </select>
+                </td>
+                <!-- <td class="col-alimento">
+                <select v-model="item.food" id="platillo" class="select-alimento editable"
+                  data-controller1="<?= site_url('obtener/platillos'); ?>" method="GET">
+                  <option value="" disabled selected>Seleccionar Alimento/Bebida</option>
+                  <option v-for="platillo in platillos" :key="platillo.id_platillo" :value="platillo.id_platillo">
+                    {{ platillo.nombre_platillo }}
+                  </option>
+                </select>
+              </td> -->
+                <td class="table-cell">
+                  <div class="editable-cell" contenteditable="true" v-text="item.quantity"
+                    @input="updateModalRow(index, 'quantity', $event.target.innerText)"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- <table class="popup-table">
             <thead>
               <tr>
                 <th colspan="2" class="table-header">Registrar Alimentos</th>
@@ -241,19 +294,21 @@
                 </td>
               </tr>
             </tbody>
-          </table>
-          <div class="modal-footer">
-            <button type="button" class="boton_cerrar btn btn-secondary" @click="closeModal">Cerrar</button>
-          </div>
+          </table> -->
+        <div class="modal-footer">
+          <button type="button" class="boton_cerrar btn btn-secondary" @click="closeModal">Cerrar</button>
         </div>
-
       </div>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-      <script src="/venta/assets/js/funcionLogout.js"></script>
-      <script src="/venta/assets/js/filtroBarra.js"></script>
 
-      <script src="/venta/assets/js/modal_pedidos.js"></script>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="/venta/assets/js/funcionLogout.js"></script>
+  <script src="/venta/assets/js/filtroBarra.js"></script>
+
+  <script src="/venta/assets/js/modal_pedidos.js"></script>
 
 </body>
 

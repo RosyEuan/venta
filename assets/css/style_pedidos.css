@@ -147,8 +147,10 @@ body {
   gap: 30px;
 }
 
-.sidebar.open ~ .content {
-  margin-left: 250px;
+.registro-pedidoss h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 16px;
 }
 
 /* Registro de pedido */
@@ -198,11 +200,10 @@ body {
 .registro-pedidoss table {
   width: 100%;
   margin-top: 20px;
-  border-collapse: collapse;
+  border-collapse: separate;
   width: 94%; /* Cambia este valor según lo necesites, por ejemplo, 50% o un valor fijo como 500px */
   margin: 0 auto; /* Para centrar la tabla */
   border: 3px solid #000; /* Contorno externo de la tabla */
-  border-collapse: collapse; /* Combina los bordes de celdas adyacentes */
 }
 
 .registro-pedidoss table,
@@ -241,14 +242,20 @@ body {
   background-color: #d7db08;
 }
 
-/* Sección de usuarios */
-.usuarios-list {
-  background: white;
+.registro-pedidoss .btn {
+  display: block;
+  font-weight: bold;
+  width: 150px;
+  margin: 15px auto;
+  margin-bottom: 0;
   padding: 10px;
-  border-radius: 8px;
-  width: 30%;
-  height: 500px;
-  overflow-y: auto;
+  background-color: #e8ec07;
+  color: #000;
+  font-size: 20px;
+  font-family: 'Merriweather';
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
 }
 
 .usuario {
@@ -295,10 +302,11 @@ table td {
 .editable:focus {
   outline: none;
 }
-.col-alimento {
-  width: 52%; /* Ajusta el ancho */
+.alimentos {
+  font-size: 24px;
   font-family: 'Merriweather';
-  font-size: 20px;
+  background: #d9d9d9;
+  border: 2px solid #000 !important;
 }
 .alimentos {
   font-size: 24px;
@@ -513,6 +521,7 @@ table td {
 .popup-content {
   background: white;
   padding: 30px;
+  padding-top: 16px;
   border-radius: 8px;
   width: 100%;
   margin: 0 auto;
@@ -524,7 +533,7 @@ table td {
 .popup-title {
   text-align: center;
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 32px;
   font-family: 'Merriweather';
 }
@@ -545,7 +554,7 @@ table td {
 }
 
 .form-section {
-  margin-bottom: 15px;
+  margin-bottom: 8px;
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -566,6 +575,29 @@ table td {
   height: auto;
   font-size: 16px;
   font-family: 'Merriweather';
+}
+
+.table-wrapper {
+  max-height: 276px;
+  overflow-y: auto;
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.table-wrapper2 {
+  max-height: 235px;
+  overflow-y: auto;
+  display: block;
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+}
+thead {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 2;
+  border-bottom: 2px solid #000;
 }
 
 .nombre-input {
@@ -599,14 +631,16 @@ table td {
 
 .popup-table {
   width: 94%;
-  margin: 8px auto;
-  border: 3px solid #000;
-  border-collapse: collapse;
+  margin: 0 auto;
+  border-collapse: separate;
+  margin-bottom: 0;
 }
 
 .table-header {
   text-align: center;
   background: #d9d9d9;
+  border: 2px solid #000;
+  padding: 14px;
   font-size: 24px;
   font-family: 'Merriweather';
 }
@@ -661,4 +695,7 @@ table td {
   font-family: 'Merriweather';
   text-align: center;
   margin-top: 10px;
+}
+.popup-warning p {
+  margin: 12px;
 }
