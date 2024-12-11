@@ -7,6 +7,11 @@
   <title>Menú</title>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJr+6tSey1PfEfh1r5Vtgg4f1uD1rfLql5r+9siT5PwbYO0xJYniFZp4j9S+" crossorigin="anonymous">
+
+
   <link href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="/venta/assets/css/style_menu.css">
@@ -58,19 +63,19 @@
           </a>
         </li>
       </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }" id="button_logout"
-        data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
+      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
 
         <a href="<?= site_url('perfil') ?>">
           <img src="img/Admin.png" alt="Usuario">
         </a>
-        <img src="img/Logout.png" alt="Salir">
+        <img src="img/Logout.png" alt="Salir" id="button_logout"
+          data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
         <a href="<?= site_url('perfil') ?>">
           <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
         </a>
-        <span>Angel Chi<br>Administrador</span>
+        <span>Hola! <?php echo $this->session->userdata('usuario'); ?><br><?php echo $this->session->userdata('puesto'); ?></span>
       </div>
     </nav>
 
@@ -82,9 +87,10 @@
           <input type="text" placeholder="Buscar en el menú" v-model="search" />
           <div class="filters">
             <button :class="{ active: filter === 'all' }" @click="setFilter('all')">Todo</button>
-            <button :class="{ active: filter === 'platillos' }" @click="setFilter('platillos')">Platillos</button>
-            <button :class="{ active: filter === 'bebidas' }" @click="setFilter('bebidas')">Bebidas</button>
-            <button :class="{ active: filter === 'postres' }" @click="setFilter('postres')">Postres</button>
+            <button :class="{ active: filter === 'Platillos' }" @click="setFilter('Platillos')">Platillos</button>
+            <button :class="{ active: filter === 'Bebidas' }" @click="setFilter('Bebidas')">Bebidas</button>
+            <button :class="{ active: filter === 'Postres' }" @click="setFilter('Postres')">Postres</button>
+            <button :class="{ active: filter === 'Alcohol' }" @click="setFilter('Alcohol')">Alcohol</button>
           </div>
           <button @click="openAddModal" class="add-btn">Agregar</button>
         </div>
@@ -111,14 +117,15 @@
     </div>
 
     <!-- Modal para Agregar Platillo -->
-    <div v-if="showModal" class="modal-overlay" @click="showModal = false">
+    <form v-if="showModal" class="modal-overlay" @click="closeModal" method="POST" id="formulario_editarMenu"
+      data-controller="<?= base_url('api/menu/guardarplatillo'); ?>">
       <div class="modal-container" @click.stop>
         <button type="button" class="close-btn" @click="closeModal">X</button>
         <h2 class="title">{{ isEditing ? 'Editar Menú' : 'Agregar al menú' }}</h2>
         <!-- Nombre -->
         <div class="form-group" style="grid-column: span 2;">
           <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" v-model="nombre" :disabled="isEditing">
+          <input type="text" id="nombre" v-model="nombre" :disabled="isEditing" name="nombre_platillo">
         </div>
 
         <!-- Categoría y Precio (en la misma fila) -->
@@ -129,12 +136,14 @@
               <option value="">Seleccionar</option>
               <option value="Platillos">Platillos</option>
               <option value="Bebidas">Bebidas</option>
+              <option value="Alcohol">Alcohol</option>
               <option value="Postres">Postres</option>
             </select>
           </div>
+
           <div class="form-group">
             <label for="precio">Precio:</label>
-            <input type="number" id="precio" v-model="precio" @input="calcularPrecioConDescuento">
+            <input type="number" id="precio" v-model="precio" name="precio_platillo" @input="calcularPrecioConDescuento">
           </div>
         </div>
 
@@ -142,7 +151,7 @@
         <div class="form-group-row" style="grid-column: span 2;">
           <div class="form-group">
             <label for="descuento">Descuento:</label>
-            <input type="number" id="descuento" v-model="descuento" @input="calcularPrecioConDescuento">
+            <input type="number" id="descuento" v-model="descuento" name="descuento_platillo" @input="calcularPrecioConDescuento">
           </div>
           <div class="form-group">
             <label for="precio-descuento">Precio con descuento:</label>
@@ -153,25 +162,25 @@
         <!-- Imagen -->
         <div class="form-group" style="grid-column: 3; display: flex; justify-content: center; align-items: center;">
           <label for="imageUpload" class="image-label">Imagen:</label>
-          <div class="image-upload">
-            <div id="imageBox" class="image-box"></div>
-          </div>
+          <input class="image-upload" type="file" id="imageInput" name="imagen" @change="handleImageUpload" accept="image/*">
         </div>
 
         <!-- Descripción -->
         <div class="form-group" style="grid-column: span 2;">
           <label for="descripcion" class="descue">Descripción:</label>
-          <textarea id="descripcion" rows="4" v-model="descripcion"></textarea>
+          <textarea id="descripcion" rows="4" name="descripcion_platillo" v-model="descripcion"></textarea>
         </div>
         <!-- Botón Guardar -->
         <div style="grid-column: span 3; ">
-          <button class="btn-cambios" @click="saveChanges">Guardar Cambios</button>
+          <button class="btn-cambios" @click="saveChanges" type="button">Guardar Cambios</button>
         </div>
         <button class="btn_cerrar" type="button" @click="closeModal">Cancelar</button>
       </div>
-    </div>
+    </form>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+  </script>
 
   <script src="/venta/assets/js/menu.js"></script>
   <script src="/venta/assets/js/filtroBarra.js"></script>

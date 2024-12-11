@@ -7,6 +7,7 @@
   <title>Personal</title>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,19 +63,19 @@
           </a>
         </li>
       </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }" id="button_logout"
-        data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
+      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
 
         <a href="<?= site_url('perfil') ?>">
           <img src="img/Admin.png" alt="Usuario">
         </a>
-        <img src="img/Logout.png" alt="Salir">
+        <img src="img/Logout.png" alt="Salir" id="button_logout"
+          data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
         <a href="<?= site_url('perfil') ?>">
           <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
         </a>
-        <span>Angel Chi<br>Administrador</span>
+        <span>Hola! <?php echo $this->session->userdata('usuario'); ?><br><?php echo $this->session->userdata('puesto'); ?></span>
       </div>
     </nav>
 
@@ -305,63 +306,194 @@
     </div>
   </div>
 
-  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+  <script src="/venta/assets/js/funcionLogout.js"></script>
+  <script src="/venta/assets/js/filtroBarra.js"></script>
+
+  <script src="/venta/assets/js/personal.js"></script>
+  =========
   <script>
-    const { createApp } = Vue;
+    const {
+      createApp
+    } = Vue;
     createApp({
       data() {
         return {
           isSidebarOpen: false,
           search: '',
           filter: 'all',
-          Employees: [
-            { id: 1, name: 'Sofía Ramírez', position: 'Supervisor', status: 'Activo', salary: 18000, image: 'img/Empleado.png', history:
-               [
-                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
-                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
-                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
-                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
-                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
-          
+          Employees: [{
+              id: 1,
+              name: 'Sofía Ramírez',
+              position: 'Supervisor',
+              status: 'Activo',
+              salary: 18000,
+              image: 'img/Empleado.png',
+              history: [{
+                  date: '12/Nov/2024',
+                  details: 'Llegó tarde al trabajo.',
+                  isOpen: false
+                },
+                {
+                  date: '13/Nov/2024',
+                  details: 'Completó tareas asignadas.',
+                  isOpen: false
+                },
+                {
+                  date: '14/Nov/2024',
+                  details: 'Faltó sin aviso.',
+                  isOpen: false
+                },
+                {
+                  date: '15/Nov/2024',
+                  details: 'Recibió una felicitación.',
+                  isOpen: false
+                },
+                {
+                  date: '16/Nov/2024',
+                  details: 'Participó en capacitación.',
+                  isOpen: false
+                }
+
               ]
             },
-            
-            { id: 2, name: 'Lucas Fernández', position: 'Almacenista', status: 'Inactivo', salary: 15000, image: 'img/Empleado.png', history: 
-              [
-                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
-                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
-                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
-                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
-                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+
+            {
+              id: 2,
+              name: 'Lucas Fernández',
+              position: 'Almacenista',
+              status: 'Inactivo',
+              salary: 15000,
+              image: 'img/Empleado.png',
+              history: [{
+                  date: '12/Nov/2024',
+                  details: 'Llegó tarde al trabajo.',
+                  isOpen: false
+                },
+                {
+                  date: '13/Nov/2024',
+                  details: 'Completó tareas asignadas.',
+                  isOpen: false
+                },
+                {
+                  date: '14/Nov/2024',
+                  details: 'Faltó sin aviso.',
+                  isOpen: false
+                },
+                {
+                  date: '15/Nov/2024',
+                  details: 'Recibió una felicitación.',
+                  isOpen: false
+                },
+                {
+                  date: '16/Nov/2024',
+                  details: 'Participó en capacitación.',
+                  isOpen: false
+                }
               ]
             },
-            
-            { id: 3, name: 'Camila Torres', position: 'Mesera', status: 'Inactivo', salary: 10000, image: 'img/Empleado.png', history:
-               [
-                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
-                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
-                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
-                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
-                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+
+            {
+              id: 3,
+              name: 'Camila Torres',
+              position: 'Mesera',
+              status: 'Inactivo',
+              salary: 10000,
+              image: 'img/Empleado.png',
+              history: [{
+                  date: '12/Nov/2024',
+                  details: 'Llegó tarde al trabajo.',
+                  isOpen: false
+                },
+                {
+                  date: '13/Nov/2024',
+                  details: 'Completó tareas asignadas.',
+                  isOpen: false
+                },
+                {
+                  date: '14/Nov/2024',
+                  details: 'Faltó sin aviso.',
+                  isOpen: false
+                },
+                {
+                  date: '15/Nov/2024',
+                  details: 'Recibió una felicitación.',
+                  isOpen: false
+                },
+                {
+                  date: '16/Nov/2024',
+                  details: 'Participó en capacitación.',
+                  isOpen: false
+                }
               ]
             },
-            { id: 4, name: 'Juan Peréz', position: 'Cajero', status: 'Activo', salary: 8000, image: 'img/Empleado.png', history:
-               [
-                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
-                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
-                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
-                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
-                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+            {
+              id: 4,
+              name: 'Juan Peréz',
+              position: 'Cajero',
+              status: 'Activo',
+              salary: 8000,
+              image: 'img/Empleado.png',
+              history: [{
+                  date: '12/Nov/2024',
+                  details: 'Llegó tarde al trabajo.',
+                  isOpen: false
+                },
+                {
+                  date: '13/Nov/2024',
+                  details: 'Completó tareas asignadas.',
+                  isOpen: false
+                },
+                {
+                  date: '14/Nov/2024',
+                  details: 'Faltó sin aviso.',
+                  isOpen: false
+                },
+                {
+                  date: '15/Nov/2024',
+                  details: 'Recibió una felicitación.',
+                  isOpen: false
+                },
+                {
+                  date: '16/Nov/2024',
+                  details: 'Participó en capacitación.',
+                  isOpen: false
+                }
               ]
             },
-            { id: 5, name: 'Shaiel Ramirez', position: 'Gerente', status: 'Activo', salary: 10000, image: 'img/Empleado.png', history:
-               [
-                { date: '12/Nov/2024', details: 'Llegó tarde al trabajo.', isOpen: false },
-                { date: '13/Nov/2024', details: 'Completó tareas asignadas.', isOpen: false },
-                { date: '14/Nov/2024', details: 'Faltó sin aviso.', isOpen: false },
-                { date: '15/Nov/2024', details: 'Recibió una felicitación.', isOpen: false },
-                { date: '16/Nov/2024', details: 'Participó en capacitación.', isOpen: false }
+            {
+              id: 5,
+              name: 'Shaiel Ramirez',
+              position: 'Gerente',
+              status: 'Activo',
+              salary: 10000,
+              image: 'img/Empleado.png',
+              history: [{
+                  date: '12/Nov/2024',
+                  details: 'Llegó tarde al trabajo.',
+                  isOpen: false
+                },
+                {
+                  date: '13/Nov/2024',
+                  details: 'Completó tareas asignadas.',
+                  isOpen: false
+                },
+                {
+                  date: '14/Nov/2024',
+                  details: 'Faltó sin aviso.',
+                  isOpen: false
+                },
+                {
+                  date: '15/Nov/2024',
+                  details: 'Recibió una felicitación.',
+                  isOpen: false
+                },
+                {
+                  date: '16/Nov/2024',
+                  details: 'Participó en capacitación.',
+                  isOpen: false
+                }
               ]
             },
           ],
@@ -433,7 +565,9 @@
         openEditModal(employeeId) {
           const employee = this.Employees.find(emp => emp.id === employeeId);
           if (employee) {
-            this.currentEmployee = { ...employee };
+            this.currentEmployee = {
+              ...employee
+            };
           }
           this.isEditModalOpen = true;
         },
@@ -443,7 +577,9 @@
         openHistoryModal(employeeId) {
           const employee = this.Employees.find(emp => emp.id === employeeId);
           if (employee) {
-            this.currentEmployee = { ...employee };
+            this.currentEmployee = {
+              ...employee
+            };
           }
           this.isHistoryModalOpen = true;
         },
@@ -454,12 +590,15 @@
         toggleCard(index) {
           this.currentEmployee.history[index].isOpen = !this.currentEmployee.history[index].isOpen;
         },
-        
-        
+
+
         addEmployee() {
           if (this.idValidEmployeeData()) {
             const newId = this.Employees.length + 1;
-            this.Employees.push({ id: newId, ...this.newEmployee });
+            this.Employees.push({
+              id: newId,
+              ...this.newEmployee
+            });
             this.closeModal();
           } else {
             alert("Por favor, complete todos los campos del empleado.");
@@ -468,7 +607,9 @@
         updateEmployee() {
           const index = this.Employees.findIndex(emp => emp.id === this.currentEmployee.id);
           if (index !== -1) {
-            this.Employees[index] = { ...this.currentEmployee };
+            this.Employees[index] = {
+              ...this.currentEmployee
+            };
             this.closeEditModal();
           }
         },
@@ -476,11 +617,21 @@
           return Object.values(this.newEmployee).every(value => value.trim() !== '' && value !== null);
         },
         resetNewEmployee() {
-          this.newEmployee = { name: '', lastname:'', dob: '', curp: '', position: '', email: '', rfc: '', salary: '' };
+          this.newEmployee = {
+            name: '',
+            lastname: '',
+            dob: '',
+            curp: '',
+            position: '',
+            email: '',
+            rfc: '',
+            salary: ''
+          };
         }
       }
     }).mount('#app');
   </script>
+  >>>>>>>>> Temporary merge branch 2
 </body>
 
 </html>

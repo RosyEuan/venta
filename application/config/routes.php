@@ -54,7 +54,7 @@ $route['default_controller']            = 'Welcome';
 /* Rutas para acceder a las pantallas */
 $route['404_override']                  = '';
 $route['translate_uri_dashes']          = FALSE;
-$route['barra_lateral']                 = 'Welcome/barra_lateral';
+
 $route['menu']                          = 'Welcome/menu';
 $route['mesas']                         = 'Welcome/mesas';
 $route['reservaciones']                 = 'Welcome/reservaciones';
@@ -68,12 +68,25 @@ $route['barra']                         = 'Welcome/barra';
 $route['registrarse']                   = 'InicioSesion/CrearCuenta';
 $route['iniciar_sesion']                = 'InicioSesion/VerificaSesion';
 $route['cerrar_sesion']                 = 'InicioSesion/CerrarSesion';
-$route['prueba']                        = 'Welcome/pruebita';
+
+$route['verificar_correo']              = 'Mailer/SolicitudRecuperar';
 $route['dashboard']                     = 'dashboard/dashboard';
 
 $route['modal_pedidos']                 = 'Welcome/modal_pedidos';
 $route['perfil']                        = 'Welcome/perfil';
 $route['user']                          = 'Welcome/user';
+$route['recuperar/(:any)']              = 'cambio_contraseña/actualizarPassword/$1';
+$route['modificacion/contrasena']       = 'cambio_contraseña/modificacion_contraseña';
+//Reportes
+$route['api/reportes/dia']              = 'ReportesController/Get_ventasDiarias';
+$route['api/reportes/semana']           = 'ReportesController/Get_ventasSemanales';
+$route['api/reportes/mes']              = 'ReportesController/Get_ventasMensuales';
+$route['api/reportes/anual']            = 'ReportesController/Get_ventasAnuales';
+// Menu
+$route['api/menu/guardarplatillo']      = 'MenuController/GuardarPlatillo';
+$route['api/menu/mostrarplatillo']      = 'MenuController/obtenerMenu';
+$route['api/menu/actualizarplatillo']   = 'MenuController/ActualizarPlatillo';
+$route['api/menu/mostrarcategorias']    = 'MenuController/MostrarCategorias';
 $route['actualizarPassword']            = 'Welcome/actualizarPassword';
 $route['datos_perfil']                  = 'MEditar_Perfil/obtenerPerfil';
 $route['actualizar_perfil']             = 'MEditar_Perfil/actualizarPerfil';
@@ -88,4 +101,6 @@ $route['actualizar/proveedores']        = 'Proveedores/actualizar';
 $route['eliminar/proveedores']          = 'Proveedores/eliminar';
 $route['obtener/utilidades']            = 'Utilidad/obtenerUtilidades';
 $route['insertar/utilidades']           = 'Utilidad/insertarUtilidad';
+
 $route['obtener/platillos']             = 'Pedidos/obtenerPlatillos';
+$route['Ticket']                        = 'Ticket/generate_ticket';

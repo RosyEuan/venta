@@ -58,7 +58,6 @@
         <form class="formulario__register" style="display: none;" id="formulario_registro" method="POST"
           data-controller-url="<?= site_url('registrarse'); ?>">
           <h2 class="cuenta">Crear Cuenta</h2>
-          <input type="text" placeholder="Nombre" class="estemm" name="registro_nombre">
           <input type="text" placeholder="Usuario" class="estedee" name="registro_usuario">
           <div class="password-container" style="position: relative;">
             <input id="register-password" type="password" placeholder="Contraseña" class="estedee" name="registro_contraseña">
@@ -68,7 +67,7 @@
             <input id="register-confirm-password" type="password" placeholder="Asegurar contraseña" class="estedee" name="registro_contraseña2">
             <i id="toggleRegisterConfirmPassword" class="fas fa-eye confirm-password-icon"></i>
           </div>
-          <input type="text" placeholder="Puesto" class="estedee" name="registro_id_empleado">
+          <input type="text" placeholder="ID" class="estedee" name="registro_id_empleado">
           <button type="submit" class="porq">Crear</button>
           <p class="colpe">¿Ya tienes una cuenta? <a href="#" onclick="iniciarSesion()" class="mercure">Iniciar Sesión</a></p>
           <div class="legal-links">
@@ -82,21 +81,24 @@
   </main>
 
   <!-- Modal de recuperación de contraseña -->
-  <div class="password-modal" id="passwordModal">
+  <form class="password-modal" id="passwordModal" method="POST" data-controller-verify="<?= site_url('verificar_correo'); ?>">
     <div class="password-recovery">
       <h2>¡Recuperar tu contraseña!</h2>
       <p>Te enviaremos un correo para cambiar tu contraseña</p>
       <div class="form-container">
-        <input type="email" placeholder="Ingrese su correo" required />
+        <input type="email" id="solicitud_recuperar" name="solicitud_recuperar"
+          placeholder="Ingrese su correo" required />
         <button type="submit">Enviar</button>
       </div>
       <div class="back">
         <a href="#" onclick="closePasswordModal()">Regresar <i>&#x21B6;</i></a>
       </div>
     </div>
-  </div>
+  </form>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="/venta/assets/js/verificar_correo.js"></script>
   <script src="/venta/assets/js/login.js"></script>
 </body>
 

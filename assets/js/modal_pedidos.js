@@ -4,7 +4,7 @@ const sidebarApp = Vue.createApp({
       isModalOpen: false,
       isSidebarOpen: false,
       nombre: '',
-      apellido: '',
+      correo: '',
       mesa: '',
       importe: '',
       metodo: '',
@@ -105,7 +105,7 @@ const sidebarApp = Vue.createApp({
     },
     openModal(usuario) {
       this.modalNombre = usuario.nombre;
-      this.modalApellido = usuario.apellido;
+      this.modalcorreo = usuario.correo;
       this.modalMesa = usuario.mesa;
       this.isModalOpen = true;
     },

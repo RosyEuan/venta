@@ -25,6 +25,7 @@ class Welcome extends CI_Controller
 		$this->load->helper('url');
 		$this->load->library('session');
 	}
+
 	private function ValidacionAcceso($puestosPermitidos)
 	{
 		$logged_in = $this->session->userdata('logged_in');
@@ -32,7 +33,7 @@ class Welcome extends CI_Controller
 		$puesto = $this->session->userdata('puesto');
 
 		if ($logged_in == false) {
-			echo json_encode(['status' => 'error', 'message' => 'No has iniciado sesión']);
+			echo json_encode(['status' => 'error', 'message' => 'No has iniciado sesion']);
 			return false;
 		}
 
@@ -204,10 +205,7 @@ class Welcome extends CI_Controller
 	public function perfil()
 	{
 		//$this->QuitarCache();
-		$logged_in = $this->session->userdata('logged_in');
-
-		if (!isset($logged_in) && $logged_in == false) {
-			echo json_encode(['status' => 'error', 'message' => 'No has iniciado sesión']);
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor', 'Cajero', 'Mesero', 'Recepcionista', 'Almacenista'])) {
 			return;
 		}
 		$data = [
@@ -221,10 +219,7 @@ class Welcome extends CI_Controller
 	public function user()
 	{
 		//$this->QuitarCache();
-		$logged_in = $this->session->userdata('logged_in');
-
-		if (!isset($logged_in) && $logged_in == false) {
-			echo json_encode(['status' => 'error', 'message' => 'No has iniciado sesión']);
+		if (!$this->ValidacionAcceso(['Administrador', 'Supervisor', 'Cajero', 'Mesero', 'Recepcionista', 'Almacenista'])) {
 			return;
 		}
 		$data = [
@@ -233,22 +228,5 @@ class Welcome extends CI_Controller
 			'usuario_login' => $this->session->userdata('usuario')
 		];
 		$this->load->view('user', $data);
-	}
-
-	public function actualizarPassword()
-	{
-		//$this->QuitarCache();
-		$logged_in = $this->session->userdata('logged_in');
-
-		if (!isset($logged_in) && $logged_in == false) {
-			echo json_encode(['status' => 'error', 'message' => 'No has iniciado sesión']);
-			return;
-		}
-		$data = [
-			'logged_in' => $this->session->userdata('logged_in'),
-			'puesto_sesion' => $this->session->userdata('puesto'),
-			'usuario_login' => $this->session->userdata('usuario')
-		];
-		$this->load->view('actualizarPassword', $data);
 	}
 }

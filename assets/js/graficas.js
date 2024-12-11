@@ -15,18 +15,19 @@ createApp({
   }
 }).mount('#app');
 
+// Graficas con chart y vue integrado
+
 // Ventas Diarias
 const ventasDiariasCtx = document
   .getElementById('ventasDiarias')
   .getContext('2d');
-new Chart(ventasDiariasCtx, {
+var ventasDiariasChart = new Chart(ventasDiariasCtx, {
   type: 'bar',
   data: {
-    labels: ['🟡Platillos', '🔵Bebidas', '🟢Alcohol', '🔴Postres'],
+    labels: [],
     datasets: [
       {
         label: 'Ventas del Día',
-        data: [50, 75, 80, 78, 100],
         backgroundColor: ['#EEE651', '#322A7F', '#77C97A', '#D64040']
       }
     ]
@@ -37,13 +38,13 @@ new Chart(ventasDiariasCtx, {
 const ventasSemanalesCtx = document
   .getElementById('ventasSemanales')
   .getContext('2d');
-new Chart(ventasSemanalesCtx, {
+var ventasSemanalesChart = new Chart(ventasSemanalesCtx, {
   type: 'pie',
   data: {
-    labels: ['Platillos', 'Bebidas', 'Alcohol', 'Postres'],
+    labels: [],
     datasets: [
       {
-        data: [20, 25, 15, 40],
+        data: [],
         backgroundColor: ['#4B51B8', '#E8EC07', '#D64040', '#77C97A']
       }
     ]
@@ -54,13 +55,7 @@ new Chart(ventasSemanalesCtx, {
 const ventasAnualesCtx = document
   .getElementById('ventasAnuales')
   .getContext('2d');
-// Crear el gradiente
-const gradient = ventasAnualesCtx.createLinearGradient(0, 0, 0, 400); // De arriba a abajo (puedes ajustar las coordenadas)
-gradient.addColorStop(0, 'rgba(139, 146, 241, 0.40)'); // Color inicial
-gradient.addColorStop(0.7, 'rgba(119, 126, 232, 0.40)'); // Color intermedio
-gradient.addColorStop(0.91, 'rgba(128, 136, 251, 0.40)'); // Otro color intermedio
-gradient.addColorStop(1, 'rgba(129, 138, 255, 0.40)'); // Color final
-new Chart(ventasAnualesCtx, {
+var ventasAnualesChart = new Chart(ventasAnualesCtx, {
   type: 'line',
   data: {
     labels: [
@@ -80,11 +75,132 @@ new Chart(ventasAnualesCtx, {
     datasets: [
       {
         label: 'Ventas Generales-Anual',
-        data: [25, 36, 65, 53, 65, 45, 74, 74, 56, 73, 85, 100],
+        data: [],
         borderColor: '#4B51B8',
-        backgroundColor: gradient,
+        backgroundColor: 'rgba(139, 146, 241, 0.4)',
         fill: true
       }
     ]
   }
+});
+//
+// Funciones para actualizar las gráficas por cada tipo de reporte (diario, semanal, mensual, anual)
+const actualizarGraficaPorMenu = (datos) => {
+  ventasDiariasChart.data.labels = [];
+  ventasDiariasChart.data.datasets[0].data = [];
+
+  datos.forEach((dato) => {
+    dato.menus.forEach((menu) => {
+      ventasDiariasChart.data.labels.push(menu.nombreMenu);
+      ventasDiariasChart.data.datasets[0].data.push(menu.montoTotal);
+    });
+  });
+
+  ventasDiariasChart.update();
+  console.log('Gráfica diaria actualizada:', ventasDiariasChart.data);
+};
+
+const actualizarGraficaSemanal = (datos) => {
+  ventasSemanalesChart.data.labels = [];
+  ventasSemanalesChart.data.datasets[0].data = [];
+
+  datos.forEach((dato) => {
+    dato.menus.forEach((menu) => {
+      ventasSemanalesChart.data.labels.push(menu.nombreMenu);
+      ventasSemanalesChart.data.datasets[0].data.push(menu.montoTotal);
+    });
+  });
+
+  ventasSemanalesChart.update();
+  console.log('Gráfica semanal actualizada:', ventasSemanalesChart.data);
+};
+
+const actualizarGraficaAnual = (datos) => {
+  const ventasPorMes = Array(12).fill(0);
+
+  datos.forEach((dato) => {
+    console.log(dato);
+    console.log('Monto pago:', dato.montoTotal);
+    console.log('fecha pago', dato.fecha);
+    const mes = new Date(dato.fecha).getMonth();
+    dato.menus.forEach((menu) => {
+      ventasPorMes[mes] += menu.montoTotal;
+    });
+  });
+
+  ventasAnualesChart.data.datasets[0].data = ventasPorMes;
+  ventasAnualesChart.update();
+  console.log('Gráfica anual actualizada:', ventasAnualesChart.data);
+};
+
+// Función para agrupar los datos por categoría (fecha y menú)
+const agruparPorCategoria = (datos, tipo) => {
+  const categorias = {};
+
+  datos.forEach((dato) => {
+    console.log('Mira aqui', dato);
+    const nombreMenu = dato.nombre_menu || 'Sin categoría';
+    const montoTotal = parseFloat(dato.monto_pago);
+    const fechaPago = dato.fecha_pago || 'Sin fecha';
+
+    if (!isNaN(montoTotal)) {
+      if (!categorias[fechaPago]) categorias[fechaPago] = {};
+      if (!categorias[fechaPago][nombreMenu])
+        categorias[fechaPago][nombreMenu] = 0;
+
+      // Sumar el monto total al menú y fecha
+      categorias[fechaPago][nombreMenu] += montoTotal;
+    } else {
+      console.log(`Error con el monto_pago: ${dato.monto_pago}`);
+    }
+  });
+
+  // Convertir el objeto en un arreglo con fecha y nombre de menú
+  const datosArray = Object.entries(categorias).map(([fecha, menus]) => {
+    return {
+      fecha,
+      menus: Object.entries(menus).map(([nombreMenu, montoTotal]) => {
+        return { nombreMenu, montoTotal };
+      })
+    };
+  });
+
+  //console.log('Datos agrupados:', datosArray);
+
+  // Actualizar la gráfica correspondiente
+  if (tipo === 'dia') {
+    actualizarGraficaPorMenu(datosArray);
+  } else if (tipo === 'semana') {
+    actualizarGraficaSemanal(datosArray);
+  } else if (tipo === 'mes') {
+    //actualizarGraficaMensual(datosArray);
+  } else if (tipo === 'anual') {
+    actualizarGraficaAnual(datosArray);
+  }
+};
+
+// Función para hacer el fetch a cada reporte
+const obtenerDatos = (url, tipo) => {
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) throw new Error('Error al obtener los datos');
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data); // Verifica la estructura completa de los datos recibidos
+      agruparPorCategoria(data, tipo);
+    })
+    .catch((error) => console.error(`Error al actualizar ${tipo}:`, error));
+};
+
+const urls = {
+  dia: 'http://localhost/venta/api/reportes/dia',
+  semana: 'http://localhost/venta/api/reportes/semana',
+  mes: 'http://localhost/venta/api/reportes/mes',
+  anual: 'http://localhost/venta/api/reportes/anual'
+};
+
+// Actualizar cada gráfica
+Object.keys(urls).forEach((tipo) => {
+  obtenerDatos(urls[tipo], tipo);
 });

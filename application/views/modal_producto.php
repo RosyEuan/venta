@@ -7,6 +7,8 @@
   <title>Inventario Ingredientes</title>
   <!--Se carga vue de forma sincrona para evitar parpadeos y ejecutarlo junto al DOM -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+
   <link href="https://fonts.googleapis.com/css2?family=Maname&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -58,19 +60,19 @@
           </a>
         </li>
       </ul>
-      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }" id="button_logout"
-        data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
+      <div class="bottom-icons" :class="{ hidden: isSidebarOpen }">
 
         <a href="<?= site_url('perfil') ?>">
           <img src="img/Admin.png" alt="Usuario">
         </a>
-        <img src="img/Logout.png" alt="Salir">
+        <img src="img/Logout.png" alt="Salir" id="button_logout"
+          data-logout-url="<?= site_url('cerrar_sesion') ?>" data-base-url="<?= site_url('/') ?>">
       </div>
       <div class="admin-info" :class="{ hidden: !isSidebarOpen }">
         <a href="<?= site_url('perfil') ?>">
           <img src="<?= base_url('img/Admin.png') ?>" alt="Usuario">
         </a>
-        <span>Angel Chi<br>Administrador</span>
+        <span>Hola! <?php echo $this->session->userdata('usuario'); ?><br><?php echo $this->session->userdata('puesto'); ?></span>
       </div>
     </nav>
 

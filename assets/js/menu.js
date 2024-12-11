@@ -4,8 +4,8 @@ createApp({
     return {
       isSidebarOpen: false,
       showModal: false,
-      isEditing: false, // Nueva variable para controlar el modo
-      editingItemId: null, // ID del elemento que se está editando
+      isEditing: false,
+      editingItemId: null,
       nombre: '',
       categoria: '',
       precio: 0,
@@ -14,26 +14,8 @@ createApp({
       precioConDescuento: 0,
       search: '',
       filter: 'all',
-      menuItems: [
-        {
-          id: 1,
-          name: 'Tacos al pastor',
-          price: 30.0,
-          description:
-            'Tortillas de maíz con carne de cerdo marinada en adobo, acompañados de piña fresca, cebolla y cilantro. Servidos con salsa verde o roja.',
-          image: 'img/platillo1.png',
-          category: 'postres'
-        },
-        {
-          id: 2,
-          name: 'Tacos de asada',
-          price: 20.0,
-          description:
-            'Tortillas de maíz con carne asada de res, marinada en especias y a la parrilla. Acompañados de cebolla, cilantro y salsa al gusto.',
-          image: 'img/platillo2.png',
-          category: 'bebidas'
-        }
-      ]
+      menuItems: [],
+      categorias: []
     };
   },
   computed: {
@@ -51,9 +33,6 @@ createApp({
     },
     closeSidebar() {
       this.isSidebarOpen = false;
-    },
-    setFilter(filter) {
-      this.filter = filter;
     },
     editItem(id) {
       alert(`Editar platillo con ID: ${id}`);
@@ -74,18 +53,22 @@ createApp({
     },
     closeModal() {
       this.showModal = false;
-      this.resetNewEmployee();
+      this.resetForm();
     },
-    openAddModal() {
-      // Limpiar datos para agregar nuevo
+    resetForm() {
       this.isEditing = false;
-      this.showModal = true;
+      this.editingItemId = null;
       this.nombre = '';
       this.categoria = '';
       this.precio = 0;
       this.descuento = 0;
       this.descripcion = '';
       this.precioConDescuento = 0;
+    },
+    openAddModal() {
+      // Limpiar datos para agregar nuevo
+      this.resetForm();
+      this.showModal = true;
     },
     openEditModal(item) {
       // Configurar datos para edición
@@ -100,34 +83,94 @@ createApp({
       this.precioConDescuento = item.price; // Puedes ajustar según la lógica
     },
     saveChanges() {
-      if (this.isEditing) {
-        // Editar el elemento existente
-        const index = this.menuItems.findIndex(
-          (item) => item.id === this.editingItemId
-        );
-        if (index !== -1) {
-          this.menuItems[index] = {
-            id: this.editingItemId,
-            name: this.nombre,
-            category: this.categoria,
-            price: this.precio,
-            description: this.descripcion,
-            image: 'img/platillo1.png' // Puedes implementar lógica para cambiar la imagen
-          };
+      const data = {
+        nombre_platillo: this.nombre,
+        categorias_platillo: this.categoria,
+        precio_platillo: this.precio,
+        descuento_platillo: this.descuento,
+        descripcion_platillo: this.descripcion,
+        imagen: this.imagen_platillo
+      };
+
+      const url = this.isEditing
+        ? 'http://localhost/venta/api/menu/actualizarplatillo'
+        : 'http://localhost/venta/api/menu/guardarplatillo';
+
+      // Enviar datos con AJAX
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: data,
+        dataType: 'json',
+        success: (response) => {
+          if (this.isEditing) {
+            const index = this.menuItems.findIndex(
+              (item) => item.id === this.editingItemId
+            );
+            if (index !== -1) {
+              this.menuItems[index] = { ...response, id: this.editingItemId };
+            }
+          } else {
+            this.menuItems.push(response);
+          }
+          console.log('Respuesta del servidor', response);
+          //alert(this.isEditing ? 'Platillo actualizado' : 'Platillo agregado');
+          $('#formulario_editarMenu').html(
+            '<div class="alert alert-success text-center">' +
+              '<h1 class="custom-message">' +
+              (this.isEditing
+                ? 'Se ha actualizado el platillo/bebida'
+                : 'Se ha agregado un nuevo platillo/bebida') +
+              '</h1>' +
+              '<h1 class="mt-3">Puede cerrar la ventana</h1>' +
+              '</div>'
+          );
+          /* setTimeout(function () {
+            $('.modal-container').html('');
+          }, 2500);
+          $('#formulario_editarMenu').modal('hide');*/
+        },
+        error: (xhr, status, error) => {
+          console.error(
+            'Error al hacer la solicitud:',
+            xhr.responseText || error
+          );
+          alert(
+            'Hubo un error al guardar el platillo: ' +
+              (xhr.responseJSON?.message || 'Desconocido')
+          );
         }
-      } else {
-        // Agregar un nuevo elemento
-        const newItem = {
-          id: this.menuItems.length + 1,
-          name: this.nombre,
-          category: this.categoria,
-          price: this.precio,
-          description: this.descripcion,
-          image: 'img/platillo1.png' // Puedes implementar lógica para cargar la imagen
-        };
-        this.menuItems.push(newItem);
-      }
-      this.showModal = false;
+      });
+    },
+    fetchMenu() {
+      $.ajax({
+        url: 'http://localhost/venta/api/menu/mostrarplatillo',
+        type: 'GET',
+        dataType: 'json',
+        success: (response) => {
+          this.menuItems = response.map((platillo) => ({
+            id: platillo.id_platillo,
+            name: platillo.nombre_platillo,
+            category: platillo.nombre_menu,
+            price: platillo.precio,
+            description: platillo.descripcion,
+            discount: platillo.descuento,
+            image: platillo.imagen_platillo
+          }));
+          console.log(response);
+        },
+        error: (xhr, status, error) => {
+          console.error('Error al cargar el menú:', error);
+          console.error(xhr.responseText);
+          if (xhr.responseJSON && xhr.responseJSON.message) {
+            console.error('Error dicho', xhr.responseJSON.message);
+          }
+          alert('Hubo un problema al cargar el menú.');
+        }
+      });
     }
+  },
+  mounted() {
+    this.fetchMenu();
   }
 }).mount('#app');

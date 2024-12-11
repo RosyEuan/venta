@@ -9,7 +9,7 @@
 
 <body>
 
-  <?php $this->load->view('barra_lateral'); ?>
+
   <?php $this->load->view('graficas2'); ?>
 
 </body>
